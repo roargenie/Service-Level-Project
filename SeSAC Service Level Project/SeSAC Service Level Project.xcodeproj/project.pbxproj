@@ -29,10 +29,20 @@
 		F65167032918EE9800E362F0 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167022918EE9800E362F0 /* SignUpModel.swift */; };
 		F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167042918EF0400E362F0 /* OnboardViewController.swift */; };
 		F65167092918EF4400E362F0 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167082918EF4400E362F0 /* SplashView.swift */; };
-		F651670B2918EF4B00E362F0 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651670A2918EF4B00E362F0 /* OnboardView.swift */; };
 		F65167152918F24600E362F0 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167142918F24600E362F0 /* AuthViewModel.swift */; };
 		F65167172918F24D00E362F0 /* AuthoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167162918F24D00E362F0 /* AuthoView.swift */; };
 		F65167192918F25300E362F0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167182918F25300E362F0 /* AuthViewController.swift */; };
+		F651671B2918F3DF00E362F0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651671A2918F3DF00E362F0 /* Color.swift */; };
+		F651671D2919032800E362F0 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651671C2919032800E362F0 /* Icon.swift */; };
+		F65167212919077F00E362F0 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F651671F2919077F00E362F0 /* NotoSansKR-Medium.otf */; };
+		F65167222919077F00E362F0 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F65167202919077F00E362F0 /* NotoSansKR-Regular.otf */; };
+		F65167242919083300E362F0 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167232919083300E362F0 /* Font.swift */; };
+		F651672729190DD800E362F0 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = F651672629190DD800E362F0 /* Then */; };
+		F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672B291926F800E362F0 /* FirstPageViewController.swift */; };
+		F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672D2919270300E362F0 /* SecondPageViewController.swift */; };
+		F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672F2919270A00E362F0 /* ThirdPageViewController.swift */; };
+		F6516732291968A100E362F0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516731291968A100E362F0 /* Text.swift */; };
+		F65167342919854700E362F0 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167332919854700E362F0 /* UILabel+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +66,19 @@
 		F65167022918EE9800E362F0 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		F65167042918EF0400E362F0 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		F65167082918EF4400E362F0 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		F651670A2918EF4B00E362F0 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		F65167142918F24600E362F0 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		F65167162918F24D00E362F0 /* AuthoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoView.swift; sourceTree = "<group>"; };
 		F65167182918F25300E362F0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F651671A2918F3DF00E362F0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F651671C2919032800E362F0 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		F651671F2919077F00E362F0 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		F65167202919077F00E362F0 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		F65167232919083300E362F0 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F651672B291926F800E362F0 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		F651672D2919270300E362F0 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		F651672F2919270A00E362F0 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
+		F6516731291968A100E362F0 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		F65167332919854700E362F0 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F651672729190DD800E362F0 /* Then in Frameworks */,
 				F65166F32918EA6000E362F0 /* RxSwift in Frameworks */,
 				F65166F62918EA7F00E362F0 /* Alamofire in Frameworks */,
 				F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */,
@@ -154,6 +174,7 @@
 			children = (
 				F65166F72918EB8200E362F0 /* UIViewController+.swift */,
 				F65166F92918EBA500E362F0 /* UIImageView+.swift */,
+				F65167332919854700E362F0 /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -205,6 +226,11 @@
 		F65166E32918E7C700E362F0 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				F651671E2919073300E362F0 /* Font */,
+				F651671A2918F3DF00E362F0 /* Color.swift */,
+				F651671C2919032800E362F0 /* Icon.swift */,
+				F65167232919083300E362F0 /* Font.swift */,
+				F6516731291968A100E362F0 /* Text.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -249,7 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				F65167042918EF0400E362F0 /* OnboardViewController.swift */,
-				F651670A2918EF4B00E362F0 /* OnboardView.swift */,
+				F651672B291926F800E362F0 /* FirstPageViewController.swift */,
+				F651672D2919270300E362F0 /* SecondPageViewController.swift */,
+				F651672F2919270A00E362F0 /* ThirdPageViewController.swift */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -315,6 +343,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F651671E2919073300E362F0 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				F651671F2919077F00E362F0 /* NotoSansKR-Medium.otf */,
+				F65167202919077F00E362F0 /* NotoSansKR-Regular.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,6 +373,7 @@
 				F65166F02918EA6000E362F0 /* RxCocoa */,
 				F65166F22918EA6000E362F0 /* RxSwift */,
 				F65166F52918EA7F00E362F0 /* Alamofire */,
+				F651672629190DD800E362F0 /* Then */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -369,6 +407,7 @@
 				F65166EC2918EA2400E362F0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F65166EF2918EA6000E362F0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				F65166F42918EA7F00E362F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -384,7 +423,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F65167212919077F00E362F0 /* NotoSansKR-Medium.otf in Resources */,
 				F65166CC2918E6BE00E362F0 /* LaunchScreen.storyboard in Resources */,
+				F65167222919077F00E362F0 /* NotoSansKR-Regular.otf in Resources */,
 				F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,20 +437,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F65167342919854700E362F0 /* UILabel+.swift in Sources */,
 				F65166E02918E7A700E362F0 /* SignUpView.swift in Sources */,
 				F65167092918EF4400E362F0 /* SplashView.swift in Sources */,
-				F651670B2918EF4B00E362F0 /* OnboardView.swift in Sources */,
+				F651671B2918F3DF00E362F0 /* Color.swift in Sources */,
+				F65167242919083300E362F0 /* Font.swift in Sources */,
 				F65167032918EE9800E362F0 /* SignUpModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
 				F65166EB2918E9F300E362F0 /* APIKey.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* SignUpViewModel.swift in Sources */,
+				F6516732291968A100E362F0 /* Text.swift in Sources */,
 				F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */,
+				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
+				F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */,
 				F65167172918F24D00E362F0 /* AuthoView.swift in Sources */,
+				F651671D2919032800E362F0 /* Icon.swift in Sources */,
 				F65167152918F24600E362F0 /* AuthViewModel.swift in Sources */,
 				F65166FF2918ECF300E362F0 /* BaseTableViewCell.swift in Sources */,
 				F65166FD2918ECEB00E362F0 /* BaseCollectionViewCell.swift in Sources */,
 				F65167192918F25300E362F0 /* AuthViewController.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
+				F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */,
 				F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */,
 				F65166F82918EB8200E362F0 /* UIViewController+.swift in Sources */,
 				F65166E92918E81100E362F0 /* BaseView.swift in Sources */,
@@ -483,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -537,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -559,7 +607,6 @@
 				INFOPLIST_FILE = "SeSAC Service Level Project/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -587,7 +634,6 @@
 				INFOPLIST_FILE = "SeSAC Service Level Project/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -651,6 +697,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -673,6 +727,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F65166F42918EA7F00E362F0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F651672629190DD800E362F0 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

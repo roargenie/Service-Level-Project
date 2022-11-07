@@ -11,6 +11,7 @@ import UIKit
 extension UIViewController {
     
     @frozen enum TransitionStyle {
+        case presentOverFull
         case presentFull
         case present
         case push
@@ -19,8 +20,12 @@ extension UIViewController {
     func transition<T: UIViewController>(_ viewController: T, transitionStyle: TransitionStyle) {
         
         switch transitionStyle {
-        case .presentFull:
+        case .presentOverFull:
             viewController.modalPresentationStyle = .overFullScreen
+            self.present(viewController, animated: true)
+        case .presentFull:
+            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalTransitionStyle = .crossDissolve
             self.present(viewController, animated: true)
         case .present:
 //            viewController.modalPresentationStyle = .pageSheet
