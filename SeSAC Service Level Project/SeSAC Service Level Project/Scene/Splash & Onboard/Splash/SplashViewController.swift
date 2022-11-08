@@ -18,6 +18,7 @@ final class SplashViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         presentOnboardingVC()
     }
     
@@ -26,8 +27,14 @@ final class SplashViewController: BaseViewController {
             self.mainView.splashLogoImageView.alpha = 1
             self.mainView.splashTextImageView.alpha = 1
         } completion: { [weak self] _ in
-            let vc = OnboardViewController()
-            self?.transition(vc, transitionStyle: .presentFull)
+            if UserDefaults.standard.bool(forKey: "firstRun") == false {
+                let vc = OnboardViewController()
+                self?.transition(vc, transitionStyle: .presentFull)
+            } else {
+                let vc = UINavigationController(rootViewController: AuthViewController())
+                self?.transition(vc, transitionStyle: .presentFull)
+            }
+            
         }
     }
     

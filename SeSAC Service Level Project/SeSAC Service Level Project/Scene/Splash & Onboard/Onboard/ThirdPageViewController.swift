@@ -14,11 +14,11 @@ final class ThirdPageViewController: UIViewController {
     private let onboardTextLabel: UILabel = UILabel().then {
         $0.text = Text.thirdVCText
         $0.textAlignment = .center
-        $0.font = .systemFont(ofSize: 24)
+        $0.font = SeSACFont.onboard.font
     }
     
     private let onboardImageView: UIImageView = UIImageView().then {
-        $0.image = UIImage(named: "onboarding_img3")
+        $0.image = Icon.thirdOnboardingImage
     }
     
     override func viewDidLoad() {
@@ -35,9 +35,7 @@ final class ThirdPageViewController: UIViewController {
     func setConstraints() {
         onboardTextLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(91)
-            make.leading.trailing.equalToSuperview().inset(85)
-//            make.bottom.equalToSuperview().offset(-620)
-//            make.height.equalTo(76)
+            make.centerX.equalToSuperview()
         }
         onboardImageView.snp.makeConstraints { make in
             make.top.equalTo(onboardTextLabel.snp.bottom).offset(75)

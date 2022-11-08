@@ -15,12 +15,12 @@ final class SecondPageViewController: UIViewController {
         $0.text = Text.secondVCText
         $0.textAlignment = .center
         $0.numberOfLines = 2
-        $0.font = .systemFont(ofSize: 24)
+        $0.font = SeSACFont.onboard.font
         $0.changeColor(targetString: "스터디를 원하는 친구")
     }
     
     private let onboardImageView: UIImageView = UIImageView().then {
-        $0.image = UIImage(named: "onboarding_img2")
+        $0.image = Icon.secondOnboardingImage
     }
     
     override func viewDidLoad() {
@@ -37,9 +37,7 @@ final class SecondPageViewController: UIViewController {
     func setConstraints() {
         onboardTextLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(72)
-            make.leading.trailing.equalToSuperview().inset(74)
-//            make.bottom.equalToSuperview().offset(-620)
-//            make.height.equalTo(76)
+            make.centerX.equalToSuperview()
         }
         onboardImageView.snp.makeConstraints { make in
             make.top.equalTo(onboardTextLabel.snp.bottom).offset(56)

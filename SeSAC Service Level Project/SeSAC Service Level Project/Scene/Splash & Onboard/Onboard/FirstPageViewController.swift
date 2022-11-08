@@ -13,13 +13,13 @@ final class FirstPageViewController: UIViewController {
     private let onboardTextLabel: UILabel = UILabel().then {
         $0.text = Text.firstVCText
         $0.textAlignment = .center
-        $0.numberOfLines = 0
-        $0.font = .systemFont(ofSize: 24)
+        $0.numberOfLines = 2
+        $0.font = SeSACFont.onboard.font
         $0.changeColor(targetString: "위치 기반")
     }
     
     private let onboardImageView: UIImageView = UIImageView().then {
-        $0.image = UIImage(named: "onboarding_img1")
+        $0.image = Icon.firstOnboardingImage
     }
     
     override func viewDidLoad() {
@@ -36,9 +36,7 @@ final class FirstPageViewController: UIViewController {
     func setConstraints() {
         onboardTextLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(72)
-            make.leading.trailing.equalToSuperview().inset(85)
-//            make.bottom.equalToSuperview().offset(-620)
-//            make.height.equalTo(76)
+            make.centerX.equalToSuperview()
         }
         onboardImageView.snp.makeConstraints { make in
             make.top.equalTo(onboardTextLabel.snp.bottom).offset(56)

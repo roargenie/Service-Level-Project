@@ -9,6 +9,8 @@ import UIKit
 
 final class OnboardViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private lazy var pageViewController: UIPageViewController = {
         let view = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         view.view.addSubview(pageControl)
@@ -18,21 +20,24 @@ final class OnboardViewController: UIViewController {
     private let pageControl: UIPageControl = {
         let view = UIPageControl()
         view.backgroundColor = .green
-        view.currentPage = 0
+        view.numberOfPages = 3
+//        view.currentPage = 0
         view.pageIndicatorTintColor = Color.gray5
         view.currentPageIndicatorTintColor = Color.black
         return view
     }()
     
-    private let startButton: UIButton = {
-        let view = UIButton()
-        view.setTitle("시작하기", for: .normal)
-        view.layer.cornerRadius = 8
-        view.backgroundColor = Color.green
+    private let startButton: SeSACButton = {
+        let view = SeSACButton()
+        view.setupButton(title: "시작하기", titleColor: Color.white, font: SeSACFont.body3.font, backgroundColor: Color.green, borderWidth: 0, borderColor: .clear)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "firstRun")
         return view
     }()
     
     private var pageViewControllerList: [UIViewController] = []
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +47,14 @@ final class OnboardViewController: UIViewController {
         configurePageViewController()
     }
     
+    // MARK: - CustomMethod
+    
     private func configureUI() {
         view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
 //        addChild(pageViewController)
         [pageViewController.view, startButton].forEach { view.addSubview($0) }
+        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
     
     private func setConstraints() {
@@ -82,7 +91,17 @@ final class OnboardViewController: UIViewController {
         guard let first = pageViewControllerList.first else { return }
         pageViewController.setViewControllers([first], direction: .forward, animated: true)
     }
+    
+    // MARK: - ObjcMethod
+    
+    @objc private func startButtonTapped() {
+        let vc = UINavigationController(rootViewController: AuthViewController())
+        transition(vc, transitionStyle: .presentFull)
+    }
+    
 }
+
+// MARK: - Extension
 
 extension OnboardViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
@@ -102,16 +121,26 @@ extension OnboardViewController: UIPageViewControllerDelegate, UIPageViewControl
 //    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
 //        return 0
 //    }
-//    
+//
 //    func presentationCount(for pageViewController: UIPageViewController) -> Int {
 //        return 3
 //    }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard
-            let first = pageViewController.viewControllers?.first,
-            let index = pageViewControllerList.firstIndex(of: first) else { return }
-        pageControl.currentPage = index
+//        guard
+//            let first = pageViewController.viewControllers?.first,
+//            let index = pageViewControllerList.firstIndex(of: first) else {
+//            print(index)
+//            return
+//        }
+//        print(#function)
+        if let viewControllers = pageViewController.viewControllers {
+            if let viewControllerIndex = pageViewControllerList.firstIndex(of: viewControllers[0]) {
+                pageControl.currentPage = viewControllerIndex
+                print(viewControllerIndex)
+            }
+        }
+//        pageControl.currentPage = 0
     }
     
 }
