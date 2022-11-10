@@ -29,6 +29,7 @@ final class EmailView: BaseView {
         $0.font = SeSACFont.title4.font
         $0.addLeftPadding()
         $0.keyboardType = .emailAddress
+        $0.becomeFirstResponder()
     }
     
     let nextButton: SeSACButton = SeSACButton()

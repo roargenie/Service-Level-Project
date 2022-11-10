@@ -41,8 +41,13 @@ final class AuthViewModel: CommonViewModel {
     }
     
     func addHyphen(text: String) {
-        let phoneText = text.replacingOccurrences(of: "(\\d{3})(\\d{4})(\\d{4})", with: "$1-$2-$3", options: .regularExpression, range: nil)
-        authValidation.accept(phoneText)
+        if text.count > 3 && text.count < 8 {
+            let phoneText = text.replacingOccurrences(of: "(\\d{3})(\\d{1})", with: "$1-$2", options: .regularExpression, range: nil)
+            authValidation.accept(phoneText)
+        } else if text.count > 8 {
+            let phoneText = text.replacingOccurrences(of: "(\\d{3})-(\\d{4})(\\d{1})", with: "$1-$2-$3", options: .regularExpression, range: nil)
+            authValidation.accept(phoneText)
+        }
     }
 }
 

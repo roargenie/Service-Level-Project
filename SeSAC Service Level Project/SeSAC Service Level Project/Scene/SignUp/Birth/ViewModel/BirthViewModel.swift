@@ -10,29 +10,26 @@ import RxSwift
 import RxCocoa
 
 
-final class BirthViewModel: CommonViewModel {
+final class BirthViewModel {
     
-    var authValidation = PublishRelay<String>()
+    let auth = PublishRelay<Date>()
+    
     
     struct Input {
-        let text: ControlProperty<String?>
-        let tap: ControlEvent<Void>
+        let date: ControlProperty<Date>
     }
     
     struct Output {
-        let validation: Observable<Bool>
-        let tap: ControlEvent<Void>
-        let text: Driver<String>
+        
     }
     
-    func transform(input: Input) -> Output {
-        let valid = input.text
-            .orEmpty
-            .map { $0.count >= 6 }
-            .share()
+    func ageValidCheck() {
         
-        let text = authValidation.asDriver()
-        
-        return Output(validation: valid, tap: input.tap, text: text)
     }
+//    func transform(input: Input) -> Output {
+//
+//
+//
+//        return
+//    }
 }

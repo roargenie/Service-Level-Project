@@ -22,21 +22,27 @@ final class BirthView: BaseView {
         $0.setPlaceholder(placeholder: "1990", color: Color.gray3)
         $0.font = SeSACFont.title4.font
         $0.addLeftPadding()
+        $0.tintColor = .clear
         $0.inputView = datePicker
+        $0.becomeFirstResponder()
     }
     
     lazy var monthTextField: SeSACTextField = SeSACTextField().then {
         $0.setPlaceholder(placeholder: "1", color: Color.gray3)
         $0.font = SeSACFont.title4.font
         $0.addLeftPadding()
+        $0.tintColor = .clear
         $0.inputView = datePicker
+        $0.isUserInteractionEnabled = false
     }
     
     lazy var dayTextField: SeSACTextField = SeSACTextField().then {
         $0.setPlaceholder(placeholder: "1", color: Color.gray3)
         $0.font = SeSACFont.title4.font
         $0.addLeftPadding()
+        $0.tintColor = .clear
         $0.inputView = datePicker
+        $0.isUserInteractionEnabled = false
     }
     
     let yearLabel: UILabel = UILabel().then {
@@ -66,7 +72,9 @@ final class BirthView: BaseView {
         $0.preferredDatePickerStyle = .wheels
     }
     
-    let nextButton: SeSACButton = SeSACButton()
+    let nextButton: SeSACButton = SeSACButton().then {
+        $0.setupButton(title: "다음", titleColor: Color.gray3, font: SeSACFont.body3.font, backgroundColor: Color.gray6, borderWidth: 0, borderColor: .clear)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

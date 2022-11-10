@@ -63,6 +63,7 @@
 		F6516768291BEEFC00E362F0 /* GenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516767291BEEFC00E362F0 /* GenderCollectionViewCell.swift */; };
 		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
 		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
+		F651676F291D785700E362F0 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676E291D785700E362F0 /* Date+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		F6516767291BEEFC00E362F0 /* GenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
+		F651676E291D785700E362F0 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				F651675E291A7DAF00E362F0 /* UIFont+.swift */,
 				F6516762291ABA6F00E362F0 /* UITextField+.swift */,
 				F6516769291BEFF300E362F0 /* Cell+.swift */,
+				F651676E291D785700E362F0 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				F65167242919083300E362F0 /* Font.swift in Sources */,
 				F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */,
 				F651673E291A737000E362F0 /* AuthDetailViewModel.swift in Sources */,
+				F651676F291D785700E362F0 /* Date+.swift in Sources */,
 				F65167032918EE9800E362F0 /* NicknameModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
 				F65166EB2918E9F300E362F0 /* APIKey.swift in Sources */,

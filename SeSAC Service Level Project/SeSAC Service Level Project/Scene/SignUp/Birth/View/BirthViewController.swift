@@ -46,29 +46,31 @@ final class BirthViewController: BaseViewController {
     
     private func bind() {
         
-        let input = BirthViewModel.Input(text: mainView.yearTextField.rx.text, tap: mainView.nextButton.rx.tap)
-        let output = viewModel.transform(input: input)
+        viewModel.auth
+            .asDriver(onErrorJustReturn: Date())
+            .drive(mainView.datePicker.rx.date)
+            .disposed(by: disposeBag)
         
-        output.validation
+        mainView.datePicker.rx.date.changed
             .withUnretained(self)
             .bind { (vc, value) in
-                let textColor: UIColor = value ? Color.white : Color.gray3
-                let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.nextButton.setupButton(title: "다음",
-                                                   titleColor: textColor,
-                                                   font: SeSACFont.body3.font,
-                                                   backgroundColor: bgColor,
-                                                   borderWidth: 0,
-                                                   borderColor: .clear)
+                vc.mainView.yearTextField.text = value.dateFormat("yyyy")
+                vc.mainView.monthTextField.text = value.dateFormat("MM")
+                vc.mainView.dayTextField.text = value.dateFormat("dd")
+                let titleColor: UIColor = value.ageValid() ? Color.white : Color.gray3
+                let bgColor: UIColor = value.ageValid() ? Color.green : Color.gray6
+                vc.mainView.nextButton.setupButton(title: "다음", titleColor: titleColor, font: SeSACFont.body3.font, backgroundColor: bgColor, borderWidth: 0, borderColor: .clear)
+                
             }
             .disposed(by: disposeBag)
         
-        output.tap
+        mainView.nextButton.rx.tap
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.pushAuthDetailVC()
             }
             .disposed(by: disposeBag)
+        
     }
     
     private func pushAuthDetailVC() {
