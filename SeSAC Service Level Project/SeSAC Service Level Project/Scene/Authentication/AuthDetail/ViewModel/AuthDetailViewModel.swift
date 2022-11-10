@@ -12,7 +12,7 @@ import RxCocoa
 
 final class AuthDetailViewModel: CommonViewModel {
     
-    var authValidation = BehaviorRelay(value: "인증번호 입력")
+    var authValidation = PublishRelay<String>()
     
     struct Input {
         let text: ControlProperty<String?>
@@ -31,7 +31,7 @@ final class AuthDetailViewModel: CommonViewModel {
             .map { $0.count >= 6 }
             .share()
         
-        let text = authValidation.asDriver()
+        let text = authValidation.asDriver(onErrorJustReturn: "")
         
         return Output(validation: valid, tap: input.tap, text: text)
     }

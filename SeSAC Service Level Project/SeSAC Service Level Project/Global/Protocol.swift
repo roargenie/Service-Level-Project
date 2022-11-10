@@ -13,3 +13,7 @@ protocol CommonViewModel {
     
     func transform(input: Input) -> Output
 }
+
+protocol ReusableViewProtocol: AnyObject {
+    static var reuseIdentifier: String { get }
+}

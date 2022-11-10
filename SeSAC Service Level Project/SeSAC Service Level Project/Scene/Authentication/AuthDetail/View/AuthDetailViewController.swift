@@ -55,15 +55,34 @@ final class AuthDetailViewController: BaseViewController {
             .bind { (vc, value) in
                 let textColor: UIColor = value ? Color.white : Color.gray3
                 let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.startButton.setupButton(title: "인증하고 시작하기", titleColor: textColor, font: SeSACFont.body3.font, backgroundColor: bgColor, borderWidth: 0, borderColor: .clear)
+                vc.mainView.startButton.setupButton(title: "인증하고 시작하기",
+                                                    titleColor: textColor,
+                                                    font: SeSACFont.body3.font,
+                                                    backgroundColor: bgColor,
+                                                    borderWidth: 0,
+                                                    borderColor: .clear)
             }
             .disposed(by: disposeBag)
-
+        
+        mainView.authNumberTextField.rx.text
+            .orEmpty
+            .withUnretained(self)
+            .bind { (vc, value) in
+                vc.mainView.authNumberTextField.backWards(with: value, 6)
+            }
+            .disposed(by: disposeBag)
+        
         output.tap
-            .bind { _ in
-                print("클릭됨")
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.pushNicknameVC()
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func pushNicknameVC() {
+        let vc = NicknameViewController()
+        transition(vc, transitionStyle: .push)
     }
     
     @objc private func backButtonTapped() {

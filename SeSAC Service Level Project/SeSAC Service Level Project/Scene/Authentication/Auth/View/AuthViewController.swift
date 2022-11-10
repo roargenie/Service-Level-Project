@@ -35,17 +35,8 @@ final class AuthViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        self.navigationController?.isNavigationBarHidden = true
-//    }
     
     // MARK: - OverrideMethod
-    
-//    override func setNavigation() {
-//        self.navigationController?.isNavigationBarHidden = true
-//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -63,7 +54,27 @@ final class AuthViewController: BaseViewController {
             .bind { (vc, value) in
                 let textColor: UIColor = value ? Color.white : Color.gray3
                 let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.authNotificationButton.setupButton(title: "인증 문자 받기", titleColor: textColor, font: SeSACFont.body3.font, backgroundColor: bgColor, borderWidth: 0, borderColor: .clear)
+                vc.mainView.authNotificationButton.setupButton(title: "인증 문자 받기",
+                                                               titleColor: textColor,
+                                                               font: SeSACFont.body3.font,
+                                                               backgroundColor: bgColor,
+                                                               borderWidth: 0,
+                                                               borderColor: .clear)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.authValidation
+            .withUnretained(self)
+            .bind { (vc, value) in
+                vc.mainView.phoneNumberTextField.text = value
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.phoneNumberTextField.rx.text.orEmpty
+            .withUnretained(self)
+            .bind { (vc, value) in
+                vc.viewModel.addHyphen(text: value)
+                vc.mainView.phoneNumberTextField.backWards(with: value, 13)
             }
             .disposed(by: disposeBag)
         

@@ -30,9 +30,7 @@ final class AuthDetailView: BaseView {
         $0.keyboardType = .numberPad
     }
     
-    let startButton: SeSACButton = SeSACButton().then { _ in
-        
-    }
+    let startButton: SeSACButton = SeSACButton()
     
     let repeatButon: SeSACButton = SeSACButton().then {
         $0.setupButton(title: "재전송", titleColor: Color.white, font: SeSACFont.body3.font, backgroundColor: Color.green, borderWidth: 0, borderColor: .clear)

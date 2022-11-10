@@ -32,7 +32,7 @@ struct Font {
     private var fontStyle: Font {
         switch self {
         case .onboard:
-            return Font(font: .regular, size: 24, lineHeight: 38.4)
+            return Font(font: .medium, size: 24, lineHeight: 38.4)
         case .display1:
             return Font(font: .regular, size: 20, lineHeight: 32)
         case .title1:

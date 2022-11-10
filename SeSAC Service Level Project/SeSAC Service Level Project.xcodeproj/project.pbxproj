@@ -58,8 +58,11 @@
 		F651675D291A771A00E362F0 /* SeSACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651675C291A771A00E362F0 /* SeSACButton.swift */; };
 		F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651675E291A7DAF00E362F0 /* UIFont+.swift */; };
 		F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516760291A908800E362F0 /* SeSACTextFIeld.swift */; };
-		F6516763291ABA6F00E362F0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516762291ABA6F00E362F0 /* String+.swift */; };
+		F6516763291ABA6F00E362F0 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516762291ABA6F00E362F0 /* UITextField+.swift */; };
 		F6516765291ABEA700E362F0 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516764291ABEA700E362F0 /* Protocol.swift */; };
+		F6516768291BEEFC00E362F0 /* GenderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516767291BEEFC00E362F0 /* GenderCollectionViewCell.swift */; };
+		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
+		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,8 +114,11 @@
 		F651675C291A771A00E362F0 /* SeSACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACButton.swift; sourceTree = "<group>"; };
 		F651675E291A7DAF00E362F0 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		F6516760291A908800E362F0 /* SeSACTextFIeld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACTextFIeld.swift; sourceTree = "<group>"; };
-		F6516762291ABA6F00E362F0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		F6516762291ABA6F00E362F0 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		F6516764291ABEA700E362F0 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		F6516767291BEEFC00E362F0 /* GenderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
+		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +213,8 @@
 				F65166F92918EBA500E362F0 /* UIImageView+.swift */,
 				F65167332919854700E362F0 /* UILabel+.swift */,
 				F651675E291A7DAF00E362F0 /* UIFont+.swift */,
-				F6516762291ABA6F00E362F0 /* String+.swift */,
+				F6516762291ABA6F00E362F0 /* UITextField+.swift */,
+				F6516769291BEFF300E362F0 /* Cell+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -466,6 +473,7 @@
 		F6516743291A745D00E362F0 /* Gender */ = {
 			isa = PBXGroup;
 			children = (
+				F651676B291C222500E362F0 /* Model */,
 				F6516749291A748100E362F0 /* View */,
 				F6516748291A747E00E362F0 /* ViewModel */,
 			);
@@ -517,10 +525,27 @@
 		F6516749291A748100E362F0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6516766291BEEEC00E362F0 /* Cell */,
 				F6516756291A74E700E362F0 /* GenderView.swift */,
 				F6516758291A74ED00E362F0 /* GenderViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F6516766291BEEEC00E362F0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F6516767291BEEFC00E362F0 /* GenderCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F651676B291C222500E362F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F651676C291C228E00E362F0 /* GenderModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -609,7 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65167342919854700E362F0 /* UILabel+.swift in Sources */,
-				F6516763291ABA6F00E362F0 /* String+.swift in Sources */,
+				F6516763291ABA6F00E362F0 /* UITextField+.swift in Sources */,
 				F6516751291A74D300E362F0 /* EmailView.swift in Sources */,
 				F65166E02918E7A700E362F0 /* NicknameView.swift in Sources */,
 				F65167092918EF4400E362F0 /* SplashView.swift in Sources */,
@@ -629,6 +654,7 @@
 				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
 				F6516757291A74E700E362F0 /* GenderView.swift in Sources */,
 				F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */,
+				F651676D291C228E00E362F0 /* GenderModel.swift in Sources */,
 				F65167172918F24D00E362F0 /* AuthView.swift in Sources */,
 				F651671D2919032800E362F0 /* Icon.swift in Sources */,
 				F6516753291A74D900E362F0 /* EmailViewController.swift in Sources */,
@@ -641,6 +667,7 @@
 				F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
 				F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */,
+				F651676A291BEFF300E362F0 /* Cell+.swift in Sources */,
 				F651673C291A736400E362F0 /* AuthDetailViewController.swift in Sources */,
 				F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */,
 				F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */,
@@ -649,6 +676,7 @@
 				F65166E92918E81100E362F0 /* BaseView.swift in Sources */,
 				F6516765291ABEA700E362F0 /* Protocol.swift in Sources */,
 				F65166E22918E7AD00E362F0 /* NicknameViewController.swift in Sources */,
+				F6516768291BEEFC00E362F0 /* GenderCollectionViewCell.swift in Sources */,
 				F65166FA2918EBA500E362F0 /* UIImageView+.swift in Sources */,
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,

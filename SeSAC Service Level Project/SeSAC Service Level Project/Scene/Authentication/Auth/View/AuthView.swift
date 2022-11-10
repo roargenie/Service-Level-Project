@@ -25,9 +25,7 @@ final class AuthView: BaseView {
         $0.keyboardType = .numberPad
     }
     
-    let authNotificationButton: SeSACButton = SeSACButton().then { _ in
-        
-    }
+    let authNotificationButton: SeSACButton = SeSACButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

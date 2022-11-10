@@ -13,25 +13,12 @@ final class OnboardViewController: UIViewController {
     
     private lazy var pageViewController: UIPageViewController = {
         let view = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        view.view.addSubview(pageControl)
-        return view
-    }()
-    
-    private let pageControl: UIPageControl = {
-        let view = UIPageControl()
-        view.backgroundColor = .green
-        view.numberOfPages = 3
-//        view.currentPage = 0
-        view.pageIndicatorTintColor = Color.gray5
-        view.currentPageIndicatorTintColor = Color.black
         return view
     }()
     
     private let startButton: SeSACButton = {
         let view = SeSACButton()
         view.setupButton(title: "시작하기", titleColor: Color.white, font: SeSACFont.body3.font, backgroundColor: Color.green, borderWidth: 0, borderColor: .clear)
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(true, forKey: "firstRun")
         return view
     }()
     
@@ -45,6 +32,7 @@ final class OnboardViewController: UIViewController {
         setConstraints()
         createPageViewController()
         configurePageViewController()
+        setupPageControl()
     }
     
     // MARK: - CustomMethod
@@ -52,7 +40,6 @@ final class OnboardViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
-//        addChild(pageViewController)
         [pageViewController.view, startButton].forEach { view.addSubview($0) }
         startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
@@ -61,20 +48,13 @@ final class OnboardViewController: UIViewController {
         pageViewController.view.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(startButton.snp.top)
-        }
-        pageControl.snp.makeConstraints { make in
             make.bottom.equalTo(startButton.snp.top).offset(-42)
-            make.height.equalTo(8)
-            make.width.equalTo(48)
-            make.centerX.equalToSuperview()
         }
         startButton.snp.makeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().offset(-50)
             make.height.equalTo(48)
         }
-//        pageViewController.didMove(toParent: self)
     }
     
     private func createPageViewController() {
@@ -87,14 +67,22 @@ final class OnboardViewController: UIViewController {
     private func configurePageViewController() {
         pageViewController.delegate = self
         pageViewController.dataSource = self
-        
         guard let first = pageViewControllerList.first else { return }
         pageViewController.setViewControllers([first], direction: .forward, animated: true)
+    }
+    
+    private func setupPageControl() {
+        let appear = UIPageControl.appearance()
+        appear.numberOfPages = pageViewControllerList.count
+        appear.pageIndicatorTintColor = Color.gray5
+        appear.currentPageIndicatorTintColor = Color.black
     }
     
     // MARK: - ObjcMethod
     
     @objc private func startButtonTapped() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "firstRun")
         let vc = UINavigationController(rootViewController: AuthViewController())
         transition(vc, transitionStyle: .presentFull)
     }
@@ -106,7 +94,6 @@ final class OnboardViewController: UIViewController {
 extension OnboardViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        // 현재 페이지뷰 컨트롤러에 보이는 뷰컨의 인덱스 가져오기
         guard let viewControllerIndex = pageViewControllerList.firstIndex(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
         return previousIndex < 0 ? nil : pageViewControllerList[previousIndex]
@@ -118,29 +105,14 @@ extension OnboardViewController: UIPageViewControllerDelegate, UIPageViewControl
         return nextIndex >= pageViewControllerList.count ? nil : pageViewControllerList[nextIndex]
     }
     
-//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-//        return 0
-//    }
-//
-//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-//        return 3
-//    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-//        guard
-//            let first = pageViewController.viewControllers?.first,
-//            let index = pageViewControllerList.firstIndex(of: first) else {
-//            print(index)
-//            return
-//        }
-//        print(#function)
-        if let viewControllers = pageViewController.viewControllers {
-            if let viewControllerIndex = pageViewControllerList.firstIndex(of: viewControllers[0]) {
-                pageControl.currentPage = viewControllerIndex
-                print(viewControllerIndex)
-            }
-        }
-//        pageControl.currentPage = 0
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return pageViewControllerList.count
+    }
+
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        guard let first = pageViewController.viewControllers?.first,
+              let index = pageViewControllerList.firstIndex(of: first) else { return 0 }
+        return index
     }
     
 }
