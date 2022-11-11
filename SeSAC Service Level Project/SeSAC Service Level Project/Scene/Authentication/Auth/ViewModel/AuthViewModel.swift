@@ -49,6 +49,12 @@ final class AuthViewModel: CommonViewModel {
             authValidation.accept(phoneText)
         }
     }
+    
+    func removeHyphen(text: String) -> String {
+        let phoneText = text.replacingOccurrences(of: "-", with: "")
+        return phoneText
+    }
+    
 }
 
 

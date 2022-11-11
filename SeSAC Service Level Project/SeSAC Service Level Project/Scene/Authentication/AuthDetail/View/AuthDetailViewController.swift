@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import FirebaseAuth
 
 
 final class AuthDetailViewController: BaseViewController {
@@ -76,6 +77,7 @@ final class AuthDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.pushNicknameVC()
+                vc.verification()
             }
             .disposed(by: disposeBag)
     }
@@ -89,4 +91,34 @@ final class AuthDetailViewController: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+}
+
+// MARK: - Extension
+
+extension AuthDetailViewController {
+    
+    private func verification() {
+        guard let verificationID = UserDefaults.standard.string(forKey: "verificationID"),
+              let verificationCode = mainView.authNumberTextField.text else {
+            return
+        }
+        
+        let credential = PhoneAuthProvider.provider().credential(
+            withVerificationID: verificationID,
+            verificationCode: verificationCode
+        )
+        
+        logIn(credential: credential)
+    }
+    
+    private func logIn(credential: PhoneAuthCredential) {
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                print(error.localizedDescription)
+                print("LogIn Failed...")
+            }
+            print("LogIn Success!!")
+            print("\\(authResult!)")
+        }
+    }
 }

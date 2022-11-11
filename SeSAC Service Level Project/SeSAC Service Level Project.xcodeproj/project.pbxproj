@@ -64,6 +64,12 @@
 		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
 		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
 		F651676F291D785700E362F0 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676E291D785700E362F0 /* Date+.swift */; };
+		F6EEEDDA291E96FA00C8969B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */; };
+		F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDF291EA08400C8969B /* FirebaseAuth */; };
+		F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE1291EB2E700C8969B /* EndPoint.swift */; };
+		F6EEEDE5291EB35800C8969B /* SeSACRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */; };
+		F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE6291EB39400C8969B /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +127,11 @@
 		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		F651676E291D785700E362F0 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SeSAC Service Level Project.entitlements"; sourceTree = "<group>"; };
+		F6EEEDE1291EB2E700C8969B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACRouter.swift; sourceTree = "<group>"; };
+		F6EEEDE6291EB39400C8969B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +140,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F651672729190DD800E362F0 /* Then in Frameworks */,
+				F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F65166F32918EA6000E362F0 /* RxSwift in Frameworks */,
 				F65166F62918EA7F00E362F0 /* Alamofire in Frameworks */,
 				F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */,
+				F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */,
 				F65166EE2918EA2400E362F0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,16 +171,18 @@
 		F65166BE2918E6BD00E362F0 /* SeSAC Service Level Project */ = {
 			isa = PBXGroup;
 			children = (
+				F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */,
 				F65166EA2918E9F300E362F0 /* APIKey.swift */,
+				F65166C82918E6BE00E362F0 /* Assets.xcassets */,
+				F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */,
+				F65166CD2918E6BE00E362F0 /* Info.plist */,
 				F65166D72918E71E00E362F0 /* Extension */,
 				F65166D62918E6F200E362F0 /* Utillity */,
 				F65166D52918E6EE00E362F0 /* Network */,
 				F65166D42918E6E900E362F0 /* Global */,
 				F65166D32918E6E300E362F0 /* Scene */,
 				F65166D82918E72E00E362F0 /* Support */,
-				F65166C82918E6BE00E362F0 /* Assets.xcassets */,
 				F65166CA2918E6BE00E362F0 /* LaunchScreen.storyboard */,
-				F65166CD2918E6BE00E362F0 /* Info.plist */,
 			);
 			path = "SeSAC Service Level Project";
 			sourceTree = "<group>";
@@ -194,6 +209,9 @@
 		F65166D52918E6EE00E362F0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F6EEEDE3291EB34500C8969B /* Router */,
+				F6EEEDE1291EB2E700C8969B /* EndPoint.swift */,
+				F6EEEDE6291EB39400C8969B /* APIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -551,6 +569,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F6EEEDE3291EB34500C8969B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -573,6 +599,8 @@
 				F65166F22918EA6000E362F0 /* RxSwift */,
 				F65166F52918EA7F00E362F0 /* Alamofire */,
 				F651672629190DD800E362F0 /* Then */,
+				F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */,
+				F6EEEDDF291EA08400C8969B /* FirebaseAuth */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -607,6 +635,7 @@
 				F65166EF2918EA6000E362F0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				F65166F42918EA7F00E362F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */,
+				F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -624,6 +653,7 @@
 			files = (
 				F65167212919077F00E362F0 /* NotoSansKR-Medium.otf in Resources */,
 				F65166CC2918E6BE00E362F0 /* LaunchScreen.storyboard in Resources */,
+				F6EEEDDA291E96FA00C8969B /* GoogleService-Info.plist in Resources */,
 				F65167222919077F00E362F0 /* NotoSansKR-Regular.otf in Resources */,
 				F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */,
 			);
@@ -641,12 +671,14 @@
 				F6516751291A74D300E362F0 /* EmailView.swift in Sources */,
 				F65166E02918E7A700E362F0 /* NicknameView.swift in Sources */,
 				F65167092918EF4400E362F0 /* SplashView.swift in Sources */,
+				F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */,
 				F651675D291A771A00E362F0 /* SeSACButton.swift in Sources */,
 				F651671B2918F3DF00E362F0 /* Color.swift in Sources */,
 				F65167242919083300E362F0 /* Font.swift in Sources */,
 				F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */,
 				F651673E291A737000E362F0 /* AuthDetailViewModel.swift in Sources */,
 				F651676F291D785700E362F0 /* Date+.swift in Sources */,
+				F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */,
 				F65167032918EE9800E362F0 /* NicknameModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
 				F65166EB2918E9F300E362F0 /* APIKey.swift in Sources */,
@@ -655,6 +687,7 @@
 				F6516732291968A100E362F0 /* Text.swift in Sources */,
 				F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */,
 				F651674D291A74C400E362F0 /* BirthViewController.swift in Sources */,
+				F6EEEDE5291EB35800C8969B /* SeSACRouter.swift in Sources */,
 				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
 				F6516757291A74E700E362F0 /* GenderView.swift in Sources */,
 				F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */,
@@ -820,6 +853,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SeSAC Service Level Project/SeSAC Service Level Project.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FJNF7APGSX;
@@ -847,6 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SeSAC Service Level Project/SeSAC Service Level Project.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FJNF7APGSX;
@@ -925,6 +960,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -952,6 +995,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		F6EEEDDF291EA08400C8969B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

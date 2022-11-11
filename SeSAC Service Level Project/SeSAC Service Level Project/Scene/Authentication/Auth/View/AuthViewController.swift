@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAuth
 
 
 final class AuthViewController: BaseViewController {
@@ -82,13 +83,33 @@ final class AuthViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.pushAuthDetailVC()
+                vc.authMessage(vc.viewModel.removeHyphen(text: vc.mainView.phoneNumberTextField.text ?? ""))
             }
             .disposed(by: disposeBag)
     }
+    
+}
+
+
+// MARK: - Extension
+
+extension AuthViewController {
     
     private func pushAuthDetailVC() {
         let vc = AuthDetailViewController()
         transition(vc, transitionStyle: .push)
     }
     
+    private func authMessage(_ phoneNumber: String) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber("+82 \(phoneNumber)", uiDelegate: nil) { (verificationID, error) in
+                if let id = verificationID {
+                    UserDefaults.standard.set("\(id)", forKey: "verificationID")
+                }
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+            }
+    }
 }
