@@ -44,6 +44,10 @@ final class GenderViewController: BaseViewController {
     // MARK: - CustomMethod
     
     private func bind() {
+        
+        let input = GenderViewModel.Input(tap: mainView.nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
         viewModel.gender
             .bind(to: mainView.collectionView.rx.items(cellIdentifier: GenderCollectionViewCell.reuseIdentifier,
                                                        cellType: GenderCollectionViewCell.self)) { index, item, cell in
@@ -64,16 +68,40 @@ final class GenderViewController: BaseViewController {
                                                    backgroundColor: bgColor,
                                                    borderWidth: 0,
                                                    borderColor: .clear)
+                UserDefaults.standard.set(index.item, forKey: Matrix.gender)
+                print(UserDefaults.standard.integer(forKey: Matrix.gender))
                 cell.isSelected.toggle()
             }
             .disposed(by: disposeBag)
         
+        output.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func requestSignUp() {
+        let userDefaults = UserDefaults.standard
+        APIManager.shared.requestData(SignUp.self,
+                                      router: SeSACRouter
+            .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
+                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
+                           nick: userDefaults.string(forKey: Matrix.nickname)!,
+                           birth: userDefaults.string(forKey: Matrix.birth)!,
+                           email: userDefaults.string(forKey: Matrix.email)!,
+                           gender: userDefaults.integer(forKey: Matrix.gender)))) { result in
+            
+            switch result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 //    private func bind() {
-//
-//        let input = GenderViewModel.Input(celltap: mainView.collectionView.rx.itemSelected,
-//                                          tap: mainView.nextButton.rx.tap)
-//        let output = viewModel.transform(input: input)
 //
 //        output.celltap
 //            .withUnretained(self)

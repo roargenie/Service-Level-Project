@@ -96,6 +96,7 @@ extension AuthViewController {
     
     private func pushAuthDetailVC() {
         let vc = AuthDetailViewController()
+        UserDefaults.standard.set("+82\(viewModel.removeHyphen(text: mainView.phoneNumberTextField.text!))", forKey: Matrix.phoneNumber)
         transition(vc, transitionStyle: .push)
     }
     
@@ -103,7 +104,7 @@ extension AuthViewController {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber("+82 \(phoneNumber)", uiDelegate: nil) { [weak self] (verificationID, error) in
                 if let id = verificationID {
-                    UserDefaults.standard.set("\(id)", forKey: Text.verificationID)
+                    UserDefaults.standard.set("\(id)", forKey: Matrix.verificationID)
                 }
                 if let error = error {
                     print(error.localizedDescription)

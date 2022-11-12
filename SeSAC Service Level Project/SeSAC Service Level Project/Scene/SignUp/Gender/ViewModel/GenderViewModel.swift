@@ -15,24 +15,23 @@ final class GenderViewModel {
     
     var signValidation = PublishRelay<Bool>()
     
-    
-//    struct Input {
+    struct Input {
 //        let celltap: ControlEvent<IndexPath>
-//        let tap: ControlEvent<Void>
-//    }
-//
-//    struct Output {
+        let tap: ControlEvent<Void>
+    }
+
+    struct Output {
 //        let validation: Observable<Bool>
 //        let celltap: ControlEvent<IndexPath>
-//        let tap: ControlEvent<Void>
-//    }
-//
-//    func transform(input: Input) -> Output {
+        let tap: ControlEvent<Void>
+    }
+
+    func transform(input: Input) -> Output {
 //        let valid = input.celltap
-//
-//
-//        let text = authValidation.asDriver()
-//
-//        return Output(celltap: valid, tap: input.tap)
-//    }
+
+
+//        let text = signValidation.asDriver()
+
+        return Output(tap: input.tap)
+    }
 }

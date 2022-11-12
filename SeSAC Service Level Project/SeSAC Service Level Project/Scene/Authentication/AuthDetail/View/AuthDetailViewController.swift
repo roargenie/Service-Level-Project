@@ -146,7 +146,7 @@ extension AuthDetailViewController {
                     print(error.localizedDescription)
                     print("LogIn Failed...")
                 }
-                UserDefaults.standard.set(token, forKey: Text.firebaseToken)
+                UserDefaults.standard.set(token, forKey: Matrix.FCMToken)
             })
             print("LogIn Success!!")
             print("\\(authResult!)")

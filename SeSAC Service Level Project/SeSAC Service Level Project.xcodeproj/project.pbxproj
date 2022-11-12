@@ -40,7 +40,7 @@
 		F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672B291926F800E362F0 /* FirstPageViewController.swift */; };
 		F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672D2919270300E362F0 /* SecondPageViewController.swift */; };
 		F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651672F2919270A00E362F0 /* ThirdPageViewController.swift */; };
-		F6516732291968A100E362F0 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516731291968A100E362F0 /* Text.swift */; };
+		F6516732291968A100E362F0 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516731291968A100E362F0 /* Matrix.swift */; };
 		F65167342919854700E362F0 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65167332919854700E362F0 /* UILabel+.swift */; };
 		F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516739291A735800E362F0 /* AuthDetailView.swift */; };
 		F651673C291A736400E362F0 /* AuthDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651673B291A736400E362F0 /* AuthDetailViewController.swift */; };
@@ -105,7 +105,7 @@
 		F651672B291926F800E362F0 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		F651672D2919270300E362F0 /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		F651672F2919270A00E362F0 /* ThirdPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewController.swift; sourceTree = "<group>"; };
-		F6516731291968A100E362F0 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		F6516731291968A100E362F0 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		F65167332919854700E362F0 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		F6516739291A735800E362F0 /* AuthDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDetailView.swift; sourceTree = "<group>"; };
 		F651673B291A736400E362F0 /* AuthDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDetailViewController.swift; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 				F651671A2918F3DF00E362F0 /* Color.swift */,
 				F651671C2919032800E362F0 /* Icon.swift */,
 				F65167232919083300E362F0 /* Font.swift */,
-				F6516731291968A100E362F0 /* Text.swift */,
+				F6516731291968A100E362F0 /* Matrix.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -697,7 +697,7 @@
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
-				F6516732291968A100E362F0 /* Text.swift in Sources */,
+				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
 				F6EEEDF029200A7000C8969B /* SignUpModel.swift in Sources */,
 				F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */,
 				F651674D291A74C400E362F0 /* BirthViewController.swift in Sources */,

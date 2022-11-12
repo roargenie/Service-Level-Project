@@ -72,6 +72,8 @@ final class EmailViewController: BaseViewController {
 
     private func pushAuthDetailVC() {
         let vc = GenderViewController()
+        UserDefaults.standard.set(mainView.emailTextField.text, forKey: Matrix.email)
+        print(UserDefaults.standard.string(forKey: Matrix.email))
         transition(vc, transitionStyle: .push)
     }
     

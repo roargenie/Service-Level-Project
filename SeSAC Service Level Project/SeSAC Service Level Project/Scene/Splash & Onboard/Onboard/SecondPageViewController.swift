@@ -12,7 +12,7 @@ import Then
 final class SecondPageViewController: UIViewController {
     
     private let onboardTextLabel: UILabel = UILabel().then {
-        $0.text = Text.secondVCText
+        $0.text = Matrix.secondVCText
         $0.textAlignment = .center
         $0.numberOfLines = 2
         $0.font = SeSACFont.onboard.font

@@ -12,7 +12,7 @@ import Then
 final class ThirdPageViewController: UIViewController {
     
     private let onboardTextLabel: UILabel = UILabel().then {
-        $0.text = Text.thirdVCText
+        $0.text = Matrix.thirdVCText
         $0.textAlignment = .center
         $0.font = SeSACFont.onboard.font
     }

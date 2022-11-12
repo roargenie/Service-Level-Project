@@ -11,7 +11,7 @@ import Then
 final class FirstPageViewController: UIViewController {
     
     private let onboardTextLabel: UILabel = UILabel().then {
-        $0.text = Text.firstVCText
+        $0.text = Matrix.firstVCText
         $0.textAlignment = .center
         $0.numberOfLines = 2
         $0.font = SeSACFont.onboard.font

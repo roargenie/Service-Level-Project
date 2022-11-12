@@ -82,6 +82,8 @@ final class NicknameViewController: BaseViewController {
     
     private func pushAuthDetailVC() {
         let vc = BirthViewController()
+        UserDefaults.standard.set(mainView.nickNameTextField.text, forKey: Matrix.nickname)
+        print(UserDefaults.standard.string(forKey: Matrix.nickname))
         transition(vc, transitionStyle: .push)
     }
     

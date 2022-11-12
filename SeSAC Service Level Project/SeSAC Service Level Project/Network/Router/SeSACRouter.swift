@@ -28,7 +28,7 @@ extension SeSACRouter: URLRequestConvertible {
 
     var headers: [String: String] {
         return ["Content-Type": "application/x-www-form-urlencoded",
-                "idtoken": UserDefaults.standard.string(forKey: Text.firebaseToken)!
+                "idtoken": UserDefaults.standard.string(forKey: Matrix.FCMToken)!
         ]
     }
 

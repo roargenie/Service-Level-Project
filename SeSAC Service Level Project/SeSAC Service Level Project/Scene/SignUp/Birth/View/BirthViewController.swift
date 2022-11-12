@@ -75,6 +75,8 @@ final class BirthViewController: BaseViewController {
     
     private func pushAuthDetailVC() {
         let vc = EmailViewController()
+        UserDefaults.standard.set(mainView.datePicker.date.dateFormat("YYYY-MM-DDTHH:mm:ss.SSSZ"), forKey: Matrix.birth)
+        print(UserDefaults.standard.string(forKey: Matrix.birth))
         transition(vc, transitionStyle: .push)
     }
     
