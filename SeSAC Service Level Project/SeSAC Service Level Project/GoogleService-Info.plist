@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>577225214398-kdp0iif2881mb4oc6d5ei4ocnfb5uhd7.apps.googleusercontent.com</string>
+	<string>355153590205-t8u7u644sesms399b5iunjeskdccbt08.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.577225214398-kdp0iif2881mb4oc6d5ei4ocnfb5uhd7</string>
+	<string>com.googleusercontent.apps.355153590205-t8u7u644sesms399b5iunjeskdccbt08</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBgAx44IiNRLIKxkAjgnPY88oZwcedpsYM</string>
+	<string>AIzaSyAfEkILibfqCV19V2JrJGbmfG17eRLmP4U</string>
 	<key>GCM_SENDER_ID</key>
-	<string>577225214398</string>
+	<string>355153590205</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rOarMJ.SeSAC-Service-Level-Project</string>
+	<string>com.memolease.sesacslp</string>
 	<key>PROJECT_ID</key>
-	<string>sesac-slp-8f5e3</string>
+	<string>sesac-1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sesac-slp-8f5e3.appspot.com</string>
+	<string>sesac-1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:577225214398:ios:d2b098b27a2ef2d4ba91ef</string>
+	<string>1:355153590205:ios:5d4a8ca9947951ab9e04d4</string>
 </dict>
 </plist>

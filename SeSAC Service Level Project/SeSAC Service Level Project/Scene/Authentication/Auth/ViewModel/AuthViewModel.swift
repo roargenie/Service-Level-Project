@@ -52,6 +52,7 @@ final class AuthViewModel: CommonViewModel {
     
     func removeHyphen(text: String) -> String {
         let phoneText = text.replacingOccurrences(of: "-", with: "")
+        // 첫번째 0도 지워줘야 함.
         return phoneText
     }
     

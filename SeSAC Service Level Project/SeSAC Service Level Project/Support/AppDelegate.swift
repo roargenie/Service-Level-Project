@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseCore
 import UserNotifications
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in
             
         }
+        
         application.registerForRemoteNotifications()
         return true
     }

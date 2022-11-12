@@ -35,4 +35,25 @@ final class AuthDetailViewModel: CommonViewModel {
         
         return Output(validation: valid, tap: input.tap, text: text)
     }
+    
+//    func requestLogin() {
+//        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { result in
+//            switch result {
+//            case .success(let value):
+//                print("===========================\(value)")
+//            case .failure(let error):
+//                switch error {
+//                case .firebaseTokenErr:
+//                    
+//                case .notSignUp:
+//
+//                case .serverError:
+//
+//                case .clientError:
+//
+//                }
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
 }

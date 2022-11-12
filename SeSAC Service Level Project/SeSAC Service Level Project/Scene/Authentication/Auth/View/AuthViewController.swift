@@ -82,7 +82,6 @@ final class AuthViewController: BaseViewController {
         output.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.pushAuthDetailVC()
                 vc.authMessage(vc.viewModel.removeHyphen(text: vc.mainView.phoneNumberTextField.text ?? ""))
             }
             .disposed(by: disposeBag)
@@ -102,14 +101,15 @@ extension AuthViewController {
     
     private func authMessage(_ phoneNumber: String) {
         PhoneAuthProvider.provider()
-            .verifyPhoneNumber("+82 \(phoneNumber)", uiDelegate: nil) { (verificationID, error) in
+            .verifyPhoneNumber("+82 \(phoneNumber)", uiDelegate: nil) { [weak self] (verificationID, error) in
                 if let id = verificationID {
-                    UserDefaults.standard.set("\(id)", forKey: "verificationID")
+                    UserDefaults.standard.set("\(id)", forKey: Text.verificationID)
                 }
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
+                self?.pushAuthDetailVC()
             }
     }
 }

@@ -16,7 +16,6 @@
 		F65166E22918E7AD00E362F0 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166E12918E7AD00E362F0 /* NicknameViewController.swift */; };
 		F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166E62918E7F100E362F0 /* BaseViewController.swift */; };
 		F65166E92918E81100E362F0 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166E82918E81100E362F0 /* BaseView.swift */; };
-		F65166EB2918E9F300E362F0 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166EA2918E9F300E362F0 /* APIKey.swift */; };
 		F65166EE2918EA2400E362F0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F65166ED2918EA2400E362F0 /* SnapKit */; };
 		F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F65166F02918EA6000E362F0 /* RxCocoa */; };
 		F65166F32918EA6000E362F0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F65166F22918EA6000E362F0 /* RxSwift */; };
@@ -64,12 +63,15 @@
 		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
 		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
 		F651676F291D785700E362F0 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676E291D785700E362F0 /* Date+.swift */; };
-		F6EEEDDA291E96FA00C8969B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */; };
 		F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDF291EA08400C8969B /* FirebaseAuth */; };
 		F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE1291EB2E700C8969B /* EndPoint.swift */; };
 		F6EEEDE5291EB35800C8969B /* SeSACRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */; };
 		F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE6291EB39400C8969B /* APIManager.swift */; };
+		F6EEEDE9291F713E00C8969B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE8291F713E00C8969B /* NetworkError.swift */; };
+		F6EEEDEB291F848D00C8969B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6EEEDEA291F848D00C8969B /* GoogleService-Info.plist */; };
+		F6EEEDEE29200A1900C8969B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDED29200A1900C8969B /* LoginModel.swift */; };
+		F6EEEDF029200A7000C8969B /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDEF29200A7000C8969B /* SignUpModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +86,6 @@
 		F65166E12918E7AD00E362F0 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		F65166E62918E7F100E362F0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F65166E82918E81100E362F0 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		F65166EA2918E9F300E362F0 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F65166F72918EB8200E362F0 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		F65166F92918EBA500E362F0 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		F65166FC2918ECEB00E362F0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -127,11 +128,14 @@
 		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		F651676E291D785700E362F0 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SeSAC Service Level Project.entitlements"; sourceTree = "<group>"; };
 		F6EEEDE1291EB2E700C8969B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACRouter.swift; sourceTree = "<group>"; };
 		F6EEEDE6291EB39400C8969B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F6EEEDE8291F713E00C8969B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F6EEEDEA291F848D00C8969B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6EEEDED29200A1900C8969B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		F6EEEDEF29200A7000C8969B /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,9 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */,
-				F65166EA2918E9F300E362F0 /* APIKey.swift */,
 				F65166C82918E6BE00E362F0 /* Assets.xcassets */,
-				F6EEEDD9291E96FA00C8969B /* GoogleService-Info.plist */,
+				F6EEEDEA291F848D00C8969B /* GoogleService-Info.plist */,
 				F65166CD2918E6BE00E362F0 /* Info.plist */,
 				F65166D72918E71E00E362F0 /* Extension */,
 				F65166D62918E6F200E362F0 /* Utillity */,
@@ -209,9 +212,11 @@
 		F65166D52918E6EE00E362F0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F6EEEDEC29200A0A00C8969B /* Model */,
 				F6EEEDE3291EB34500C8969B /* Router */,
-				F6EEEDE1291EB2E700C8969B /* EndPoint.swift */,
 				F6EEEDE6291EB39400C8969B /* APIManager.swift */,
+				F6EEEDE8291F713E00C8969B /* NetworkError.swift */,
+				F6EEEDE1291EB2E700C8969B /* EndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -577,6 +582,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		F6EEEDEC29200A0A00C8969B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6EEEDED29200A1900C8969B /* LoginModel.swift */,
+				F6EEEDEF29200A7000C8969B /* SignUpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -653,7 +667,7 @@
 			files = (
 				F65167212919077F00E362F0 /* NotoSansKR-Medium.otf in Resources */,
 				F65166CC2918E6BE00E362F0 /* LaunchScreen.storyboard in Resources */,
-				F6EEEDDA291E96FA00C8969B /* GoogleService-Info.plist in Resources */,
+				F6EEEDEB291F848D00C8969B /* GoogleService-Info.plist in Resources */,
 				F65167222919077F00E362F0 /* NotoSansKR-Regular.otf in Resources */,
 				F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */,
 			);
@@ -681,13 +695,14 @@
 				F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */,
 				F65167032918EE9800E362F0 /* NicknameModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
-				F65166EB2918E9F300E362F0 /* APIKey.swift in Sources */,
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
 				F6516732291968A100E362F0 /* Text.swift in Sources */,
+				F6EEEDF029200A7000C8969B /* SignUpModel.swift in Sources */,
 				F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */,
 				F651674D291A74C400E362F0 /* BirthViewController.swift in Sources */,
 				F6EEEDE5291EB35800C8969B /* SeSACRouter.swift in Sources */,
+				F6EEEDEE29200A1900C8969B /* LoginModel.swift in Sources */,
 				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
 				F6516757291A74E700E362F0 /* GenderView.swift in Sources */,
 				F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */,
@@ -715,6 +730,7 @@
 				F65166E22918E7AD00E362F0 /* NicknameViewController.swift in Sources */,
 				F6516768291BEEFC00E362F0 /* GenderCollectionViewCell.swift in Sources */,
 				F65166FA2918EBA500E362F0 /* UIImageView+.swift in Sources */,
+				F6EEEDE9291F713E00C8969B /* NetworkError.swift in Sources */,
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 			);
@@ -859,6 +875,7 @@
 				DEVELOPMENT_TEAM = FJNF7APGSX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SeSAC Service Level Project/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SeSAC Study";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -868,7 +885,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rOarMJ.SeSAC-Service-Level-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -887,6 +904,7 @@
 				DEVELOPMENT_TEAM = FJNF7APGSX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SeSAC Service Level Project/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SeSAC Study";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -896,7 +914,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rOarMJ.SeSAC-Service-Level-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

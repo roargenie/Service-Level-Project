@@ -15,4 +15,6 @@ import Foundation
     static let secondVCText = "스터디를 원하는 친구를\n찾을 수 있어요"
     static let thirdVCText = "SeSAC Study"
     
+    static let verificationID = "verificationID"
+    static let firebaseToken = "firebaseToken"
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct EndPoint {
-    static let BaseURl = "http://api.sesac.co.kr:1207"
+    static let BaseURL = "http://api.sesac.co.kr:1207"
 }

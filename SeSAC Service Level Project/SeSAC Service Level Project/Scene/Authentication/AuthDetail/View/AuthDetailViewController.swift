@@ -9,6 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import FirebaseAuth
+import Alamofire
 
 
 final class AuthDetailViewController: BaseViewController {
@@ -76,10 +77,33 @@ final class AuthDetailViewController: BaseViewController {
         output.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                vc.pushNicknameVC()
                 vc.verification()
+                vc.requestLogin()
             }
             .disposed(by: disposeBag)
+        
+    }
+    
+    private func requestLogin() {
+        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] result in
+            switch result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                switch error {
+                case .firebaseTokenErr:
+                    print(error.rawValue)
+                case .notSignUp:
+                    print(error.rawValue)
+                    self?.pushNicknameVC()
+                case .serverError:
+                    print(error.rawValue)
+                case .clientError:
+                    print(error.rawValue)
+                }
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func pushNicknameVC() {
@@ -102,23 +126,31 @@ extension AuthDetailViewController {
               let verificationCode = mainView.authNumberTextField.text else {
             return
         }
-        
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationID,
             verificationCode: verificationCode
         )
-        
         logIn(credential: credential)
     }
     
     private func logIn(credential: PhoneAuthCredential) {
         Auth.auth().signIn(with: credential) { authResult, error in
+            
             if let error = error {
                 print(error.localizedDescription)
                 print("LogIn Failed...")
             }
+            
+            authResult?.user.getIDToken(completion: { token, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    print("LogIn Failed...")
+                }
+                UserDefaults.standard.set(token, forKey: Text.firebaseToken)
+            })
             print("LogIn Success!!")
             print("\\(authResult!)")
         }
     }
+    
 }
