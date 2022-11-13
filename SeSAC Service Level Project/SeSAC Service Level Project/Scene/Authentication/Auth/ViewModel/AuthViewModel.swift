@@ -20,8 +20,8 @@ final class AuthViewModel: CommonViewModel {
     
     struct Output {
         let validation: Observable<Bool>
+        let phoneNumberText: ControlProperty<String>
         let tap: ControlEvent<Void>
-        let text: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -30,9 +30,10 @@ final class AuthViewModel: CommonViewModel {
             .map { [weak self] in $0.count >= 11  && self?.checkPhoneNumber(with: $0) == true }
             .share()
         
-        let text = authValidation.asDriver(onErrorJustReturn: "")
+        let phoneText = input.text
+            .orEmpty
         
-        return Output(validation: valid, tap: input.tap, text: text)
+        return Output(validation: valid, phoneNumberText: phoneText, tap: input.tap)
     }
     
     func checkPhoneNumber(with phoneText: String) -> Bool {

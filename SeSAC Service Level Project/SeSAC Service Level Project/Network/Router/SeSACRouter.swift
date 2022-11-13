@@ -28,7 +28,7 @@ extension SeSACRouter: URLRequestConvertible {
 
     var headers: [String: String] {
         return ["Content-Type": "application/x-www-form-urlencoded",
-                "idtoken": UserDefaults.standard.string(forKey: Matrix.FCMToken)!
+                "idtoken": UserDefaults.standard.string(forKey: Matrix.IdToken) ?? ""
         ]
     }
 
@@ -41,20 +41,20 @@ extension SeSACRouter: URLRequestConvertible {
         }
     }
 
-    var parameters: [String: Any] {
-        switch self {
-        case .login:
-            return ["":""]
-        case .signup(let signup):
-            return ["phoneNumber": signup.phoneNumber,
-                    "FCMtoken": signup.fcMtoken,
-                    "nick": signup.nick,
-                    "birth": signup.birth,
-                    "email": signup.email,
-                    "gender": signup.gender
-            ]
-        }
-    }
+//    var parameters: [String: Any] {
+//        switch self {
+//        case .login:
+//            return ["":""]
+//        case .signup(let signup):
+//            return ["phoneNumber": signup.phoneNumber,
+//                    "FCMtoken": signup.fcMtoken,
+//                    "nick": signup.nick,
+//                    "birth": signup.birth,
+//                    "email": signup.email,
+//                    "gender": signup.gender
+//            ]
+//        }
+//    }
     
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)

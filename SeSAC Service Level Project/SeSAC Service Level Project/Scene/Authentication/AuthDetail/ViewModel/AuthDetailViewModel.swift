@@ -12,48 +12,26 @@ import RxCocoa
 
 final class AuthDetailViewModel: CommonViewModel {
     
-    var authValidation = PublishRelay<String>()
-    
     struct Input {
-        let text: ControlProperty<String?>
+        let text: ControlProperty<String?> // - 1
         let tap: ControlEvent<Void>
     }
     
     struct Output {
-        let validation: Observable<Bool>
+        let validation: Observable<Bool> // - 3
         let tap: ControlEvent<Void>
-        let text: Driver<String>
+        let messageText: ControlProperty<String>
     }
     
     func transform(input: Input) -> Output {
-        let valid = input.text
+        let valid = input.text // - 2
             .orEmpty
             .map { $0.count >= 6 }
             .share()
         
-        let text = authValidation.asDriver(onErrorJustReturn: "")
+        let messageText = input.text
+            .orEmpty
         
-        return Output(validation: valid, tap: input.tap, text: text)
+        return Output(validation: valid, tap: input.tap, messageText: messageText)
     }
-    
-//    func requestLogin() {
-//        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { result in
-//            switch result {
-//            case .success(let value):
-//                print("===========================\(value)")
-//            case .failure(let error):
-//                switch error {
-//                case .firebaseTokenErr:
-//                    
-//                case .notSignUp:
-//
-//                case .serverError:
-//
-//                case .clientError:
-//
-//                }
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
 }

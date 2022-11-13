@@ -50,20 +50,6 @@ final class AuthViewController: BaseViewController {
         let input = AuthViewModel.Input(text: mainView.phoneNumberTextField.rx.text, tap: mainView.authNotificationButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        output.validation
-            .withUnretained(self)
-            .bind { (vc, value) in
-                let textColor: UIColor = value ? Color.white : Color.gray3
-                let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.authNotificationButton.setupButton(title: "인증 문자 받기",
-                                                               titleColor: textColor,
-                                                               font: SeSACFont.body3.font,
-                                                               backgroundColor: bgColor,
-                                                               borderWidth: 0,
-                                                               borderColor: .clear)
-            }
-            .disposed(by: disposeBag)
-        
         viewModel.authValidation
             .withUnretained(self)
             .bind { (vc, value) in
@@ -71,7 +57,22 @@ final class AuthViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        mainView.phoneNumberTextField.rx.text.orEmpty
+        output.validation
+            .withUnretained(self)
+            .bind { (vc, value) in
+                let textColor: UIColor = value ? Color.white : Color.gray3
+                let bgColor: UIColor = value ? Color.green : Color.gray6
+                vc.mainView.authNotificationButton.setupButton(
+                    title: "인증 문자 받기",
+                    titleColor: textColor,
+                    font: SeSACFont.body3.font,
+                    backgroundColor: bgColor,
+                    borderWidth: 0,
+                    borderColor: .clear)
+            }
+            .disposed(by: disposeBag)
+        
+        output.phoneNumberText
             .withUnretained(self)
             .bind { (vc, value) in
                 vc.viewModel.addHyphen(text: value)

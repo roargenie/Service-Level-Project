@@ -46,12 +46,12 @@ final class BirthViewController: BaseViewController {
     
     private func bind() {
         
-        viewModel.auth
-            .asDriver(onErrorJustReturn: Date())
-            .drive(mainView.datePicker.rx.date)
-            .disposed(by: disposeBag)
+        let input = BirthViewModel.Input(
+            date: mainView.datePicker.rx.date,
+            tap: mainView.nextButton.rx.tap)
+        let output = viewModel.transform(input: input)
         
-        mainView.datePicker.rx.date.changed
+        output.datePickerChange
             .withUnretained(self)
             .bind { (vc, value) in
                 vc.mainView.yearTextField.text = value.dateFormat("yyyy")
@@ -59,12 +59,17 @@ final class BirthViewController: BaseViewController {
                 vc.mainView.dayTextField.text = value.dateFormat("dd")
                 let titleColor: UIColor = value.ageValid() ? Color.white : Color.gray3
                 let bgColor: UIColor = value.ageValid() ? Color.green : Color.gray6
-                vc.mainView.nextButton.setupButton(title: "다음", titleColor: titleColor, font: SeSACFont.body3.font, backgroundColor: bgColor, borderWidth: 0, borderColor: .clear)
-                
+                vc.mainView.nextButton.setupButton(
+                    title: "다음",
+                    titleColor: titleColor,
+                    font: SeSACFont.body3.font,
+                    backgroundColor: bgColor,
+                    borderWidth: 0,
+                    borderColor: .clear)
             }
             .disposed(by: disposeBag)
         
-        mainView.nextButton.rx.tap
+        output.tap
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.pushAuthDetailVC()
@@ -75,7 +80,7 @@ final class BirthViewController: BaseViewController {
     
     private func pushAuthDetailVC() {
         let vc = EmailViewController()
-        UserDefaults.standard.set(mainView.datePicker.date.dateFormat("YYYY-MM-DDTHH:mm:ss.SSSZ"), forKey: Matrix.birth)
+        UserDefaults.standard.set(mainView.datePicker.date.dateFormat("YYYY-MM-dd'T'HH:mm:ss.sssZ"), forKey: Matrix.birth)
         print(UserDefaults.standard.string(forKey: Matrix.birth))
         transition(vc, transitionStyle: .push)
     }

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FirebaseAuth
 
 
 final class GenderViewController: BaseViewController {
@@ -45,29 +46,31 @@ final class GenderViewController: BaseViewController {
     
     private func bind() {
         
-        let input = GenderViewModel.Input(tap: mainView.nextButton.rx.tap)
+        let input = GenderViewModel.Input(celltap: mainView.collectionView.rx.itemSelected, tap: mainView.nextButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        viewModel.gender
-            .bind(to: mainView.collectionView.rx.items(cellIdentifier: GenderCollectionViewCell.reuseIdentifier,
-                                                       cellType: GenderCollectionViewCell.self)) { index, item, cell in
-                cell.imageView.image = item.image
-                cell.genderLabel.text = item.gender
-            }
-            .disposed(by: disposeBag)
+        output.gender
+            .bind(to: mainView.collectionView.rx.items(
+                cellIdentifier: GenderCollectionViewCell.reuseIdentifier,
+                cellType: GenderCollectionViewCell.self)) { index, item, cell in
+                    cell.imageView.image = item.image
+                    cell.genderLabel.text = item.gender
+                }
+                .disposed(by: disposeBag)
         
-        mainView.collectionView.rx.itemSelected
+        output.celltap
             .withUnretained(self)
             .bind { (vc, index) in
                 guard let cell = vc.mainView.collectionView.cellForItem(at: index) as? GenderCollectionViewCell else { return }
                 let textColor: UIColor = cell.isSelected ? Color.white : Color.gray3
                 let bgColor: UIColor = cell.isSelected ? Color.green : Color.gray6
-                vc.mainView.nextButton.setupButton(title: "다음",
-                                                   titleColor: textColor,
-                                                   font: SeSACFont.body3.font,
-                                                   backgroundColor: bgColor,
-                                                   borderWidth: 0,
-                                                   borderColor: .clear)
+                vc.mainView.nextButton.setupButton(
+                    title: "다음",
+                    titleColor: textColor,
+                    font: SeSACFont.body3.font,
+                    backgroundColor: bgColor,
+                    borderWidth: 0,
+                    borderColor: .clear)
                 UserDefaults.standard.set(index.item, forKey: Matrix.gender)
                 print(UserDefaults.standard.integer(forKey: Matrix.gender))
                 cell.isSelected.toggle()
@@ -77,61 +80,47 @@ final class GenderViewController: BaseViewController {
         output.tap
             .withUnretained(self)
             .bind { (vc, _) in
-                
+                print("tap=========")
+                vc.requestSignUp()
             }
             .disposed(by: disposeBag)
     }
     
     private func requestSignUp() {
         let userDefaults = UserDefaults.standard
-        APIManager.shared.requestData(SignUp.self,
-                                      router: SeSACRouter
+        APIManager.shared.requestLogin(Login.self,
+                                       router: SeSACRouter
             .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
                            fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
                            nick: userDefaults.string(forKey: Matrix.nickname)!,
                            birth: userDefaults.string(forKey: Matrix.birth)!,
                            email: userDefaults.string(forKey: Matrix.email)!,
-                           gender: userDefaults.integer(forKey: Matrix.gender)))) { result in
-            
-            switch result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error.localizedDescription)
+                           gender: userDefaults.integer(forKey: Matrix.gender)))) { [weak self] statusCode in
+            print(statusCode)
+            switch statusCode {
+            case 200:
+                print("홈 화면 이동")
+            case 201:
+                print("이미 가입한 유저")
+            case 202:
+                print("닉네임 변경 후 다시 요청")
+            case 401:
+                self?.refreshIdToken()
+            case 500:
+                print("Server Error")
+            case 501:
+                print("Client Error")
+            default:
+                break
             }
         }
     }
-//    private func bind() {
-//
-//        output.celltap
-//            .withUnretained(self)
-//            .bind { (vc, value) in
-//                let textColor: UIColor = value ? Color.white : Color.gray3
-//                let bgColor: UIColor = value ? Color.green : Color.gray6
-//                vc.mainView.nextButton.setupButton(title: "다음",
-//                                                   titleColor: textColor,
-//                                                   font: SeSACFont.body3.font,
-//                                                   backgroundColor: bgColor,
-//                                                   borderWidth: 0,
-//                                                   borderColor: .clear)
-//            }
-//            .disposed(by: disposeBag)
-//
-//        output.tap
-//            .withUnretained(self)
-//            .bind { (vc, _) in
-//                vc.pushAuthDetailVC()
-//            }
-//            .disposed(by: disposeBag)
-//
-//        mainView.collectionView.rx.itemSelected
-//    }
-
+    
     private func pushAuthDetailVC() {
         let vc = AuthDetailViewController()
         transition(vc, transitionStyle: .push)
     }
-
+    
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }

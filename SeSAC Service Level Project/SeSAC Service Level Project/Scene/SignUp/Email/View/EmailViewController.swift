@@ -53,12 +53,13 @@ final class EmailViewController: BaseViewController {
             .bind { (vc, value) in
                 let textColor: UIColor = value ? Color.white : Color.gray3
                 let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.nextButton.setupButton(title: "다음",
-                                                   titleColor: textColor,
-                                                   font: SeSACFont.body3.font,
-                                                   backgroundColor: bgColor,
-                                                   borderWidth: 0,
-                                                   borderColor: .clear)
+                vc.mainView.nextButton.setupButton(
+                    title: "다음",
+                    titleColor: textColor,
+                    font: SeSACFont.body3.font,
+                    backgroundColor: bgColor,
+                    borderWidth: 0,
+                    borderColor: .clear)
             }
             .disposed(by: disposeBag)
 

@@ -14,23 +14,36 @@ final class APIManager {
     
     private init() { }
     
-    typealias Completion<T> = ((Result<T, APIError>) -> Void)
+    typealias requestDataCompletion<T> = ((Result<T, APIError>, Int?) -> Void)
+    typealias loginCompletion = ((Int) -> Void)
     
     func requestData<T: Decodable>(_ object: T.Type = T.self,
                                    router: SeSACRouter,
-                                   completion: @escaping Completion<T>) {
+                                   completion: @escaping requestDataCompletion<T>) {
         AF.request(router)
             .responseDecodable(of: object) { response in
                 guard let statusCode = response.response?.statusCode else { return }
+                
                 switch response.result {
-                case .success(let data):
-                    completion(.success(data))
-                    
+                case .success(let value):
+                    completion(.success(value), statusCode)
+                    print(statusCode, value)
                 case .failure(_):
                     guard let error = APIError(rawValue: statusCode) else { return }
-                    completion(.failure(error))
-                    print(error.localizedDescription)
+                    completion(.failure(error), statusCode)
+                    print(statusCode, error)
                 }
+            }
+        print(#function)
+    }
+    
+    func requestLogin<T>(_ object: T.Type = T.self,
+                         router: SeSACRouter,
+                         completion: @escaping loginCompletion) {
+        AF.request(router)
+            .response() { response in
+                guard let statusCode = response.response?.statusCode else { return }
+                completion(statusCode)
             }
     }
 }

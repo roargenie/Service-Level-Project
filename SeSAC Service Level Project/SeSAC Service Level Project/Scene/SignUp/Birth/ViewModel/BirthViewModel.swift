@@ -12,24 +12,21 @@ import RxCocoa
 
 final class BirthViewModel {
     
-    let auth = PublishRelay<Date>()
-    
-    
     struct Input {
         let date: ControlProperty<Date>
+        let tap: ControlEvent<Void>
     }
     
     struct Output {
-        
+        let datePickerChange: ControlEvent<Date>
+        let tap: ControlEvent<Void>
     }
     
-    func ageValidCheck() {
+    func transform(input: Input) -> Output {
+        let datePickerChanged = input.date
+            .changed
+        let tap = input.tap
         
+        return Output(datePickerChange: datePickerChanged, tap: tap)
     }
-//    func transform(input: Input) -> Output {
-//
-//
-//
-//        return
-//    }
 }

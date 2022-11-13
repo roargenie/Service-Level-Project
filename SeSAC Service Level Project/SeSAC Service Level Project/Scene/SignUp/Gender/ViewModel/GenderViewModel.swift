@@ -13,25 +13,20 @@ final class GenderViewModel {
     
     var gender = Observable.of(GenderData().genderList)
     
-    var signValidation = PublishRelay<Bool>()
-    
     struct Input {
-//        let celltap: ControlEvent<IndexPath>
+        let celltap: ControlEvent<IndexPath>
         let tap: ControlEvent<Void>
     }
 
     struct Output {
-//        let validation: Observable<Bool>
-//        let celltap: ControlEvent<IndexPath>
+        let gender: Observable<[Gender]>
+        let celltap: ControlEvent<IndexPath>
         let tap: ControlEvent<Void>
     }
 
     func transform(input: Input) -> Output {
-//        let valid = input.celltap
+        
 
-
-//        let text = signValidation.asDriver()
-
-        return Output(tap: input.tap)
+        return Output(gender: gender, celltap: input.celltap, tap: input.tap)
     }
 }

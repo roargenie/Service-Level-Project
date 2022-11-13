@@ -19,6 +19,7 @@ import Foundation
     
     static let verificationID = "verificationID"
     static let FCMToken = "FCMToken"
+    static let IdToken = "IdToken"
     static let phoneNumber = "phonenumber"
     static let nickname = "nickname"
     static let birth = "birth"

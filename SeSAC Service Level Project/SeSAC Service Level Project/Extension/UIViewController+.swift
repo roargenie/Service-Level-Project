@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 
 extension UIViewController {
     
@@ -38,5 +38,17 @@ extension UIViewController {
         case .push:
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    func refreshIdToken() {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true, completion: { idToken, error in
+            if let error = error {
+                print(error.localizedDescription)
+                print("LogIn Failed...")
+            }
+            UserDefaults.standard.set(idToken, forKey: Matrix.IdToken)
+            print("Refresh idToken")
+        })
     }
 }

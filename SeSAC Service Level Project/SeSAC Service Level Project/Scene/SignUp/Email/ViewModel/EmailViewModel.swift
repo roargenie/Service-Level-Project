@@ -11,8 +11,6 @@ import RxCocoa
 
 final class EmailViewModel: CommonViewModel {
     
-    var authValidation = PublishRelay<String>()
-    
     struct Input {
         let text: ControlProperty<String?>
         let tap: ControlEvent<Void>
@@ -21,7 +19,6 @@ final class EmailViewModel: CommonViewModel {
     struct Output {
         let validation: Observable<Bool>
         let tap: ControlEvent<Void>
-        let text: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -30,9 +27,7 @@ final class EmailViewModel: CommonViewModel {
             .map { [weak self] in self?.checkEmail(with: $0) == true }
             .share()
         
-        let text = authValidation.asDriver(onErrorJustReturn: "")
-        
-        return Output(validation: valid, tap: input.tap, text: text)
+        return Output(validation: valid, tap: input.tap)
     }
     
     func checkEmail(with emailText: String) -> Bool {

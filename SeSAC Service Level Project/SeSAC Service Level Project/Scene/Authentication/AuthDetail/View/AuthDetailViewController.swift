@@ -48,27 +48,39 @@ final class AuthDetailViewController: BaseViewController {
     // MARK: - CustomMethod
     
     private func bind() {
-
+        
         let input = AuthDetailViewModel.Input(text: mainView.authNumberTextField.rx.text, tap: mainView.startButton.rx.tap)
         let output = viewModel.transform(input: input)
-
+        
+//        viewModel.loginResponse
+//            .withUnretained(self)
+//            .subscribe { <#(AuthDetailViewController, Login)#> in
+//                <#code#>
+//            } onError: { <#Error#> in
+//                <#code#>
+//            } onCompleted: {
+//                <#code#>
+//            } onDisposed: {
+//                <#code#>
+//            }
         output.validation
             .withUnretained(self)
             .bind { (vc, value) in
                 let textColor: UIColor = value ? Color.white : Color.gray3
                 let bgColor: UIColor = value ? Color.green : Color.gray6
-                vc.mainView.startButton.setupButton(title: "인증하고 시작하기",
-                                                    titleColor: textColor,
-                                                    font: SeSACFont.body3.font,
-                                                    backgroundColor: bgColor,
-                                                    borderWidth: 0,
-                                                    borderColor: .clear)
+                vc.mainView.startButton.setupButton(
+                    title: "인증하고 시작하기",
+                    titleColor: textColor,
+                    font: SeSACFont.body3.font,
+                    backgroundColor: bgColor,
+                    borderWidth: 0,
+                    borderColor: .clear)
             }
             .disposed(by: disposeBag)
         
-        mainView.authNumberTextField.rx.text
-            .orEmpty
+        output.messageText
             .withUnretained(self)
+            .observe(on:MainScheduler.asyncInstance)
             .bind { (vc, value) in
                 vc.mainView.authNumberTextField.backWards(with: value, 6)
             }
@@ -81,17 +93,19 @@ final class AuthDetailViewController: BaseViewController {
                 vc.requestLogin()
             }
             .disposed(by: disposeBag)
-        
     }
     
     private func requestLogin() {
-        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] result in
-            switch result {
+        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] response, status in
+            
+            switch response {
             case .success(let value):
                 print(value)
             case .failure(let error):
                 switch error {
                 case .firebaseTokenErr:
+                    self?.refreshIdToken()
+                    self?.pushNicknameVC()
                     print(error.rawValue)
                 case .notSignUp:
                     print(error.rawValue)
@@ -141,13 +155,14 @@ extension AuthDetailViewController {
                 print("LogIn Failed...")
             }
             
-            authResult?.user.getIDToken(completion: { token, error in
+            authResult?.user.getIDToken(completion: { idToken, error in
                 if let error = error {
                     print(error.localizedDescription)
                     print("LogIn Failed...")
                 }
-                UserDefaults.standard.set(token, forKey: Matrix.FCMToken)
+                UserDefaults.standard.set(idToken, forKey: Matrix.IdToken)
             })
+            
             print("LogIn Success!!")
             print("\\(authResult!)")
         }

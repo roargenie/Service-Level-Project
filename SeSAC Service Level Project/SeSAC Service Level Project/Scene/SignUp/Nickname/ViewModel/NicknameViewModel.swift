@@ -12,8 +12,6 @@ import RxCocoa
 
 final class NicknameViewModel: CommonViewModel {
     
-    var authValidation = PublishRelay<String>()
-    
     struct Input {
         let text: ControlProperty<String?>
         let tap: ControlEvent<Void>
@@ -21,8 +19,8 @@ final class NicknameViewModel: CommonViewModel {
     
     struct Output {
         let validation: Observable<Bool>
+        let nicknameText: ControlProperty<String>
         let tap: ControlEvent<Void>
-        let text: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -31,9 +29,10 @@ final class NicknameViewModel: CommonViewModel {
             .map { [weak self] in self?.checkNickname(with: $0) == true }
             .share()
         
-        let text = authValidation.asDriver(onErrorJustReturn: "")
+        let nicknameText = input.text
+            .orEmpty
         
-        return Output(validation: valid, tap: input.tap, text: text)
+        return Output(validation: valid, nicknameText: nicknameText, tap: input.tap)
     }
     
     func checkNickname(with nicknamdText: String) -> Bool {
