@@ -25,7 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         window = UIWindow(windowScene: scene)
-        let rootVC = UINavigationController(rootViewController: SplashViewController())
+//        let rootVC = UINavigationController(rootViewController: SplashViewController())
+        let rootVC = TabbarViewController()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }

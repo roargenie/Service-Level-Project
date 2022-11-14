@@ -41,6 +41,8 @@ import UIKit
     static let message = UIImage(named: "message")
     static let moreArrow = UIImage(named: "more_arrow")
     static let more = UIImage(named: "more")
+    static let uparrow = UIImage(named: "uparrow")
+    static let downarrow = UIImage(named: "downarrow")
     static let notice = UIImage(named: "notice")
     static let permit = UIImage(named: "permit")
     static let place = UIImage(named: "place")
@@ -55,7 +57,7 @@ import UIKit
     static let write = UIImage(named: "write")
     
     static let img = UIImage(named: "img")
-    
+    static let profileImg = UIImage(named: "sesac_bg_01")
     // MARK: - Splash
     
     static let splashLogo = UIImage(named: "splash_logo")
