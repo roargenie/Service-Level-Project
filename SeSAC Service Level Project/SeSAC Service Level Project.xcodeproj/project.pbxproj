@@ -97,6 +97,7 @@
 		F6C7DEC82923E1DA00DA622D /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC72923E1DA00DA622D /* MyProfileCell.swift */; };
 		F6C7DECA2923E1E900DA622D /* MySettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC92923E1E900DA622D /* MySettingCell.swift */; };
 		F6C7DECD2924037800DA622D /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DECC2924037800DA622D /* BasePopupViewController.swift */; };
+		F6C7DED12926C8C100DA622D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F6C7DED02926C8C100DA622D /* Toast */; };
 		F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDF291EA08400C8969B /* FirebaseAuth */; };
 		F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE1291EB2E700C8969B /* EndPoint.swift */; };
@@ -217,6 +218,7 @@
 				F65166F62918EA7F00E362F0 /* Alamofire in Frameworks */,
 				F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */,
 				F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */,
+				F6C7DED12926C8C100DA622D /* Toast in Frameworks */,
 				F65166EE2918EA2400E362F0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,6 +887,7 @@
 				F6EEEDDF291EA08400C8969B /* FirebaseAuth */,
 				F6C7DEB22923B22400DA622D /* DoubleSlider */,
 				F6C7DEC52923CA1C00DA622D /* MultiSlider */,
+				F6C7DED02926C8C100DA622D /* Toast */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -922,6 +925,7 @@
 				F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */,
 				F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */,
+				F6C7DECF2926C8C100DA622D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -1298,6 +1302,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F6C7DECF2926C8C100DA622D /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1343,6 +1355,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */;
 			productName = MultiSlider;
+		};
+		F6C7DED02926C8C100DA622D /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6C7DECF2926C8C100DA622D /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

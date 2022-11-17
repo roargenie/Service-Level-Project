@@ -19,7 +19,7 @@ final class AuthDetailViewModel: CommonViewModel {
     
     struct Output {
         let validation: Observable<Bool> // - 3
-        let tap: ControlEvent<Void>
+        let tap: Observable<Bool>
         let messageText: ControlProperty<String>
     }
     
@@ -32,6 +32,9 @@ final class AuthDetailViewModel: CommonViewModel {
         let messageText = input.text
             .orEmpty
         
-        return Output(validation: valid, tap: input.tap, messageText: messageText)
+        let tap = input.tap
+            .withLatestFrom(valid)
+        
+        return Output(validation: valid, tap: tap, messageText: messageText)
     }
 }

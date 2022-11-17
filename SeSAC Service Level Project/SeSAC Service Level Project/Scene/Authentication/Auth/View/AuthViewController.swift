@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FirebaseAuth
-
+import Toast
 
 final class AuthViewController: BaseViewController {
     
@@ -82,8 +82,8 @@ final class AuthViewController: BaseViewController {
         
         output.tap
             .withUnretained(self)
-            .bind { (vc, _) in
-                vc.authMessage(vc.viewModel.removeHyphen(text: vc.mainView.phoneNumberTextField.text ?? ""))
+            .bind { (vc, value) in
+                value ? vc.authMessage(vc.viewModel.removeHyphen(text: vc.mainView.phoneNumberTextField.text ?? "")) : vc.view.makeToast("휴대폰 번호 형식이 올바르지 않습니다.", duration: 1, position: .center)
             }
             .disposed(by: disposeBag)
     }

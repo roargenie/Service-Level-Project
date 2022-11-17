@@ -18,7 +18,7 @@ final class EmailViewModel: CommonViewModel {
     
     struct Output {
         let validation: Observable<Bool>
-        let tap: ControlEvent<Void>
+        let tap: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
@@ -27,7 +27,10 @@ final class EmailViewModel: CommonViewModel {
             .map { [weak self] in self?.checkEmail(with: $0) == true }
             .share()
         
-        return Output(validation: valid, tap: input.tap)
+        let tap = input.tap
+            .withLatestFrom(valid)
+        
+        return Output(validation: valid, tap: tap)
     }
     
     func checkEmail(with emailText: String) -> Bool {

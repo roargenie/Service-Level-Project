@@ -18,15 +18,21 @@ final class BirthViewModel {
     }
     
     struct Output {
+        let validation: Observable<Bool>
         let datePickerChange: ControlEvent<Date>
-        let tap: ControlEvent<Void>
+        let tap: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
+        let valid = input.date
+            .map { $0.ageValid() ? true : false }
+        
         let datePickerChanged = input.date
             .changed
-        let tap = input.tap
         
-        return Output(datePickerChange: datePickerChanged, tap: tap)
+        let tap = input.tap
+            .withLatestFrom(valid)
+        
+        return Output(validation: valid, datePickerChange: datePickerChanged, tap: tap)
     }
 }

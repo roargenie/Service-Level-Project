@@ -21,12 +21,15 @@ final class GenderViewModel {
     struct Output {
         let gender: Observable<[Gender]>
         let celltap: ControlEvent<IndexPath>
-        let tap: ControlEvent<Void>
+        let tap: Observable<ControlEvent<IndexPath>.Element>
     }
 
     func transform(input: Input) -> Output {
+        let valid = input.celltap
         
+        let tap = input.tap
+            .withLatestFrom(valid)
         
-        return Output(gender: gender, celltap: input.celltap, tap: input.tap)
+        return Output(gender: gender, celltap: input.celltap, tap: tap)
     }
 }

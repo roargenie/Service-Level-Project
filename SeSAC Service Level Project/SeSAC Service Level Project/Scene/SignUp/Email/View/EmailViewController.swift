@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import Toast
 
 final class EmailViewController: BaseViewController {
     
@@ -65,13 +65,13 @@ final class EmailViewController: BaseViewController {
 
         output.tap
             .withUnretained(self)
-            .bind { (vc, _) in
-                vc.pushAuthDetailVC()
+            .bind { (vc, value) in
+                value ? vc.pushGenderVC() : vc.view.makeToast("올바르지 않은 이메일 형식입니다", duration: 1, position: .center)
             }
             .disposed(by: disposeBag)
     }
 
-    private func pushAuthDetailVC() {
+    private func pushGenderVC() {
         let vc = GenderViewController()
         UserDefaults.standard.set(mainView.emailTextField.text, forKey: Matrix.email)
         print(UserDefaults.standard.string(forKey: Matrix.email))

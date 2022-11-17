@@ -15,6 +15,7 @@ extension UIViewController {
         case presentFull
         case present
         case push
+        case changeRootVC
     }
     
     func transition<T: UIViewController>(_ viewController: T, transitionStyle: TransitionStyle) {
@@ -37,6 +38,11 @@ extension UIViewController {
             self.present(viewController, animated: true)
         case .push:
             self.navigationController?.pushViewController(viewController, animated: true)
+        case .changeRootVC:
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            sceneDelegate?.window?.rootViewController = viewController
+            sceneDelegate?.window?.makeKeyAndVisible()
         }
     }
     

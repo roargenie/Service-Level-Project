@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FirebaseAuth
-
+import Toast
 
 final class GenderViewController: BaseViewController {
     
@@ -64,6 +64,7 @@ final class GenderViewController: BaseViewController {
                 guard let cell = vc.mainView.collectionView.cellForItem(at: index) as? GenderCollectionViewCell else { return }
                 let textColor: UIColor = cell.isSelected ? Color.white : Color.gray3
                 let bgColor: UIColor = cell.isSelected ? Color.green : Color.gray6
+                vc.mainView.nextButton.isEnabled = cell.isSelected ? true : false
                 vc.mainView.nextButton.setupButton(
                     title: "다음",
                     titleColor: textColor,
@@ -71,17 +72,24 @@ final class GenderViewController: BaseViewController {
                     backgroundColor: bgColor,
                     borderWidth: 0,
                     borderColor: .clear)
-                UserDefaults.standard.set(index.item, forKey: Matrix.gender)
-                print(UserDefaults.standard.integer(forKey: Matrix.gender))
                 cell.isSelected.toggle()
             }
             .disposed(by: disposeBag)
         
         output.tap
             .withUnretained(self)
-            .bind { (vc, _) in
-                print("tap=========")
-                vc.requestSignUp()
+            .bind { (vc, value) in
+                if value.item == 0 {
+                    print("남자")
+                    UserDefaults.standard.set(1, forKey: Matrix.gender)
+                    print(UserDefaults.standard.integer(forKey: Matrix.gender))
+                    vc.requestSignUp()
+                } else {
+                    print("여자")
+                    UserDefaults.standard.set(0, forKey: Matrix.gender)
+                    print(UserDefaults.standard.integer(forKey: Matrix.gender))
+                    vc.requestSignUp()
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -97,15 +105,20 @@ final class GenderViewController: BaseViewController {
                            email: userDefaults.string(forKey: Matrix.email)!,
                            gender: userDefaults.integer(forKey: Matrix.gender)))) { [weak self] statusCode in
             print(statusCode)
+            
+            guard let self = self else { return }
             switch statusCode {
             case 200:
                 print("홈 화면 이동")
+                self.pushHomeVC()
             case 201:
                 print("이미 가입한 유저")
+                self.pushHomeVC()
             case 202:
                 print("닉네임 변경 후 다시 요청")
+                self.view.makeToast("사용 불가능한 닉네임 입니다", duration: 1, position: .center)
             case 401:
-                self?.refreshIdToken()
+                self.refreshIdToken()
             case 500:
                 print("Server Error")
             case 501:
@@ -116,9 +129,9 @@ final class GenderViewController: BaseViewController {
         }
     }
     
-    private func pushAuthDetailVC() {
-        let vc = AuthDetailViewController()
-        transition(vc, transitionStyle: .push)
+    private func pushHomeVC() {
+        let vc = TabbarViewController()
+        transition(vc, transitionStyle: .changeRootVC)
     }
     
     @objc private func backButtonTapped() {

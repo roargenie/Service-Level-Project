@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import FirebaseAuth
 import Alamofire
-
+import Toast
 
 final class AuthDetailViewController: BaseViewController {
     
@@ -52,17 +52,6 @@ final class AuthDetailViewController: BaseViewController {
         let input = AuthDetailViewModel.Input(text: mainView.authNumberTextField.rx.text, tap: mainView.startButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-//        viewModel.loginResponse
-//            .withUnretained(self)
-//            .subscribe { <#(AuthDetailViewController, Login)#> in
-//                <#code#>
-//            } onError: { <#Error#> in
-//                <#code#>
-//            } onCompleted: {
-//                <#code#>
-//            } onDisposed: {
-//                <#code#>
-//            }
         output.validation
             .withUnretained(self)
             .bind { (vc, value) in
@@ -80,7 +69,6 @@ final class AuthDetailViewController: BaseViewController {
         
         output.messageText
             .withUnretained(self)
-            .observe(on:MainScheduler.asyncInstance)
             .bind { (vc, value) in
                 vc.mainView.authNumberTextField.backWards(with: value, 6)
             }
@@ -88,9 +76,9 @@ final class AuthDetailViewController: BaseViewController {
         
         output.tap
             .withUnretained(self)
-            .bind { (vc, _) in
-                vc.verification()
-                vc.requestLogin()
+            .bind { (vc, value) in
+                value ? vc.requestLogin() : vc.view.makeToast("인증번호가 올바르지 않습니다", duration: 1, position: .center)
+                value ? vc.verification() : nil
             }
             .disposed(by: disposeBag)
     }
@@ -101,11 +89,12 @@ final class AuthDetailViewController: BaseViewController {
             switch response {
             case .success(let value):
                 print(value)
+                self?.pushHomeVC()
             case .failure(let error):
                 switch error {
                 case .firebaseTokenErr:
                     self?.refreshIdToken()
-                    self?.pushNicknameVC()
+                    self?.pushHomeVC()
                     print(error.rawValue)
                 case .notSignUp:
                     print(error.rawValue)
@@ -123,6 +112,11 @@ final class AuthDetailViewController: BaseViewController {
     private func pushNicknameVC() {
         let vc = NicknameViewController()
         transition(vc, transitionStyle: .push)
+    }
+    
+    private func pushHomeVC() {
+        let vc = TabbarViewController()
+        transition(vc, transitionStyle: .changeRootVC)
     }
     
     @objc private func backButtonTapped() {

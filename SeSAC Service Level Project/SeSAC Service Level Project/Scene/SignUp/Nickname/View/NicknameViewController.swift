@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import Toast
 
 final class NicknameViewController: BaseViewController {
     
@@ -64,13 +64,6 @@ final class NicknameViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.tap
-            .withUnretained(self)
-            .bind { (vc, _) in
-                vc.pushAuthDetailVC()
-            }
-            .disposed(by: disposeBag)
-        
         output.nicknameText
             .withUnretained(self)
             .bind { (vc, value) in
@@ -78,9 +71,16 @@ final class NicknameViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.tap
+            .withUnretained(self)
+            .bind { (vc, value) in
+                value ? vc.pushBirthVC() : vc.view.makeToast("닉네임 형식이 올바르지 않습니다", duration: 1, position: .center)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
-    private func pushAuthDetailVC() {
+    private func pushBirthVC() {
         let vc = BirthViewController()
         UserDefaults.standard.set(mainView.nickNameTextField.text, forKey: Matrix.nickname)
         print(UserDefaults.standard.string(forKey: Matrix.nickname))

@@ -31,11 +31,49 @@ final class SplashViewController: BaseViewController {
                 let vc = OnboardViewController()
                 self?.transition(vc, transitionStyle: .presentFull)
             } else {
-                let vc = UINavigationController(rootViewController: AuthViewController())
-                self?.transition(vc, transitionStyle: .presentFull)
+//                let vc = UINavigationController(rootViewController: AuthViewController())
+//                self?.transition(vc, transitionStyle: .presentFull)
+                self?.requestLogin()
             }
             
         }
+    }
+    
+    private func requestLogin() {
+        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] response, status in
+            
+            switch response {
+            case .success(let value):
+                print(value)
+                self?.pushHomeVC()
+            case .failure(let error):
+                switch error {
+                case .firebaseTokenErr:
+                    self?.refreshIdToken()
+                    self?.pushHomeVC()
+                    print(error.rawValue)
+                case .notSignUp:
+                    print(error.rawValue)
+                    self?.presentAuthVC()
+                case .serverError:
+                    print(error.rawValue)
+                case .clientError:
+                    print(error.rawValue)
+                    self?.presentAuthVC()
+                }
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func pushHomeVC() {
+        let vc = TabbarViewController()
+        transition(vc, transitionStyle: .changeRootVC)
+    }
+    
+    private func presentAuthVC() {
+        let vc = UINavigationController(rootViewController: AuthViewController())
+        transition(vc, transitionStyle: .presentFull)
     }
     
 }

@@ -21,19 +21,22 @@ final class AuthViewModel: CommonViewModel {
     struct Output {
         let validation: Observable<Bool>
         let phoneNumberText: ControlProperty<String>
-        let tap: ControlEvent<Void>
+        let tap: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
         let valid = input.text
             .orEmpty
-            .map { [weak self] in $0.count >= 11  && self?.checkPhoneNumber(with: $0) == true }
+            .map { [weak self] in $0.count >= 11 && self?.checkPhoneNumber(with: $0) == true }
             .share()
         
         let phoneText = input.text
             .orEmpty
         
-        return Output(validation: valid, phoneNumberText: phoneText, tap: input.tap)
+        let tap = input.tap
+            .withLatestFrom(valid)
+        
+        return Output(validation: valid, phoneNumberText: phoneText, tap: tap)
     }
     
     func checkPhoneNumber(with phoneText: String) -> Bool {
@@ -45,7 +48,7 @@ final class AuthViewModel: CommonViewModel {
         if text.count > 3 && text.count < 8 {
             let phoneText = text.replacingOccurrences(of: "(\\d{3})(\\d{1})", with: "$1-$2", options: .regularExpression, range: nil)
             authValidation.accept(phoneText)
-        } else if text.count > 8 {
+        } else if text.count > 6 && text.count <= 10 {
             let phoneText = text.replacingOccurrences(of: "(\\d{3})-(\\d{4})(\\d{1})", with: "$1-$2-$3", options: .regularExpression, range: nil)
             authValidation.accept(phoneText)
         }

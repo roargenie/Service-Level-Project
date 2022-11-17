@@ -20,7 +20,7 @@ final class NicknameViewModel: CommonViewModel {
     struct Output {
         let validation: Observable<Bool>
         let nicknameText: ControlProperty<String>
-        let tap: ControlEvent<Void>
+        let tap: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
@@ -32,7 +32,10 @@ final class NicknameViewModel: CommonViewModel {
         let nicknameText = input.text
             .orEmpty
         
-        return Output(validation: valid, nicknameText: nicknameText, tap: input.tap)
+        let tap = input.tap
+            .withLatestFrom(valid)
+        
+        return Output(validation: valid, nicknameText: nicknameText, tap: tap)
     }
     
     func checkNickname(with nicknamdText: String) -> Bool {
