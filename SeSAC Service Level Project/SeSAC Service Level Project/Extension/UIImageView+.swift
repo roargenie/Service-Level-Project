@@ -18,5 +18,6 @@ extension UIImageView {
 
     func makeToCircle() {
         self.makeRoundedCorners(self.frame.width / 2)
+        self.clipsToBounds = true
     }
 }

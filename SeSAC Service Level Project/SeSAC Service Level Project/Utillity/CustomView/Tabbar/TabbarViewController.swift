@@ -28,7 +28,7 @@ final class TabbarViewController: UITabBarController, UITabBarControllerDelegate
         shopVC.navigationBar.tintColor = Color.black
         let friendsVC = UINavigationController(rootViewController: FriendsViewController())
         friendsVC.navigationBar.tintColor = Color.black
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        let profileVC = UINavigationController(rootViewController: MySettingViewController())
         profileVC.navigationBar.tintColor = Color.black
         
         self.setViewControllers([mainVC, shopVC, friendsVC, profileVC], animated: true)

@@ -12,10 +12,7 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
 //    let profileCardView: ProfileCardView = ProfileCardView()
     let moreButton: UIButton = UIButton().then {
         $0.setImage(Icon.downarrow, for: .normal)
-        $0.backgroundColor = Color.whitegreen
     }
-    
-    let uiview: UIView = UIView()
     
     let firstLineView: NicknameReusableView = NicknameReusableView()
     
@@ -23,7 +20,7 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
     
     let thirdLineView: SeSACReviewReusableView = SeSACReviewReusableView()
     
-    lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [firstLineView, secondLineView, thirdLineView, uiview]).then {
+    lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [firstLineView, secondLineView, thirdLineView]).then {
         $0.spacing = 24
         $0.axis = .vertical
         $0.layer.borderWidth = 1
@@ -39,6 +36,7 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
     override func configureUI() {
         selectionStyle = .none
         [stackView, moreButton].forEach { self.contentView.addSubview($0) }
+        thirdLineView.sesacReviewLabel.text = "aasdfsf\nsfasfdasf\nasfasdfasdf\nsafsfdasfasdf\nasdfasfasdfsadf\nasdfasfasdf"
     }
     
     override func setConstraints() {
@@ -48,8 +46,6 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
             make.bottom.equalToSuperview()
         }
         firstLineView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(24)
-            make.leading.equalToSuperview().inset(16)
             make.trailing.equalTo(moreButton.snp.leading).offset(-16)
         }
         secondLineView.snp.makeConstraints { make in
@@ -57,10 +53,9 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
         }
         thirdLineView.snp.makeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
-//            make.bottom.equalToSuperview().offset(-16)
         }
         moreButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16)
+            make.centerY.equalTo(firstLineView.snp.centerY)
             make.trailing.equalToSuperview().inset(32)
             make.width.equalTo(22)
         }

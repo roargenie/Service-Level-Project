@@ -76,17 +76,27 @@
 		F6C7DE912922831E00DA622D /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE902922831E00DA622D /* FriendsView.swift */; };
 		F6C7DE932922832800DA622D /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE922922832800DA622D /* FriendsViewController.swift */; };
 		F6C7DE952922833000DA622D /* FriensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE942922833000DA622D /* FriensViewModel.swift */; };
-		F6C7DE972922833500DA622D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE962922833500DA622D /* ProfileView.swift */; };
-		F6C7DE992922833C00DA622D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE982922833C00DA622D /* ProfileViewController.swift */; };
-		F6C7DE9B2922834300DA622D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9A2922834300DA622D /* ProfileViewModel.swift */; };
+		F6C7DE972922833500DA622D /* MyProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE962922833500DA622D /* MyProfileSettingView.swift */; };
+		F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */; };
+		F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */; };
 		F6C7DE9E292288C700DA622D /* ProfileImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */; };
 		F6C7DEA02922893600DA622D /* ProfileNickNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */; };
 		F6C7DEA42922895600DA622D /* ProfileReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */; };
-		F6C7DEA729228F2200DA622D /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA629228F2200DA622D /* ProfileModel.swift */; };
+		F6C7DEA729228F2200DA622D /* MyProfileSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA629228F2200DA622D /* MyProfileSettingModel.swift */; };
 		F6C7DEAA2922B37000DA622D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA92922B37000DA622D /* ProfileCardView.swift */; };
 		F6C7DEAC2922BDC500DA622D /* NicknameReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAB2922BDC500DA622D /* NicknameReusableView.swift */; };
 		F6C7DEAE2922BDD800DA622D /* SeSACTitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAD2922BDD800DA622D /* SeSACTitleReusableView.swift */; };
 		F6C7DEB02922BF8C00DA622D /* SeSACReviewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */; };
+		F6C7DEB32923B22400DA622D /* DoubleSlider in Frameworks */ = {isa = PBXBuildFile; productRef = F6C7DEB22923B22400DA622D /* DoubleSlider */; };
+		F6C7DEB52923B70900DA622D /* ProfileUnregisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEB42923B70900DA622D /* ProfileUnregisterTableViewCell.swift */; };
+		F6C7DEBD2923C6EB00DA622D /* MySettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEBC2923C6EB00DA622D /* MySettingViewModel.swift */; };
+		F6C7DEBF2923C6F400DA622D /* MySettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEBE2923C6F400DA622D /* MySettingView.swift */; };
+		F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC02923C6FA00DA622D /* MySettingViewController.swift */; };
+		F6C7DEC32923C70000DA622D /* MySettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC22923C70000DA622D /* MySettingModel.swift */; };
+		F6C7DEC62923CA1C00DA622D /* MultiSlider in Frameworks */ = {isa = PBXBuildFile; productRef = F6C7DEC52923CA1C00DA622D /* MultiSlider */; };
+		F6C7DEC82923E1DA00DA622D /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC72923E1DA00DA622D /* MyProfileCell.swift */; };
+		F6C7DECA2923E1E900DA622D /* MySettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC92923E1E900DA622D /* MySettingCell.swift */; };
+		F6C7DECD2924037800DA622D /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DECC2924037800DA622D /* BasePopupViewController.swift */; };
 		F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDF291EA08400C8969B /* FirebaseAuth */; };
 		F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE1291EB2E700C8969B /* EndPoint.swift */; };
@@ -165,17 +175,25 @@
 		F6C7DE902922831E00DA622D /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		F6C7DE922922832800DA622D /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		F6C7DE942922833000DA622D /* FriensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriensViewModel.swift; sourceTree = "<group>"; };
-		F6C7DE962922833500DA622D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		F6C7DE982922833C00DA622D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		F6C7DE9A2922834300DA622D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F6C7DE962922833500DA622D /* MyProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingView.swift; sourceTree = "<group>"; };
+		F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewController.swift; sourceTree = "<group>"; };
+		F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewModel.swift; sourceTree = "<group>"; };
 		F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageTableViewCell.swift; sourceTree = "<group>"; };
 		F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNickNameTableViewCell.swift; sourceTree = "<group>"; };
 		F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewTableViewCell.swift; sourceTree = "<group>"; };
-		F6C7DEA629228F2200DA622D /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		F6C7DEA629228F2200DA622D /* MyProfileSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingModel.swift; sourceTree = "<group>"; };
 		F6C7DEA92922B37000DA622D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		F6C7DEAB2922BDC500DA622D /* NicknameReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameReusableView.swift; sourceTree = "<group>"; };
 		F6C7DEAD2922BDD800DA622D /* SeSACTitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACTitleReusableView.swift; sourceTree = "<group>"; };
 		F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACReviewReusableView.swift; sourceTree = "<group>"; };
+		F6C7DEB42923B70900DA622D /* ProfileUnregisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUnregisterTableViewCell.swift; sourceTree = "<group>"; };
+		F6C7DEBC2923C6EB00DA622D /* MySettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewModel.swift; sourceTree = "<group>"; };
+		F6C7DEBE2923C6F400DA622D /* MySettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingView.swift; sourceTree = "<group>"; };
+		F6C7DEC02923C6FA00DA622D /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
+		F6C7DEC22923C70000DA622D /* MySettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingModel.swift; sourceTree = "<group>"; };
+		F6C7DEC72923E1DA00DA622D /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
+		F6C7DEC92923E1E900DA622D /* MySettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingCell.swift; sourceTree = "<group>"; };
+		F6C7DECC2924037800DA622D /* BasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupViewController.swift; sourceTree = "<group>"; };
 		F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SeSAC Service Level Project.entitlements"; sourceTree = "<group>"; };
 		F6EEEDE1291EB2E700C8969B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACRouter.swift; sourceTree = "<group>"; };
@@ -192,7 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F651672729190DD800E362F0 /* Then in Frameworks */,
+				F6C7DEC62923CA1C00DA622D /* MultiSlider in Frameworks */,
 				F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				F6C7DEB32923B22400DA622D /* DoubleSlider in Frameworks */,
 				F65166F32918EA6000E362F0 /* RxSwift in Frameworks */,
 				F65166F62918EA7F00E362F0 /* Alamofire in Frameworks */,
 				F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */,
@@ -353,6 +373,7 @@
 		F65166E42918E7D100E362F0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F6C7DECB2924025000DA622D /* PopupView */,
 				F65166E82918E81100E362F0 /* BaseView.swift */,
 				F65166E62918E7F100E362F0 /* BaseViewController.swift */,
 				F65166FC2918ECEB00E362F0 /* BaseCollectionViewCell.swift */,
@@ -437,14 +458,14 @@
 			path = Firends;
 			sourceTree = "<group>";
 		};
-		F65167102918F1DD00E362F0 /* Profile */ = {
+		F65167102918F1DD00E362F0 /* MyProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
 				F6C7DEA529228F1A00DA622D /* Model */,
 				F6C7DE7D292282CE00DA622D /* View */,
 				F6C7DE7C292282CA00DA622D /* ViewModel */,
 			);
-			path = Profile;
+			path = MyProfileSetting;
 			sourceTree = "<group>";
 		};
 		F65167112918F20900E362F0 /* Search */ = {
@@ -534,7 +555,7 @@
 				F65167112918F20900E362F0 /* Search */,
 				F651670E2918F1D700E362F0 /* Shop */,
 				F651670F2918F1D900E362F0 /* Firends */,
-				F65167102918F1DD00E362F0 /* Profile */,
+				F6C7DEB62923C5DB00DA622D /* Setting */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -714,7 +735,7 @@
 		F6C7DE7C292282CA00DA622D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F6C7DE9A2922834300DA622D /* ProfileViewModel.swift */,
+				F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -723,8 +744,8 @@
 			isa = PBXGroup;
 			children = (
 				F6C7DE9C2922889B00DA622D /* Cell */,
-				F6C7DE962922833500DA622D /* ProfileView.swift */,
-				F6C7DE982922833C00DA622D /* ProfileViewController.swift */,
+				F6C7DE962922833500DA622D /* MyProfileSettingView.swift */,
+				F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -735,6 +756,7 @@
 				F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */,
 				F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */,
 				F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */,
+				F6C7DEB42923B70900DA622D /* ProfileUnregisterTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -742,7 +764,7 @@
 		F6C7DEA529228F1A00DA622D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F6C7DEA629228F2200DA622D /* ProfileModel.swift */,
+				F6C7DEA629228F2200DA622D /* MyProfileSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -756,6 +778,68 @@
 				F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */,
 			);
 			path = ProfileCardView;
+			sourceTree = "<group>";
+		};
+		F6C7DEB62923C5DB00DA622D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEB72923C6C700DA622D /* MySetting */,
+				F65167102918F1DD00E362F0 /* MyProfileSetting */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F6C7DEB72923C6C700DA622D /* MySetting */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEBA2923C6DB00DA622D /* Model */,
+				F6C7DEB92923C6D800DA622D /* View */,
+				F6C7DEB82923C6D300DA622D /* ViewModel */,
+			);
+			path = MySetting;
+			sourceTree = "<group>";
+		};
+		F6C7DEB82923C6D300DA622D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEBC2923C6EB00DA622D /* MySettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6C7DEB92923C6D800DA622D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEBB2923C6E000DA622D /* Cell */,
+				F6C7DEBE2923C6F400DA622D /* MySettingView.swift */,
+				F6C7DEC02923C6FA00DA622D /* MySettingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6C7DEBA2923C6DB00DA622D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEC22923C70000DA622D /* MySettingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6C7DEBB2923C6E000DA622D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DEC72923E1DA00DA622D /* MyProfileCell.swift */,
+				F6C7DEC92923E1E900DA622D /* MySettingCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F6C7DECB2924025000DA622D /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				F6C7DECC2924037800DA622D /* BasePopupViewController.swift */,
+			);
+			path = PopupView;
 			sourceTree = "<group>";
 		};
 		F6EEEDE3291EB34500C8969B /* Router */ = {
@@ -799,6 +883,8 @@
 				F651672629190DD800E362F0 /* Then */,
 				F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */,
 				F6EEEDDF291EA08400C8969B /* FirebaseAuth */,
+				F6C7DEB22923B22400DA622D /* DoubleSlider */,
+				F6C7DEC52923CA1C00DA622D /* MultiSlider */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -834,6 +920,8 @@
 				F65166F42918EA7F00E362F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */,
 				F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */,
+				F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -875,18 +963,20 @@
 				F6C7DE892922830300DA622D /* SearchViewModel.swift in Sources */,
 				F651675D291A771A00E362F0 /* SeSACButton.swift in Sources */,
 				F651671B2918F3DF00E362F0 /* Color.swift in Sources */,
-				F6C7DE972922833500DA622D /* ProfileView.swift in Sources */,
+				F6C7DE972922833500DA622D /* MyProfileSettingView.swift in Sources */,
 				F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */,
+				F6C7DEBF2923C6F400DA622D /* MySettingView.swift in Sources */,
 				F65167242919083300E362F0 /* Font.swift in Sources */,
 				F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */,
 				F651673E291A737000E362F0 /* AuthDetailViewModel.swift in Sources */,
-				F6C7DE9B2922834300DA622D /* ProfileViewModel.swift in Sources */,
+				F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */,
 				F651676F291D785700E362F0 /* Date+.swift in Sources */,
 				F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */,
 				F6C7DE87292282FD00DA622D /* SearchViewController.swift in Sources */,
 				F65167032918EE9800E362F0 /* NicknameModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
 				F6C7DE912922831E00DA622D /* FriendsView.swift in Sources */,
+				F6C7DEC82923E1DA00DA622D /* MyProfileCell.swift in Sources */,
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
 				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
@@ -907,6 +997,9 @@
 				F65167172918F24D00E362F0 /* AuthView.swift in Sources */,
 				F651671D2919032800E362F0 /* Icon.swift in Sources */,
 				F6C7DE85292282F700DA622D /* SearchView.swift in Sources */,
+				F6C7DEB52923B70900DA622D /* ProfileUnregisterTableViewCell.swift in Sources */,
+				F6C7DECA2923E1E900DA622D /* MySettingCell.swift in Sources */,
+				F6C7DEBD2923C6EB00DA622D /* MySettingViewModel.swift in Sources */,
 				F6516753291A74D900E362F0 /* EmailViewController.swift in Sources */,
 				F6C7DEAE2922BDD800DA622D /* SeSACTitleReusableView.swift in Sources */,
 				F65167152918F24600E362F0 /* AuthViewModel.swift in Sources */,
@@ -919,6 +1012,7 @@
 				F651675B291A74F300E362F0 /* GenderViewModel.swift in Sources */,
 				F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */,
 				F6C7DEAA2922B37000DA622D /* ProfileCardView.swift in Sources */,
+				F6C7DEC32923C70000DA622D /* MySettingModel.swift in Sources */,
 				F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
 				F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */,
@@ -930,15 +1024,17 @@
 				F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */,
 				F65166F82918EB8200E362F0 /* UIViewController+.swift in Sources */,
 				F6516755291A74E000E362F0 /* EmailViewModel.swift in Sources */,
-				F6C7DEA729228F2200DA622D /* ProfileModel.swift in Sources */,
-				F6C7DE992922833C00DA622D /* ProfileViewController.swift in Sources */,
+				F6C7DEA729228F2200DA622D /* MyProfileSettingModel.swift in Sources */,
+				F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */,
 				F65166E92918E81100E362F0 /* BaseView.swift in Sources */,
 				F6516765291ABEA700E362F0 /* Protocol.swift in Sources */,
 				F65166E22918E7AD00E362F0 /* NicknameViewController.swift in Sources */,
 				F6516768291BEEFC00E362F0 /* GenderCollectionViewCell.swift in Sources */,
 				F65166FA2918EBA500E362F0 /* UIImageView+.swift in Sources */,
+				F6C7DECD2924037800DA622D /* BasePopupViewController.swift in Sources */,
 				F6EEEDE9291F713E00C8969B /* NetworkError.swift in Sources */,
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
+				F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
 			);
@@ -1186,6 +1282,22 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yhkaplan/DoubleSlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yonat/MultiSlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		F6EEEDDC291EA08400C8969B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1221,6 +1333,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		F6C7DEB22923B22400DA622D /* DoubleSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */;
+			productName = DoubleSlider;
+		};
+		F6C7DEC52923CA1C00DA622D /* MultiSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */;
+			productName = MultiSlider;
 		};
 		F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;

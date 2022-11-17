@@ -19,16 +19,32 @@ final class SeSACButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupButton(title: String, titleColor: UIColor, font: UIFont, backgroundColor: UIColor, borderWidth: CGFloat, borderColor: UIColor) {
-        layer.cornerRadius = 8
+    func setupButton(title: String,
+                     titleColor: UIColor,
+                     font: UIFont,
+                     backgroundColor: UIColor,
+                     borderWidth: CGFloat,
+                     borderColor: UIColor,
+                     cornerRadius: CGFloat = 8) {
+        layer.cornerRadius = cornerRadius
         clipsToBounds = true
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
         let attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: font,
-                                                                         NSAttributedString.Key.foregroundColor: titleColor
-                                                                        ])
+                                                                            NSAttributedString.Key.foregroundColor: titleColor
+                                                                           ])
         setAttributedTitle(attributedText, for: .normal)
         self.backgroundColor = backgroundColor
     }
     
+    func setupButton(title: String,
+                     titleColor: UIColor,
+                     font: UIFont,
+                     backgroundColor: UIColor) {
+        let attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: font,
+                                                                            NSAttributedString.Key.foregroundColor: titleColor
+                                                                           ])
+        setAttributedTitle(attributedText, for: .normal)
+        self.backgroundColor = backgroundColor
+    }
 }

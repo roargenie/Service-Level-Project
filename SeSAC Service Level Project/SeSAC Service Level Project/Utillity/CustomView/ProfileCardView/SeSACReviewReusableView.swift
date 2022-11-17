@@ -17,6 +17,7 @@ final class SeSACReviewReusableView: BaseView {
     
     let sesacReviewLabel: UILabel = UILabel().then {
         $0.text = "첫 리뷰를 기다리는 중이에요!"
+        $0.numberOfLines = 0
         $0.textColor = Color.gray6
         $0.font = SeSACFont.body3.font
     }

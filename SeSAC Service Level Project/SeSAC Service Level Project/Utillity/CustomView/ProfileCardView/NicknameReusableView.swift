@@ -25,8 +25,8 @@ final class NicknameReusableView: BaseView {
     
     override func setConstraints() {
         nicknameLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.top.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(16)
         }
 //        moreButton.snp.makeConstraints { make in
 //            make.centerY.equalTo(nicknameLabel.snp.centerY)

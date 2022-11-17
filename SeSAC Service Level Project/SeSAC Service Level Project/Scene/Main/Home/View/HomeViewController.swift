@@ -9,7 +9,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import FirebaseAuth
-
+import CoreLocation
+import MapKit
 
 final class HomeViewController: BaseViewController {
     
@@ -17,6 +18,8 @@ final class HomeViewController: BaseViewController {
     
     private let mainView = HomeView()
     private let viewModel = HomeViewModel()
+    
+    private let locationManager = CLLocationManager()
     
     private var disposeBag = DisposeBag()
     
@@ -28,6 +31,13 @@ final class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
+        bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     // MARK: - OverrideMethod
@@ -36,10 +46,112 @@ final class HomeViewController: BaseViewController {
         
     }
     
+    override func configureUI() {
+        locationManager.delegate = self
+        mainView.mapView.delegate = self
+        checkUserDeviceLocationServiceAuthorization()
+        mainView.userCurrentLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     // MARK: - CustomMethod
     
+    private func setRegionAnnotation(center: CLLocationCoordinate2D) {
+        
+    }
+    
+    private func bind() {
+        
+    }
+    
+    @objc private func findMyLocation() {
+        guard locationManager.location != nil else {
+            checkUserDeviceLocationServiceAuthorization()
+            return
+        }
+        mainView.mapView.showsUserLocation = true
+        mainView.mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    
+}
+
+extension HomeViewController {
+    private func checkUserDeviceLocationServiceAuthorization() {
+        let authorizationStatus: CLAuthorizationStatus
+        
+        if #available(iOS 14.0, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            if CLLocationManager.locationServicesEnabled() {
+                self.checkUserCurrentLocationAuthorization(authorizationStatus)
+            } else {
+                print("위치서비스가 꺼져 있어 위치권한 요청을 할 수 없습니다.")
+            }
+        }
+    }
+    
+    private func checkUserCurrentLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
+        switch authorizationStatus {
+        case .notDetermined:
+            print("NOT DETERMINED")
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        case .restricted, .denied:
+            print("DENIED, 아이폰 설정 유도")
+            showRequestLocationServiceAlert()
+        case .authorizedWhenInUse:
+            print("WHEN IN USE, 앱을 사용하는 동안 허용")
+            locationManager.startUpdatingLocation()
+        default:
+            print("DEFAULT")
+        }
+    }
+    
+    private func showRequestLocationServiceAlert() {
+        let requestLocationServiceAlert = UIAlertController(title: "위치정보 이용", message: "위치 서비스를 사용할 수 없습니다. 기기의 '설정 > 개인정보 보호'에서 위치 서비스를 활성화 해주세요.", preferredStyle: .alert)
+        let goSetting = UIAlertAction(title: "설정으로 이동", style: .destructive) { _ in
+            if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSetting)
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .default)
+        requestLocationServiceAlert.addAction(cancel)
+        requestLocationServiceAlert.addAction(goSetting)
+        
+        present(requestLocationServiceAlert, animated: true, completion: nil)
+    }
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let center = locations.last?.coordinate as? CLLocationCoordinate2D {
+            print(center.latitude, center.longitude)
+            // 서버통신 해야할듯?
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(#function, error)
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print(#function)
+        checkUserDeviceLocationServiceAuthorization()
+    }
+}
+
+extension HomeViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let center = mainView.mapView.centerCoordinate
+        print(center.latitude, center.longitude)
+        // 여기서도 서버통신 해야할듯?
+    }
 }

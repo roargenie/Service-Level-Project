@@ -56,8 +56,13 @@ import UIKit
     static let woman = UIImage(named: "woman")
     static let write = UIImage(named: "write")
     
+    static let searchDefault = UIImage(named: "default")
+    static let searchMatching = UIImage(named: "matching")
+    static let searchMatched = UIImage(named: "matched")
+    
     static let img = UIImage(named: "img")
     static let profileImg = UIImage(named: "sesac_bg_01")
+    static let sesacface = UIImage(named: "sesac_face")
     // MARK: - Splash
     
     static let splashLogo = UIImage(named: "splash_logo")

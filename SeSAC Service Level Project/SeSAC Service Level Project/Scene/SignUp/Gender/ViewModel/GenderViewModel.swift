@@ -17,7 +17,7 @@ final class GenderViewModel {
         let celltap: ControlEvent<IndexPath>
         let tap: ControlEvent<Void>
     }
-
+    
     struct Output {
         let gender: Observable<[Gender]>
         let celltap: ControlEvent<IndexPath>
@@ -26,7 +26,7 @@ final class GenderViewModel {
 
     func transform(input: Input) -> Output {
         
-
+        
         return Output(gender: gender, celltap: input.celltap, tap: input.tap)
     }
 }

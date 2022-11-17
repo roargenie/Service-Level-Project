@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.backgroundColor = Color.white
             navigationBarAppearance.shadowColor = Color.gray2
+            navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: SeSACFont.title3.font]
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }

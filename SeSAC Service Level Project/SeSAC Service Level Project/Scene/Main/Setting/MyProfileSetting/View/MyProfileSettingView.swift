@@ -7,13 +7,15 @@
 
 import UIKit
 
-final class ProfileView: BaseView {
+final class MyProfileSettingView: BaseView {
     
     let tableView: UITableView = UITableView(frame: .zero, style: .plain).then {
         $0.separatorStyle = .none
+        $0.keyboardDismissMode = .onDrag
         $0.register(ProfileImageTableViewCell.self, forCellReuseIdentifier: ProfileImageTableViewCell.reuseIdentifier)
         $0.register(ProfileNickNameTableViewCell.self, forCellReuseIdentifier: ProfileNickNameTableViewCell.reuseIdentifier)
         $0.register(ProfileReviewTableViewCell.self, forCellReuseIdentifier: ProfileReviewTableViewCell.reuseIdentifier)
+        $0.register(ProfileUnregisterTableViewCell.self, forCellReuseIdentifier: ProfileUnregisterTableViewCell.reuseIdentifier)
     }
     
     override init(frame: CGRect) {

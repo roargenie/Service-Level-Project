@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ProfileViewModel {
+final class MyProfileSettingViewModel {
     
     
     struct Input {
