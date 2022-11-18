@@ -27,15 +27,17 @@ final class SplashViewController: BaseViewController {
             self.mainView.splashLogoImageView.alpha = 1
             self.mainView.splashTextImageView.alpha = 1
         } completion: { [weak self] _ in
+            guard let self = self else { return }
             if UserDefaults.standard.bool(forKey: "firstRun") == false {
                 let vc = OnboardViewController()
-                self?.transition(vc, transitionStyle: .presentFull)
+                self.transition(vc, transitionStyle: .presentFull)
             } else {
-//                let vc = UINavigationController(rootViewController: AuthViewController())
-//                self?.transition(vc, transitionStyle: .presentFull)
-                self?.requestLogin()
+                if UserDefaults.standard.string(forKey: Matrix.IdToken) != nil {
+                    self.requestLogin()
+                } else {
+                    self.presentAuthVC()
+                }
             }
-            
         }
     }
     
@@ -54,7 +56,7 @@ final class SplashViewController: BaseViewController {
                     print(error.rawValue)
                 case .notSignUp:
                     print(error.rawValue)
-                    self?.presentAuthVC()
+                    self?.presentNicknameVC()
                 case .serverError:
                     print(error.rawValue)
                 case .clientError:
@@ -73,6 +75,11 @@ final class SplashViewController: BaseViewController {
     
     private func presentAuthVC() {
         let vc = UINavigationController(rootViewController: AuthViewController())
+        transition(vc, transitionStyle: .presentFull)
+    }
+    
+    private func presentNicknameVC() {
+        let vc = UINavigationController(rootViewController: NicknameViewController())
         transition(vc, transitionStyle: .presentFull)
     }
     

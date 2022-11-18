@@ -64,7 +64,7 @@ final class GenderViewController: BaseViewController {
                 guard let cell = vc.mainView.collectionView.cellForItem(at: index) as? GenderCollectionViewCell else { return }
                 let textColor: UIColor = cell.isSelected ? Color.white : Color.gray3
                 let bgColor: UIColor = cell.isSelected ? Color.green : Color.gray6
-                vc.mainView.nextButton.isEnabled = cell.isSelected ? true : false
+//                vc.mainView.nextButton.isEnabled = cell.isSelected ? true : false
                 vc.mainView.nextButton.setupButton(
                     title: "다음",
                     titleColor: textColor,
@@ -96,7 +96,7 @@ final class GenderViewController: BaseViewController {
     
     private func requestSignUp() {
         let userDefaults = UserDefaults.standard
-        APIManager.shared.requestLogin(Login.self,
+        APIManager.shared.requestLogin(SignUp.self,
                                        router: SeSACRouter
             .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
                            fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
@@ -116,7 +116,6 @@ final class GenderViewController: BaseViewController {
                 self.pushHomeVC()
             case 202:
                 print("닉네임 변경 후 다시 요청")
-                self.view.makeToast("사용 불가능한 닉네임 입니다", duration: 1, position: .center)
             case 401:
                 self.refreshIdToken()
             case 500:

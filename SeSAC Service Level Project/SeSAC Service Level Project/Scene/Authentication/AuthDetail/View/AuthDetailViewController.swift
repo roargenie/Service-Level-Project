@@ -77,8 +77,7 @@ final class AuthDetailViewController: BaseViewController {
         output.tap
             .withUnretained(self)
             .bind { (vc, value) in
-                value ? vc.requestLogin() : vc.view.makeToast("인증번호가 올바르지 않습니다", duration: 1, position: .center)
-                value ? vc.verification() : nil
+                value ? vc.verification() : vc.view.makeToast("인증번호가 올바르지 않습니다", duration: 1, position: .center)
             }
             .disposed(by: disposeBag)
     }
@@ -130,7 +129,7 @@ final class AuthDetailViewController: BaseViewController {
 extension AuthDetailViewController {
     
     private func verification() {
-        guard let verificationID = UserDefaults.standard.string(forKey: "verificationID"),
+        guard let verificationID = UserDefaults.standard.string(forKey: Matrix.verificationID),
               let verificationCode = mainView.authNumberTextField.text else {
             return
         }
@@ -142,7 +141,7 @@ extension AuthDetailViewController {
     }
     
     private func logIn(credential: PhoneAuthCredential) {
-        Auth.auth().signIn(with: credential) { authResult, error in
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
             
             if let error = error {
                 print(error.localizedDescription)
@@ -159,6 +158,7 @@ extension AuthDetailViewController {
             
             print("LogIn Success!!")
             print("\\(authResult!)")
+            self?.requestLogin()
         }
     }
     

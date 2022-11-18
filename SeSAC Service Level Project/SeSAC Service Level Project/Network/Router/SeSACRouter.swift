@@ -11,6 +11,7 @@ import Alamofire
 enum SeSACRouter {
     case login
     case signup(_ signup: SignUp)
+    case search(_ search: Search)
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -23,6 +24,8 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login, .signup:
             return "/v1/user"
+        case .search:
+            return "/v1/queue/search"
         }
     }
 
@@ -36,7 +39,7 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login:
             return .get
-        case .signup:
+        case .signup, .search:
             return .post
         }
     }
@@ -66,6 +69,8 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .signup(let signup):
             request = try URLEncodedFormParameterEncoder().encode(signup, into: request)
+        case .search(let search):
+            request = try URLEncodedFormParameterEncoder().encode(search, into: request)
         default:
             return request
         }

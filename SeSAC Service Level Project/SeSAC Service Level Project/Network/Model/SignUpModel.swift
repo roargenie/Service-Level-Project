@@ -7,6 +7,9 @@
 
 import Foundation
 
+//MARK: - SignUp
+
+
 struct SignUp: Codable {
     let phoneNumber, fcMtoken, nick, birth: String
     let email: String

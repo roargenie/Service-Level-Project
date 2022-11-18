@@ -72,11 +72,16 @@ final class ProfileReviewTableViewCell: BaseTableViewCell {
         $0.thumbImage = Icon.filterControl
         $0.outerTrackColor = Color.gray2
         $0.thumbCount = 2
+        $0.minimumValue = 18
+        $0.maximumValue = 65
+        $0.value = [18.0, 65.0]
         $0.showsThumbImageShadow = true
-        $0.disabledThumbIndices = [18, 65]
         $0.trackWidth = 4
+        $0.keepsDistanceBetweenThumbs = true
+        $0.distanceBetweenThumbs = 12
         $0.orientation = .horizontal
         $0.showsThumbImageShadow = true
+        $0.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -140,5 +145,9 @@ final class ProfileReviewTableViewCell: BaseTableViewCell {
             make.height.equalTo(24)
             make.bottom.equalToSuperview().inset(18)
         }
+    }
+    
+    @objc func sliderValueChanged(_ sender: MultiSlider) {
+        ageSettingRangeLabel.text = "\(Int(sender.value[0])) - \(Int(sender.value[1]))"
     }
 }

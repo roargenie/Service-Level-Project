@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 import FirebaseAuth
 
-
 final class MyProfileSettingViewController: BaseViewController {
     
     // MARK: - Properties
@@ -69,6 +68,7 @@ final class MyProfileSettingViewController: BaseViewController {
     @objc private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
 
 extension MyProfileSettingViewController: UITableViewDelegate, UITableViewDataSource {

@@ -23,6 +23,8 @@ final class HomeViewController: BaseViewController {
     
     private var disposeBag = DisposeBag()
     
+    private var searchResult: [SearchResult] = []
+    
     // MARK: - LifeCycle
     
     override func loadView() {
@@ -33,6 +35,8 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         bind()
+        let center = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+        requestSearch(center: center)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,20 +63,58 @@ final class HomeViewController: BaseViewController {
     
     // MARK: - CustomMethod
     
-    private func setRegionAnnotation(center: CLLocationCoordinate2D) {
-        
-    }
-    
     private func bind() {
         
     }
+    
+    private func setAnnotation(center: CLLocationCoordinate2D) {
+        let center = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = center
+        mainView.mapView.addAnnotation(annotation)
+    }
+    
+    private func requestSearch(center: CLLocationCoordinate2D) {
+        APIManager.shared.requestData(SearchResult.self,
+                                      router: SeSACRouter
+            .search(Search(lat: center.latitude,
+                           long: center.longitude))) { [weak self] response, statusCode in
+            guard let self = self else { return }
+            if statusCode == 401 {
+                self.refreshIdToken()
+            }
+            print(statusCode)
+            switch response {
+            case .success(let value):
+                print(value, "------========================================")
+                print(value.fromQueueDB[0])
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+//    private func requestSearch(center: CLLocationCoordinate2D) {
+//        APIManager.shared.requestSearch(router: SeSACRouter
+//            .search(Search(lat: center.latitude,
+//                           long: center.longitude))) { data, recommend, status in
+//            print(data)
+//            print(recommend)
+//            print(status)
+//        }
+//    }
     
     @objc private func findMyLocation() {
         guard locationManager.location != nil else {
             checkUserDeviceLocationServiceAuthorization()
             return
         }
-        mainView.mapView.showsUserLocation = true
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        let center = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mainView.mapView.setRegion(region, animated: true)
+//        mainView.mapView.showsUserLocation = true
         mainView.mapView.setUserTrackingMode(.follow, animated: true)
     }
     
@@ -153,5 +195,6 @@ extension HomeViewController: MKMapViewDelegate {
         let center = mainView.mapView.centerCoordinate
         print(center.latitude, center.longitude)
         // 여기서도 서버통신 해야할듯?
+//        requestSearch(center: center)
     }
 }

@@ -98,6 +98,7 @@
 		F6C7DECA2923E1E900DA622D /* MySettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEC92923E1E900DA622D /* MySettingCell.swift */; };
 		F6C7DECD2924037800DA622D /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DECC2924037800DA622D /* BasePopupViewController.swift */; };
 		F6C7DED12926C8C100DA622D /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = F6C7DED02926C8C100DA622D /* Toast */; };
+		F6C7DED329280B5500DA622D /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DED229280B5500DA622D /* SearchModel.swift */; };
 		F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDD291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F6EEEDDF291EA08400C8969B /* FirebaseAuth */; };
 		F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EEEDE1291EB2E700C8969B /* EndPoint.swift */; };
@@ -195,6 +196,7 @@
 		F6C7DEC72923E1DA00DA622D /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
 		F6C7DEC92923E1E900DA622D /* MySettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingCell.swift; sourceTree = "<group>"; };
 		F6C7DECC2924037800DA622D /* BasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupViewController.swift; sourceTree = "<group>"; };
+		F6C7DED229280B5500DA622D /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		F6EEEDDB291E98DF00C8969B /* SeSAC Service Level Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SeSAC Service Level Project.entitlements"; sourceTree = "<group>"; };
 		F6EEEDE1291EB2E700C8969B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F6EEEDE4291EB35800C8969B /* SeSACRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACRouter.swift; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 			children = (
 				F6EEEDED29200A1900C8969B /* LoginModel.swift */,
 				F6EEEDEF29200A7000C8969B /* SignUpModel.swift */,
+				F6C7DED229280B5500DA622D /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
 				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
 				F6C7DE83292282ED00DA622D /* HomeViewModel.swift in Sources */,
+				F6C7DED329280B5500DA622D /* SearchModel.swift in Sources */,
 				F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */,
 				F6C7DEA02922893600DA622D /* ProfileNickNameTableViewCell.swift in Sources */,
 				F6EEEDF029200A7000C8969B /* SignUpModel.swift in Sources */,
