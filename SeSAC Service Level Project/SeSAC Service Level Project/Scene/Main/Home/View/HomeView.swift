@@ -11,7 +11,8 @@ import MapKit
 final class HomeView: BaseView {
     
     let mapView: MKMapView = MKMapView().then {
-        let center = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+        $0.register(CustomAnnotationView.self, forAnnotationViewWithReuseIdentifier: CustomAnnotationView.identifier)
+        let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         $0.setRegion(region, animated: true)
         

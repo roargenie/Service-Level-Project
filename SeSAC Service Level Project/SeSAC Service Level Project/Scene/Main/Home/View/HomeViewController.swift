@@ -23,7 +23,7 @@ final class HomeViewController: BaseViewController {
     
     private var disposeBag = DisposeBag()
     
-    private var searchResult: [SearchResult] = []
+    private var fromQueueDB: [FromQueueDB] = []
     
     // MARK: - LifeCycle
     
@@ -35,7 +35,7 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         bind()
-        let center = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
+        let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
         requestSearch(center: center)
     }
     
@@ -67,11 +67,13 @@ final class HomeViewController: BaseViewController {
         
     }
     
-    private func setAnnotation(center: CLLocationCoordinate2D) {
-        let center = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = center
-        mainView.mapView.addAnnotation(annotation)
+    private func setAnnotation(_ fromQueueDB: [FromQueueDB]) {
+        fromQueueDB.forEach { data in
+            let center = CLLocationCoordinate2D(latitude: data.lat, longitude: data.long)
+            let annotation = CustomAnnotation(sesacImage: data.sesac,
+                                              coordinate: center)
+            mainView.mapView.addAnnotation(annotation)
+        }
     }
     
     private func requestSearch(center: CLLocationCoordinate2D) {
@@ -86,24 +88,14 @@ final class HomeViewController: BaseViewController {
             print(statusCode)
             switch response {
             case .success(let value):
-                print(value, "------========================================")
-                print(value.fromQueueDB[0])
-                
+//                self.fromQueueDB.append(contentsOf: value.fromQueueDB)
+                self.setAnnotation(value.fromQueueDB)
+                self.setAnnotation(value.fromQueueDBRequested)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
-    
-//    private func requestSearch(center: CLLocationCoordinate2D) {
-//        APIManager.shared.requestSearch(router: SeSACRouter
-//            .search(Search(lat: center.latitude,
-//                           long: center.longitude))) { data, recommend, status in
-//            print(data)
-//            print(recommend)
-//            print(status)
-//        }
-//    }
     
     @objc private func findMyLocation() {
         guard locationManager.location != nil else {
@@ -191,10 +183,51 @@ extension HomeViewController: CLLocationManagerDelegate {
 }
 
 extension HomeViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = mainView.mapView.centerCoordinate
         print(center.latitude, center.longitude)
         // 여기서도 서버통신 해야할듯?
-//        requestSearch(center: center)
+        requestSearch(center: center)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? CustomAnnotation else {
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CustomAnnotationView.identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: CustomAnnotationView.identifier)
+            annotationView?.canShowCallout = false
+            annotationView?.contentMode = .scaleAspectFit
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        let sesacImage: UIImage!
+        let size = CGSize(width: 85, height: 85)
+        UIGraphicsBeginImageContext(size)
+        
+        switch annotation.sesacImage {
+        case 0:
+            sesacImage = Icon.sesacface0
+        case 1:
+            sesacImage = Icon.sesacface1
+        case 2:
+            sesacImage = Icon.sesacface2
+        case 3:
+            sesacImage = Icon.sesacface3
+        case 4:
+            sesacImage = Icon.sesacface4
+        default:
+            sesacImage = Icon.sesacface0
+        }
+        
+        sesacImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        annotationView?.image = resizedImage
+        
+        return annotationView
     }
 }

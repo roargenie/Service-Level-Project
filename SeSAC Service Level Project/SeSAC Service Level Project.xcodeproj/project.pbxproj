@@ -63,6 +63,7 @@
 		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
 		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
 		F651676F291D785700E362F0 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676E291D785700E362F0 /* Date+.swift */; };
+		F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */; };
 		F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE72292281FF00DA622D /* TabbarViewController.swift */; };
 		F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE7E292282E000DA622D /* HomeView.swift */; };
 		F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE80292282E600DA622D /* HomeViewController.swift */; };
@@ -164,6 +165,7 @@
 		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		F651676E291D785700E362F0 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		F6C7DE72292281FF00DA622D /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		F6C7DE7E292282E000DA622D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6C7DE80292282E600DA622D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		F65166E52918E7D800E362F0 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				F6B59EB92928D74800A2470A /* AnnotationView */,
 				F6C7DEA82922B35300DA622D /* ProfileCardView */,
 				F6C7DE71292281D800DA622D /* Tabbar */,
 				F651675C291A771A00E362F0 /* SeSACButton.swift */,
@@ -658,6 +661,14 @@
 				F651676C291C228E00E362F0 /* GenderModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F6B59EB92928D74800A2470A /* AnnotationView */ = {
+			isa = PBXGroup;
+			children = (
+				F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */,
+			);
+			path = AnnotationView;
 			sourceTree = "<group>";
 		};
 		F6C7DE71292281D800DA622D /* Tabbar */ = {
@@ -987,6 +998,7 @@
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
 				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
+				F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */,
 				F6C7DE83292282ED00DA622D /* HomeViewModel.swift in Sources */,
 				F6C7DED329280B5500DA622D /* SearchModel.swift in Sources */,
 				F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */,

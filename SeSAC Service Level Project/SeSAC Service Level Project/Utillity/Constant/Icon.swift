@@ -63,6 +63,15 @@ import UIKit
     static let img = UIImage(named: "img")
     static let profileImg = UIImage(named: "sesac_bg_01")
     static let sesacface = UIImage(named: "sesac_face")
+    
+    //MARK: - SeSACProfile
+    
+    static let sesacface0 = UIImage(named: "sesac_face_1")
+    static let sesacface1 = UIImage(named: "sesac_face_2")
+    static let sesacface2 = UIImage(named: "sesac_face_3")
+    static let sesacface3 = UIImage(named: "sesac_face_4")
+    static let sesacface4 = UIImage(named: "sesac_face_5")
+
     // MARK: - Splash
     
     static let splashLogo = UIImage(named: "splash_logo")
