@@ -37,11 +37,13 @@ final class HomeViewController: BaseViewController {
         bind()
         let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
         requestSearch(center: center)
+        requestMyQueueState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        requestMyQueueState()
     }
     
     // MARK: - OverrideMethod
@@ -55,6 +57,7 @@ final class HomeViewController: BaseViewController {
         mainView.mapView.delegate = self
         checkUserDeviceLocationServiceAuthorization()
         mainView.userCurrentLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
+        mainView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -88,10 +91,29 @@ final class HomeViewController: BaseViewController {
             print(statusCode)
             switch response {
             case .success(let value):
+                guard let value = value else { return }
 //                self.fromQueueDB.append(contentsOf: value.fromQueueDB)
                 self.setAnnotation(value.fromQueueDB)
                 self.setAnnotation(value.fromQueueDBRequested)
             case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func requestMyQueueState() {
+        print(#function, "================================")
+        APIManager.shared.requestData(MyQueueState.self,
+                                      router: SeSACRouter.myQueueState) { response, statusCode in
+            print(response)
+            guard let statusCode = statusCode else { return }
+            print("=============status", statusCode)
+            switch response {
+            case .success(let value):
+                guard let value = value else { return }
+                print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
+            case .failure(let error):
+                print(error.rawValue)
                 print(error.localizedDescription)
             }
         }
@@ -110,6 +132,10 @@ final class HomeViewController: BaseViewController {
         mainView.mapView.setUserTrackingMode(.follow, animated: true)
     }
     
+    @objc private func searchButtonTapped() {
+        
+    }
+    
 }
 
 extension HomeViewController {
@@ -121,7 +147,7 @@ extension HomeViewController {
         } else {
             authorizationStatus = CLLocationManager.authorizationStatus()
         }
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             if CLLocationManager.locationServicesEnabled() {
                 self.checkUserCurrentLocationAuthorization(authorizationStatus)

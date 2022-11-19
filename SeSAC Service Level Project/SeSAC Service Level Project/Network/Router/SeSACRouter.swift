@@ -12,6 +12,7 @@ enum SeSACRouter {
     case login
     case signup(_ signup: SignUp)
     case search(_ search: Search)
+    case myQueueState
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -26,6 +27,8 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/user"
         case .search:
             return "/v1/queue/search"
+        case .myQueueState:
+            return "/v1/queue/myQueueState"
         }
     }
 
@@ -37,27 +40,12 @@ extension SeSACRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .login:
+        case .login, .myQueueState:
             return .get
         case .signup, .search:
             return .post
         }
     }
-
-//    var parameters: [String: Any] {
-//        switch self {
-//        case .login:
-//            return ["":""]
-//        case .signup(let signup):
-//            return ["phoneNumber": signup.phoneNumber,
-//                    "FCMtoken": signup.fcMtoken,
-//                    "nick": signup.nick,
-//                    "birth": signup.birth,
-//                    "email": signup.email,
-//                    "gender": signup.gender
-//            ]
-//        }
-//    }
     
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)

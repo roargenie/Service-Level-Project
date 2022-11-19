@@ -19,6 +19,7 @@ final class SplashViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        print(UserDefaults.standard.string(forKey: Matrix.IdToken))
         presentOnboardingVC()
     }
     

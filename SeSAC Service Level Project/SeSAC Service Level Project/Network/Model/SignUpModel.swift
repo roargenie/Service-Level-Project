@@ -9,7 +9,6 @@ import Foundation
 
 //MARK: - SignUp
 
-
 struct SignUp: Codable {
     let phoneNumber, fcMtoken, nick, birth: String
     let email: String
@@ -20,4 +19,8 @@ struct SignUp: Codable {
         case fcMtoken = "FCMtoken"
         case nick, birth, email, gender
     }
+}
+
+struct SignUpStatus: Codable {
+    
 }

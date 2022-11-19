@@ -96,16 +96,16 @@ final class GenderViewController: BaseViewController {
     
     private func requestSignUp() {
         let userDefaults = UserDefaults.standard
-        APIManager.shared.requestLogin(SignUp.self,
-                                       router: SeSACRouter
+        APIManager.shared.requestData(SignUpStatus.self,
+                                      router: SeSACRouter
             .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
-                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
+                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken) ?? "dzjnejNDh0d0u1aLzfS547:APA91bFvQSjDVFC4-2IA0QQ08KqsEKwIoK2hFBZIfdyNLPd22PvgLD6YM_kyQgv0BIK-1zjltbbKYQTGK50Pn21bctsuEC46qo7RDkcImbzyZBe0-ffMqhFhL4DO5tbP0Ri_Wn-vRVF5",
                            nick: userDefaults.string(forKey: Matrix.nickname)!,
                            birth: userDefaults.string(forKey: Matrix.birth)!,
                            email: userDefaults.string(forKey: Matrix.email)!,
-                           gender: userDefaults.integer(forKey: Matrix.gender)))) { [weak self] statusCode in
-            print(statusCode)
-            
+                           gender: userDefaults.integer(forKey: Matrix.gender)))) { [weak self] response, statusCode in
+            print("================상태코드", statusCode.value)
+            guard let statusCode = statusCode else { return }
             guard let self = self else { return }
             switch statusCode {
             case 200:
@@ -126,6 +126,15 @@ final class GenderViewController: BaseViewController {
                 break
             }
         }
+//        APIManager.shared.requestData(router: SeSACRouter
+//            .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
+//                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
+//                           nick: userDefaults.string(forKey: Matrix.nickname)!,
+//                           birth: userDefaults.string(forKey: Matrix.birth)!,
+//                           email: userDefaults.string(forKey: Matrix.email)!,
+//                           gender: userDefaults.integer(forKey: Matrix.gender)))) { <#Result<Decodable, APIError>#>, <#Int?#> in
+//            <#code#>
+//        }
     }
     
     private func pushHomeVC() {
