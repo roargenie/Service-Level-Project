@@ -16,9 +16,9 @@ final class SearchViewModel {
     struct Output {
     }
 
-//    func transform(input: Input) -> Output {
-//
-//
-//        return Output(gender: gender, celltap: input.celltap, tap: input.tap)
-//    }
+    func transform(input: Input) -> Output {
+
+
+        return Output()
+    }
 }

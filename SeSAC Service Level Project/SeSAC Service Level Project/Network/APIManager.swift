@@ -21,12 +21,10 @@ final class APIManager {
                                    completion: @escaping requestDataCompletion<T>) {
         AF.request(router)
             .responseDecodable(of: object) { response in
-//                print(response.response?.statusCode)
                 guard let statusCode = response.response?.statusCode else { return }
-                completion(.success(response as? T), statusCode)
+//                completion(.success(response as? T), statusCode)
                 switch response.result {
                 case .success(let value):
-//                    guard let value = value else { return }
                     completion(.success(value), statusCode)
                     print(statusCode, value)
                 case .failure(_):

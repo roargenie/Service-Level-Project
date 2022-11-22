@@ -15,24 +15,27 @@ final class NicknameReusableView: BaseView {
         $0.font = SeSACFont.title1.font
     }
     
+    let moreButton: UIButton = UIButton().then {
+        $0.setImage(Icon.downarrow, for: .normal)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureUI() {
-        [nicknameLabel].forEach { self.addSubview($0) }
+        [nicknameLabel, moreButton].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
         nicknameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(16)
+            make.leading.top.bottom.equalToSuperview().inset(16)
         }
-//        moreButton.snp.makeConstraints { make in
-//            make.centerY.equalTo(nicknameLabel.snp.centerY)
-//            make.trailing.equalToSuperview().inset(16)
-//            make.width.height.equalTo(48)
-//        }
+        moreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(nicknameLabel.snp.centerY)
+            make.trailing.equalToSuperview()
+            make.width.height.equalTo(48)
+        }
     }
     
 }

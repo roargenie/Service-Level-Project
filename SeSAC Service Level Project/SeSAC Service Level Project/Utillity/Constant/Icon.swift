@@ -59,6 +59,7 @@ import UIKit
     static let searchDefault = UIImage(named: "default")
     static let searchMatching = UIImage(named: "matching")
     static let searchMatched = UIImage(named: "matched")
+    static let refresh = UIImage(named: "Refresh")
     
     static let img = UIImage(named: "img")
     static let profileImg = UIImage(named: "sesac_bg_01")

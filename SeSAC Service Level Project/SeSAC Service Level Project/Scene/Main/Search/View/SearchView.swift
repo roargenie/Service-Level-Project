@@ -13,8 +13,29 @@ final class SearchView: BaseView {
     
     let searchBar: UISearchBar = UISearchBar()
     
+    let searchButton: SeSACButton = SeSACButton().then {
+        $0.setupButton(title: "새싹 찾기",
+                       titleColor: Color.white,
+                       font: SeSACFont.body3.font,
+                       backgroundColor: Color.green,
+                       borderWidth: 1,
+                       borderColor: .clear)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    override func configureUI() {
+        [searchButton].forEach { self.addSubview($0) }
+    }
+    
+    override func setConstraints() {
+        searchButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-16)
+            make.directionalHorizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+        }
     }
     
     private func setLayout() -> UICollectionViewLayout {

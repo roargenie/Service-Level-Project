@@ -31,6 +31,11 @@ final class MySettingViewController: BaseViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     
     // MARK: - OverrideMethod
     

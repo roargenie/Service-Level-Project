@@ -10,7 +10,6 @@ import UIKit
 
 final class SeSACButton: UIButton {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -30,9 +29,10 @@ final class SeSACButton: UIButton {
         clipsToBounds = true
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
-        let attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: font,
-                                                                            NSAttributedString.Key.foregroundColor: titleColor
-                                                                           ])
+        let attributedText = NSAttributedString(string: title,
+                                                attributes: [NSAttributedString.Key.font: font,
+                                                             NSAttributedString.Key.foregroundColor: titleColor
+                                                            ])
         setAttributedTitle(attributedText, for: .normal)
         self.backgroundColor = backgroundColor
     }

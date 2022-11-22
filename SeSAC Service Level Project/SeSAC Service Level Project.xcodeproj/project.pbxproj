@@ -63,8 +63,15 @@
 		F651676A291BEFF300E362F0 /* Cell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6516769291BEFF300E362F0 /* Cell+.swift */; };
 		F651676D291C228E00E362F0 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676C291C228E00E362F0 /* GenderModel.swift */; };
 		F651676F291D785700E362F0 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651676E291D785700E362F0 /* Date+.swift */; };
+		F6623FB9292D028C00DDD7D8 /* NearSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FB8292D028C00DDD7D8 /* NearSeSACViewController.swift */; };
+		F6623FBB292D029800DDD7D8 /* RequestSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */; };
+		F6623FBD292D040200DDD7D8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBC292D040200DDD7D8 /* NearSeSACView.swift */; };
+		F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */; };
 		F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */; };
 		F6B59EBD2928EBB800A2470A /* MyQueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EBC2928EBB800A2470A /* MyQueueState.swift */; };
+		F6B59EC2292BC13700A2470A /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */; };
+		F6B59EC4292BC13E00A2470A /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC3292BC13E00A2470A /* SearchResultView.swift */; };
+		F6B59EC6292BC14800A2470A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC5292BC14800A2470A /* SearchResultViewController.swift */; };
 		F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE72292281FF00DA622D /* TabbarViewController.swift */; };
 		F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE7E292282E000DA622D /* HomeView.swift */; };
 		F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE80292282E600DA622D /* HomeViewController.swift */; };
@@ -81,11 +88,9 @@
 		F6C7DE972922833500DA622D /* MyProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE962922833500DA622D /* MyProfileSettingView.swift */; };
 		F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */; };
 		F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */; };
-		F6C7DE9E292288C700DA622D /* ProfileImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */; };
 		F6C7DEA02922893600DA622D /* ProfileNickNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */; };
 		F6C7DEA42922895600DA622D /* ProfileReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */; };
 		F6C7DEA729228F2200DA622D /* MyProfileSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA629228F2200DA622D /* MyProfileSettingModel.swift */; };
-		F6C7DEAA2922B37000DA622D /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEA92922B37000DA622D /* ProfileCardView.swift */; };
 		F6C7DEAC2922BDC500DA622D /* NicknameReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAB2922BDC500DA622D /* NicknameReusableView.swift */; };
 		F6C7DEAE2922BDD800DA622D /* SeSACTitleReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAD2922BDD800DA622D /* SeSACTitleReusableView.swift */; };
 		F6C7DEB02922BF8C00DA622D /* SeSACReviewReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */; };
@@ -166,8 +171,15 @@
 		F6516769291BEFF300E362F0 /* Cell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+.swift"; sourceTree = "<group>"; };
 		F651676C291C228E00E362F0 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		F651676E291D785700E362F0 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		F6623FB8292D028C00DDD7D8 /* NearSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACViewController.swift; sourceTree = "<group>"; };
+		F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSeSACViewController.swift; sourceTree = "<group>"; };
+		F6623FBC292D040200DDD7D8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
+		F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSeSACView.swift; sourceTree = "<group>"; };
 		F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		F6B59EBC2928EBB800A2470A /* MyQueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueState.swift; sourceTree = "<group>"; };
+		F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		F6B59EC3292BC13E00A2470A /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		F6B59EC5292BC14800A2470A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		F6C7DE72292281FF00DA622D /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		F6C7DE7E292282E000DA622D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6C7DE80292282E600DA622D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -184,11 +196,9 @@
 		F6C7DE962922833500DA622D /* MyProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingView.swift; sourceTree = "<group>"; };
 		F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewController.swift; sourceTree = "<group>"; };
 		F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewModel.swift; sourceTree = "<group>"; };
-		F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageTableViewCell.swift; sourceTree = "<group>"; };
 		F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNickNameTableViewCell.swift; sourceTree = "<group>"; };
 		F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReviewTableViewCell.swift; sourceTree = "<group>"; };
 		F6C7DEA629228F2200DA622D /* MyProfileSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingModel.swift; sourceTree = "<group>"; };
-		F6C7DEA92922B37000DA622D /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		F6C7DEAB2922BDC500DA622D /* NicknameReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameReusableView.swift; sourceTree = "<group>"; };
 		F6C7DEAD2922BDD800DA622D /* SeSACTitleReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACTitleReusableView.swift; sourceTree = "<group>"; };
 		F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACReviewReusableView.swift; sourceTree = "<group>"; };
@@ -562,6 +572,7 @@
 			children = (
 				F651670D2918F1CC00E362F0 /* Home */,
 				F65167112918F20900E362F0 /* Search */,
+				F6B59EBE292BC05200A2470A /* SearchResult */,
 				F651670E2918F1D700E362F0 /* Shop */,
 				F651670F2918F1D900E362F0 /* Firends */,
 				F6C7DEB62923C5DB00DA622D /* Setting */,
@@ -673,6 +684,36 @@
 			path = AnnotationView;
 			sourceTree = "<group>";
 		};
+		F6B59EBE292BC05200A2470A /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				F6B59EC0292BC12900A2470A /* View */,
+				F6B59EBF292BC12400A2470A /* ViewModel */,
+			);
+			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		F6B59EBF292BC12400A2470A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6B59EC0292BC12900A2470A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6B59EC3292BC13E00A2470A /* SearchResultView.swift */,
+				F6B59EC5292BC14800A2470A /* SearchResultViewController.swift */,
+				F6623FBC292D040200DDD7D8 /* NearSeSACView.swift */,
+				F6623FB8292D028C00DDD7D8 /* NearSeSACViewController.swift */,
+				F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */,
+				F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F6C7DE71292281D800DA622D /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,7 +811,6 @@
 		F6C7DE9C2922889B00DA622D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				F6C7DE9D292288C700DA622D /* ProfileImageTableViewCell.swift */,
 				F6C7DE9F2922893600DA622D /* ProfileNickNameTableViewCell.swift */,
 				F6C7DEA32922895600DA622D /* ProfileReviewTableViewCell.swift */,
 				F6C7DEB42923B70900DA622D /* ProfileUnregisterTableViewCell.swift */,
@@ -789,7 +829,6 @@
 		F6C7DEA82922B35300DA622D /* ProfileCardView */ = {
 			isa = PBXGroup;
 			children = (
-				F6C7DEA92922B37000DA622D /* ProfileCardView.swift */,
 				F6C7DEAB2922BDC500DA622D /* NicknameReusableView.swift */,
 				F6C7DEAD2922BDD800DA622D /* SeSACTitleReusableView.swift */,
 				F6C7DEAF2922BF8C00DA622D /* SeSACReviewReusableView.swift */,
@@ -980,7 +1019,6 @@
 				F65167092918EF4400E362F0 /* SplashView.swift in Sources */,
 				F6C7DE952922833000DA622D /* FriensViewModel.swift in Sources */,
 				F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */,
-				F6C7DE9E292288C700DA622D /* ProfileImageTableViewCell.swift in Sources */,
 				F6C7DE892922830300DA622D /* SearchViewModel.swift in Sources */,
 				F651675D291A771A00E362F0 /* SeSACButton.swift in Sources */,
 				F651671B2918F3DF00E362F0 /* Color.swift in Sources */,
@@ -991,6 +1029,7 @@
 				F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */,
 				F651673E291A737000E362F0 /* AuthDetailViewModel.swift in Sources */,
 				F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */,
+				F6B59EC4292BC13E00A2470A /* SearchResultView.swift in Sources */,
 				F651676F291D785700E362F0 /* Date+.swift in Sources */,
 				F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */,
 				F6C7DE87292282FD00DA622D /* SearchViewController.swift in Sources */,
@@ -1001,6 +1040,7 @@
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
 				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
+				F6623FB9292D028C00DDD7D8 /* NearSeSACViewController.swift in Sources */,
 				F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */,
 				F6C7DE83292282ED00DA622D /* HomeViewModel.swift in Sources */,
 				F6C7DED329280B5500DA622D /* SearchModel.swift in Sources */,
@@ -1026,6 +1066,7 @@
 				F6516753291A74D900E362F0 /* EmailViewController.swift in Sources */,
 				F6C7DEAE2922BDD800DA622D /* SeSACTitleReusableView.swift in Sources */,
 				F65167152918F24600E362F0 /* AuthViewModel.swift in Sources */,
+				F6623FBD292D040200DDD7D8 /* NearSeSACView.swift in Sources */,
 				F651674B291A74B800E362F0 /* BirthView.swift in Sources */,
 				F65166FF2918ECF300E362F0 /* BaseTableViewCell.swift in Sources */,
 				F6C7DE932922832800DA622D /* FriendsViewController.swift in Sources */,
@@ -1035,19 +1076,21 @@
 				F65167192918F25300E362F0 /* AuthViewController.swift in Sources */,
 				F651675B291A74F300E362F0 /* GenderViewModel.swift in Sources */,
 				F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */,
-				F6C7DEAA2922B37000DA622D /* ProfileCardView.swift in Sources */,
 				F6C7DEC32923C70000DA622D /* MySettingModel.swift in Sources */,
 				F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
 				F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */,
 				F651676A291BEFF300E362F0 /* Cell+.swift in Sources */,
+				F6623FBB292D029800DDD7D8 /* RequestSeSACViewController.swift in Sources */,
 				F651673C291A736400E362F0 /* AuthDetailViewController.swift in Sources */,
 				F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */,
 				F6C7DE8D2922830E00DA622D /* ShopViewController.swift in Sources */,
+				F6B59EC6292BC14800A2470A /* SearchResultViewController.swift in Sources */,
 				F6C7DEAC2922BDC500DA622D /* NicknameReusableView.swift in Sources */,
 				F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */,
 				F65166F82918EB8200E362F0 /* UIViewController+.swift in Sources */,
 				F6516755291A74E000E362F0 /* EmailViewModel.swift in Sources */,
+				F6B59EC2292BC13700A2470A /* SearchResultViewModel.swift in Sources */,
 				F6C7DEA729228F2200DA622D /* MyProfileSettingModel.swift in Sources */,
 				F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */,
 				F65166E92918E81100E362F0 /* BaseView.swift in Sources */,
@@ -1059,6 +1102,7 @@
 				F6EEEDE9291F713E00C8969B /* NetworkError.swift in Sources */,
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
 				F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */,
+				F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
 			);
@@ -1216,9 +1260,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1246,9 +1293,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesacslp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

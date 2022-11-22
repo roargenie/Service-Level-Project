@@ -35,29 +35,24 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         bind()
-        let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
-        requestSearch(center: center)
+        setAnnotation()
         requestMyQueueState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
         requestMyQueueState()
     }
     
     // MARK: - OverrideMethod
-    
-    override func setNavigation() {
-        
-    }
     
     override func configureUI() {
         locationManager.delegate = self
         mainView.mapView.delegate = self
         checkUserDeviceLocationServiceAuthorization()
         mainView.userCurrentLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
-        mainView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -68,9 +63,99 @@ final class HomeViewController: BaseViewController {
     
     private func bind() {
         
+        let input = HomeViewModel.Input(searchButtonTap: mainView.searchButton.rx.tap,
+                                        wholeGenderButtonTap: mainView.wholeGenderButton.rx.tap,
+                                        maleGenderButtonTap: mainView.maleGenderButton.rx.tap,
+                                        femaleGenderButtonTap: mainView.femaleGenderButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        viewModel.wholeGenderButton
+            .asDriver()
+            .drive(onNext: { [weak self] value in
+                let textColor = value ? Color.white : Color.black
+                let bgColor = value ? Color.green : Color.white
+                self?.mainView.wholeGenderButton.setupButton(title: "전체",
+                                                             titleColor: textColor,
+                                                             font: SeSACFont.title4.font,
+                                                             backgroundColor: bgColor)
+                
+            })
+            .disposed(by: disposeBag)
+        
+        output.wholeGenderButtonTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.wholeGenderButton.accept(true)
+                vc.viewModel.maleGenderButton.accept(false)
+                vc.viewModel.femaleGenderButton.accept(false)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.maleGenderButton
+            .asDriver()
+            .drive(onNext: { [weak self] value in
+                let textColor = value ? Color.white : Color.black
+                let bgColor = value ? Color.green : Color.white
+                self?.mainView.maleGenderButton.setupButton(title: "남자",
+                                                             titleColor: textColor,
+                                                             font: SeSACFont.title4.font,
+                                                             backgroundColor: bgColor)
+                
+            })
+            .disposed(by: disposeBag)
+        
+        output.maleGenderButtonTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.wholeGenderButton.accept(false)
+                vc.viewModel.maleGenderButton.accept(true)
+                vc.viewModel.femaleGenderButton.accept(false)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.femaleGenderButton
+            .asDriver()
+            .drive(onNext: { [weak self] value in
+                let textColor = value ? Color.white : Color.black
+                let bgColor = value ? Color.green : Color.white
+                self?.mainView.femaleGenderButton.setupButton(title: "여자",
+                                                             titleColor: textColor,
+                                                             font: SeSACFont.title4.font,
+                                                             backgroundColor: bgColor)
+                
+            })
+            .disposed(by: disposeBag)
+        
+        output.femaleGenderButtonTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.wholeGenderButton.accept(false)
+                vc.viewModel.maleGenderButton.accept(false)
+                vc.viewModel.femaleGenderButton.accept(true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.searchButtonTap
+            .withUnretained(self)
+            .bind { (vc, tap) in
+                vc.pushSearchVC()
+            }
+            .disposed(by: disposeBag)
+        
     }
     
-    private func setAnnotation(_ fromQueueDB: [FromQueueDB]) {
+    private func setAnnotation() {
+        let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mainView.mapView.setRegion(region, animated: true)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = center
+        annotation.title = "새싹 영등포 캠퍼스"
+        mainView.mapView.addAnnotation(annotation)
+        requestSearch(center: center)
+    }
+    
+    private func setCustomAnnotation(_ fromQueueDB: [FromQueueDB]) {
         fromQueueDB.forEach { data in
             let center = CLLocationCoordinate2D(latitude: data.lat, longitude: data.long)
             let annotation = CustomAnnotation(sesacImage: data.sesac,
@@ -93,8 +178,8 @@ final class HomeViewController: BaseViewController {
             case .success(let value):
                 guard let value = value else { return }
 //                self.fromQueueDB.append(contentsOf: value.fromQueueDB)
-                self.setAnnotation(value.fromQueueDB)
-                self.setAnnotation(value.fromQueueDBRequested)
+                self.setCustomAnnotation(value.fromQueueDB)
+                self.setCustomAnnotation(value.fromQueueDBRequested)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -119,6 +204,11 @@ final class HomeViewController: BaseViewController {
         }
     }
     
+    private func pushSearchVC() {
+        let vc = SearchViewController()
+        transition(vc, transitionStyle: .push)
+    }
+    
     @objc private func findMyLocation() {
         guard locationManager.location != nil else {
             checkUserDeviceLocationServiceAuthorization()
@@ -130,10 +220,6 @@ final class HomeViewController: BaseViewController {
         mainView.mapView.setRegion(region, animated: true)
 //        mainView.mapView.showsUserLocation = true
         mainView.mapView.setUserTrackingMode(.follow, animated: true)
-    }
-    
-    @objc private func searchButtonTapped() {
-        
     }
     
 }
@@ -193,7 +279,7 @@ extension HomeViewController {
 extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let center = locations.last?.coordinate as? CLLocationCoordinate2D {
-            print(center.latitude, center.longitude)
+            //print(center.latitude, center.longitude)
             // 서버통신 해야할듯?
         }
     }

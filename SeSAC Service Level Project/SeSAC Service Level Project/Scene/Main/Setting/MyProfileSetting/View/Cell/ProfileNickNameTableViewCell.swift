@@ -9,18 +9,14 @@ import UIKit
 
 final class ProfileNickNameTableViewCell: BaseTableViewCell {
     
-//    let profileCardView: ProfileCardView = ProfileCardView()
-    let moreButton: UIButton = UIButton().then {
-        $0.setImage(Icon.downarrow, for: .normal)
+    let profileImageView: UIImageView = UIImageView().then {
+        $0.image = Icon.profileImg
+        $0.makeRoundedCorners(8)
     }
     
-    let firstLineView: NicknameReusableView = NicknameReusableView()
-    
-    let secondLineView: SeSACTitleReusableView = SeSACTitleReusableView()
-    
-    let thirdLineView: SeSACReviewReusableView = SeSACReviewReusableView()
-    
-    lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [firstLineView, secondLineView, thirdLineView]).then {
+    lazy var stackView: UIStackView = UIStackView(arrangedSubviews: [firstLineView,
+                                                                     secondLineView,
+                                                                     thirdLineView]).then {
         $0.spacing = 24
         $0.axis = .vertical
         $0.layer.borderWidth = 1
@@ -29,35 +25,30 @@ final class ProfileNickNameTableViewCell: BaseTableViewCell {
         $0.clipsToBounds = true
     }
     
+    let firstLineView: NicknameReusableView = NicknameReusableView()
+    
+    let secondLineView: SeSACTitleReusableView = SeSACTitleReusableView()
+    
+    let thirdLineView: SeSACReviewReusableView = SeSACReviewReusableView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureUI() {
         selectionStyle = .none
-        [stackView, moreButton].forEach { self.contentView.addSubview($0) }
+        [profileImageView, stackView].forEach { self.contentView.addSubview($0) }
         thirdLineView.sesacReviewLabel.text = "aasdfsf\nsfasfdasf\nasfasdfasdf\nsafsfdasfasdf\nasdfasfasdfsadf\nasdfasfasdf"
     }
     
     override func setConstraints() {
+        profileImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(16)
+        }
         stackView.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.bottom)
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
-            make.top.equalToSuperview()
             make.bottom.equalToSuperview()
-        }
-        firstLineView.snp.makeConstraints { make in
-            make.trailing.equalTo(moreButton.snp.leading).offset(-16)
-        }
-        secondLineView.snp.makeConstraints { make in
-            make.directionalHorizontalEdges.equalToSuperview().inset(16)
-        }
-        thirdLineView.snp.makeConstraints { make in
-            make.directionalHorizontalEdges.equalToSuperview().inset(16)
-        }
-        moreButton.snp.makeConstraints { make in
-            make.centerY.equalTo(firstLineView.snp.centerY)
-            make.trailing.equalToSuperview().inset(32)
-            make.width.equalTo(22)
         }
     }
 }

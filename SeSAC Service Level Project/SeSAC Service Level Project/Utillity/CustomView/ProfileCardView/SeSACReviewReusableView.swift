@@ -32,11 +32,12 @@ final class SeSACReviewReusableView: BaseView {
     
     override func setConstraints() {
         sesacReviewTitleLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().inset(16)
         }
         sesacReviewLabel.snp.makeConstraints { make in
             make.top.equalTo(sesacReviewTitleLabel.snp.bottom).offset(16)
-            make.leading.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(16)
         }
     }

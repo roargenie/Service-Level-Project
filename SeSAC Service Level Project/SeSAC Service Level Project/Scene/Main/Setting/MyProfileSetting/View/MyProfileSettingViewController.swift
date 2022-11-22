@@ -21,7 +21,7 @@ final class MyProfileSettingViewController: BaseViewController {
     
     private var isSelected: Bool = false {
         didSet {
-            mainView.tableView.reloadSections(IndexSet(1...1), with: .fade)
+            mainView.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
         }
     }
     
@@ -34,6 +34,11 @@ final class MyProfileSettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - OverrideMethod
@@ -73,33 +78,25 @@ final class MyProfileSettingViewController: BaseViewController {
 
 extension MyProfileSettingViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileImageTableViewCell.reuseIdentifier, for: indexPath) as? ProfileImageTableViewCell else { return UITableViewCell() }
-            cell.profileImageView.image = Icon.profileImg
-            return cell
-        } else if indexPath.section == 1 {
+        if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileNickNameTableViewCell.reuseIdentifier, for: indexPath) as? ProfileNickNameTableViewCell else { return UITableViewCell() }
-            cell.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+            cell.firstLineView.moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
             if isSelected == true {
                 cell.secondLineView.isHidden = false
                 cell.thirdLineView.isHidden = false
-                cell.moreButton.setImage(Icon.uparrow, for: .normal)
+                cell.firstLineView.moreButton.setImage(Icon.uparrow, for: .normal)
             } else {
                 cell.secondLineView.isHidden = true
                 cell.thirdLineView.isHidden = true
-                cell.moreButton.setImage(Icon.downarrow, for: .normal)
+                cell.firstLineView.moreButton.setImage(Icon.downarrow, for: .normal)
             }
             return cell
-        } else if indexPath.section == 2 {
+        } else if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileReviewTableViewCell.reuseIdentifier, for: indexPath) as? ProfileReviewTableViewCell else { return UITableViewCell() }
             
             return cell

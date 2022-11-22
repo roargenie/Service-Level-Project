@@ -113,11 +113,13 @@ final class SeSACTitleReusableView: BaseView {
     
     override func setConstraints() {
         sesacTitleLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().inset(16)
         }
         wholeStackView.snp.makeConstraints { make in
             make.top.equalTo(sesacTitleLabel.snp.bottom).offset(16)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview()
         }
         firstLineStackView.snp.makeConstraints { make in
             make.height.equalTo(32)
