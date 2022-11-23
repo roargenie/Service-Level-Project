@@ -25,6 +25,8 @@ final class HomeViewController: BaseViewController {
     
     private var fromQueueDB: [FromQueueDB] = []
     
+    private var centerCoordinate: CLLocationCoordinate2D?
+    
     // MARK: - LifeCycle
     
     override func loadView() {
@@ -146,6 +148,7 @@ final class HomeViewController: BaseViewController {
     
     private func setAnnotation() {
         let center = CLLocationCoordinate2D(latitude: 37.517819364682694, longitude: 126.88647317074734)
+        centerCoordinate = center
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mainView.mapView.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
@@ -206,6 +209,7 @@ final class HomeViewController: BaseViewController {
     
     private func pushSearchVC() {
         let vc = SearchViewController()
+        vc.centerCoordinate = centerCoordinate
         transition(vc, transitionStyle: .push)
     }
     
@@ -298,6 +302,7 @@ extension HomeViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = mainView.mapView.centerCoordinate
+        centerCoordinate = center
         print(center.latitude, center.longitude)
         // 여기서도 서버통신 해야할듯?
         requestSearch(center: center)

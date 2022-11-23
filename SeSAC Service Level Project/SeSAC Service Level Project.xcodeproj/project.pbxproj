@@ -67,6 +67,11 @@
 		F6623FBB292D029800DDD7D8 /* RequestSeSACViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */; };
 		F6623FBD292D040200DDD7D8 /* NearSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBC292D040200DDD7D8 /* NearSeSACView.swift */; };
 		F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */; };
+		F6623FC9292D383300DDD7D8 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FC8292D383300DDD7D8 /* SectionModel.swift */; };
+		F6623FCC292D394800DDD7D8 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */; };
+		F6623FCE292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */; };
+		F6623FD1292D3D8F00DDD7D8 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F6623FD0292D3D8F00DDD7D8 /* Differentiator */; };
+		F6623FD3292D3D8F00DDD7D8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F6623FD2292D3D8F00DDD7D8 /* RxDataSources */; };
 		F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */; };
 		F6B59EBD2928EBB800A2470A /* MyQueueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EBC2928EBB800A2470A /* MyQueueState.swift */; };
 		F6B59EC2292BC13700A2470A /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */; };
@@ -175,6 +180,9 @@
 		F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSeSACViewController.swift; sourceTree = "<group>"; };
 		F6623FBC292D040200DDD7D8 /* NearSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSeSACView.swift; sourceTree = "<group>"; };
 		F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSeSACView.swift; sourceTree = "<group>"; };
+		F6623FC8292D383300DDD7D8 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
+		F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterHobbyCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		F6B59EBA2928D75A00A2470A /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		F6B59EBC2928EBB800A2470A /* MyQueueState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueState.swift; sourceTree = "<group>"; };
 		F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -228,12 +236,14 @@
 			files = (
 				F651672729190DD800E362F0 /* Then in Frameworks */,
 				F6C7DEC62923CA1C00DA622D /* MultiSlider in Frameworks */,
+				F6623FD1292D3D8F00DDD7D8 /* Differentiator in Frameworks */,
 				F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F6C7DEB32923B22400DA622D /* DoubleSlider in Frameworks */,
 				F65166F32918EA6000E362F0 /* RxSwift in Frameworks */,
 				F65166F62918EA7F00E362F0 /* Alamofire in Frameworks */,
 				F65166F12918EA6000E362F0 /* RxCocoa in Frameworks */,
 				F6EEEDE0291EA08400C8969B /* FirebaseAuth in Frameworks */,
+				F6623FD3292D3D8F00DDD7D8 /* RxDataSources in Frameworks */,
 				F6C7DED12926C8C100DA622D /* Toast in Frameworks */,
 				F65166EE2918EA2400E362F0 /* SnapKit in Frameworks */,
 			);
@@ -490,6 +500,7 @@
 		F65167112918F20900E362F0 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F6623FC7292D382C00DDD7D8 /* Model */,
 				F6C7DE77292282BC00DA622D /* View */,
 				F6C7DE76292282B800DA622D /* ViewModel */,
 			);
@@ -676,6 +687,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F6623FC7292D382C00DDD7D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6623FC8292D383300DDD7D8 /* SectionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6623FCA292D393C00DDD7D8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */,
+				F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F6B59EB92928D74800A2470A /* AnnotationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +778,7 @@
 		F6C7DE77292282BC00DA622D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6623FCA292D393C00DDD7D8 /* Cell */,
 				F6C7DE84292282F700DA622D /* SearchView.swift */,
 				F6C7DE86292282FD00DA622D /* SearchViewController.swift */,
 			);
@@ -944,6 +973,8 @@
 				F6C7DEB22923B22400DA622D /* DoubleSlider */,
 				F6C7DEC52923CA1C00DA622D /* MultiSlider */,
 				F6C7DED02926C8C100DA622D /* Toast */,
+				F6623FD0292D3D8F00DDD7D8 /* Differentiator */,
+				F6623FD2292D3D8F00DDD7D8 /* RxDataSources */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -982,6 +1013,7 @@
 				F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */,
 				F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				F6C7DECF2926C8C100DA622D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -1024,6 +1056,7 @@
 				F651671B2918F3DF00E362F0 /* Color.swift in Sources */,
 				F6C7DE972922833500DA622D /* MyProfileSettingView.swift in Sources */,
 				F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */,
+				F6623FCC292D394800DDD7D8 /* SearchCollectionViewCell.swift in Sources */,
 				F6C7DEBF2923C6F400DA622D /* MySettingView.swift in Sources */,
 				F65167242919083300E362F0 /* Font.swift in Sources */,
 				F6516761291A908800E362F0 /* SeSACTextFIeld.swift in Sources */,
@@ -1075,6 +1108,7 @@
 				F6C7DEB02922BF8C00DA622D /* SeSACReviewReusableView.swift in Sources */,
 				F65167192918F25300E362F0 /* AuthViewController.swift in Sources */,
 				F651675B291A74F300E362F0 /* GenderViewModel.swift in Sources */,
+				F6623FC9292D383300DDD7D8 /* SectionModel.swift in Sources */,
 				F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */,
 				F6C7DEC32923C70000DA622D /* MySettingModel.swift in Sources */,
 				F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */,
@@ -1103,6 +1137,7 @@
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
 				F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */,
 				F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */,
+				F6623FCE292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
 			);
@@ -1358,6 +1393,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yhkaplan/DoubleSlider.git";
@@ -1417,6 +1460,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F651672529190DD800E362F0 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		F6623FD0292D3D8F00DDD7D8 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		F6623FD2292D3D8F00DDD7D8 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		F6C7DEB22923B22400DA622D /* DoubleSlider */ = {
 			isa = XCSwiftPackageProductDependency;
