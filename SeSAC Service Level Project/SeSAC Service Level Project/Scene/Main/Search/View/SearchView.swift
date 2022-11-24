@@ -57,7 +57,7 @@ extension UICollectionViewLayout {
     static func fixedSpacedFlowLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(70),
+            widthDimension: .estimated(150),
             heightDimension: .absolute(32)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

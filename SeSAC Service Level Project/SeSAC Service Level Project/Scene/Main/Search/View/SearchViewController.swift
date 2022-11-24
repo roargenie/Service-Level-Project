@@ -12,6 +12,7 @@ import FirebaseAuth
 import RxDataSources
 import Differentiator
 import CoreLocation
+import Toast
 
 final class SearchViewController: BaseViewController {
     
@@ -72,7 +73,6 @@ final class SearchViewController: BaseViewController {
     
     override func configureUI() {
         mainView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-        mainView.searchBar.delegate = self
     }
     
     override func setNavigation() {
@@ -102,19 +102,47 @@ final class SearchViewController: BaseViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .bind { vc, value in
-                //                print("===================================", value)
-                vc.requestData[1].items.append(contentsOf: ["\(value) X"])
-                print(vc.requestData[1].items)
-                vc.sectionRelay.accept(vc.requestData)
+                let strArr = value.components(separatedBy: " ")
+                strArr.forEach {
+                    if $0.count > 8 {
+                        vc.view.makeToast("1~8글자까지 작성 가능 합니다", duration: 1, position: .center)
+                    } else {
+                        if vc.requestData[1].items.count < 8 {
+                            vc.requestData[1].items.append(contentsOf: [StudyList(study: "\($0) X")])
+                            print(vc.requestData[1].items)
+                            vc.sectionRelay.accept(vc.requestData)
+                        } else {
+                            vc.view.makeToast("8개 이상 추가할 수 없습니다", duration: 1, position: .center)
+                        }
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.searchBar.rx.text
+            .orEmpty
+            .map { $0.count < 9 }
+            .withUnretained(self)
+            .bind { vc, value in
+                
             }
             .disposed(by: disposeBag)
         
         output.celltap
-            .distinctUntilChanged()
+        //            .distinctUntilChanged()
             .withUnretained(self)
             .bind { (vc, index) in
-                vc.requestData[1].items.append("\(vc.requestData[0].items[index.item]) X")
-                print(index.item)
+                if index.section == 0 {
+                    if vc.requestData[1].items.count < 8 {
+                        vc.requestData[1].items.append(contentsOf: [StudyList(study: "\(vc.requestData[0].items[index.item].study) X")])
+                        print(index.item)
+                    } else {
+                        vc.view.makeToast("8개 이상 추가할 수 없습니다", duration: 1, position: .center)
+                    }
+                } else {
+                    vc.requestData[1].items.remove(at: index.item)
+                    print(vc.requestData[1].items.count)
+                }
                 vc.sectionRelay.accept(vc.requestData)
             }
             .disposed(by: disposeBag)
@@ -123,11 +151,11 @@ final class SearchViewController: BaseViewController {
     private func configureDatsSource() {
         rxDataSource = RxCollectionViewSectionedAnimatedDataSource<SearchSection>(configureCell: { (datasource, collectionView, indexPath, item) in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-            //            guard let self = self else { return }
+//            guard let self = self else { return }
             switch indexPath.section {
             case 0:
                 if indexPath.item > self.fromRecommend.count - 1 {
-                    cell.button.setupButton(title: "\(item)",
+                    cell.button.setupButton(title: "\(item.study)",
                                             titleColor: Color.black,
                                             font: SeSACFont.title4.font,
                                             backgroundColor: Color.white,
@@ -135,7 +163,7 @@ final class SearchViewController: BaseViewController {
                                             borderColor: Color.gray4)
                     
                 } else {
-                    cell.button.setupButton(title: "\(item)",
+                    cell.button.setupButton(title: "\(item.study)",
                                             titleColor: Color.error,
                                             font: SeSACFont.title4.font,
                                             backgroundColor: Color.white,
@@ -143,7 +171,7 @@ final class SearchViewController: BaseViewController {
                                             borderColor: Color.error)
                 }
             case 1:
-                cell.button.setupButton(title: "\(item)",
+                cell.button.setupButton(title: "\(item.study)",
                                         titleColor: Color.green,
                                         font: SeSACFont.title4.font,
                                         backgroundColor: Color.white,
@@ -155,7 +183,6 @@ final class SearchViewController: BaseViewController {
             cell.button.isEnabled = false
             return cell
         }, configureSupplementaryView: { (dataSource, collectionView, kind, indexPath) in
-            print("Kind: \\(kind)")
             
             switch kind {
             case UICollectionView.elementKindSectionHeader:
@@ -178,18 +205,24 @@ final class SearchViewController: BaseViewController {
             if statusCode == 401 {
                 self.refreshIdToken()
             }
-            print(statusCode)
             switch response {
             case .success(let value):
                 guard let value = value else { return }
                 // 각각의 배열이 합쳐졌을때 중복을 제거해야 할 것 같은데.. 서버통신할때 걸러서 받을 순 없을것 같고.. rxDataSource에 넣을때 바로 걸러서 넣는것도 실패
                 var stringArr = [String]()
-                self.requestData[0].items.append(contentsOf: value.fromRecommend)
-                value.fromQueueDB.forEach { stringArr.append(contentsOf: $0.studylist) }
-                value.fromQueueDBRequested.forEach { stringArr.append(contentsOf: $0.studylist) }
-                // 이렇게까지 해야하나???????????
-                self.requestData[0].items.append(contentsOf: self.removeDuplicate(stringArr))
+                value.fromRecommend.forEach { self.requestData[0].items.append(StudyList(study: $0)) }
+                value.fromQueueDB.forEach { $0.studylist.forEach { stringArr.append($0) } }
+                value.fromQueueDBRequested.forEach { $0.studylist.forEach { stringArr.append($0) } }
+                
                 self.fromRecommend.append(contentsOf: value.fromRecommend)
+                let removedArr = self.removeDuplicate(stringArr)
+                removedArr.forEach { self.requestData[0].items.append(StudyList(study: $0)) }
+//                self.requestData[0].items.append(contentsOf: value)
+//                value.fromQueueDB.forEach { stringArr.append(contentsOf: $0.studylist) }
+//                value.fromQueueDBRequested.forEach { stringArr.append(contentsOf: $0.studylist) }
+                print("=============🟢=============", removedArr)
+                // 이렇게까지 해야하나???????????
+//                self.requestData[0].items.append(contentsOf: self.removeDuplicate(stringArr))
                 print("=============🟢=============", self.requestData[0].items)
                 self.sectionRelay.accept(self.requestData)
             case .failure(let error):
@@ -234,8 +267,4 @@ final class SearchViewController: BaseViewController {
         }
         mainView.searchButton.layer.cornerRadius = 8
     }
-}
-
-extension SearchViewController: UISearchBarDelegate {
-    
 }

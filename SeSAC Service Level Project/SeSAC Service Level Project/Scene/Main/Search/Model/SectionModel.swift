@@ -8,35 +8,34 @@
 import Foundation
 import RxDataSources
 
-//struct StudyList: Hashable {
-//    let study: String
-//    let recommend: String
-//
-//    init(study: String, recommend: String) {
-//        self.study = study
-//        self.recommend = recommend
-//    }
-//}
-//
-//extension StudyList: IdentifiableType, Equatable {
-//    var identity: String {
-//        return UUID().uuidString
-//    }
-//}
+struct StudyList: Hashable {
+    let study: String
+    
+    init(study: String) {
+        self.study = study
+    }
+}
 
-struct SearchSection: Hashable {
+extension StudyList: IdentifiableType, Equatable {
+    var identity: String {
+        return UUID().uuidString
+    }
+}
+
+struct SearchSection {
     let header: String
-    var items: [String]
+    var items: [StudyList]
 }
 
 extension SearchSection: AnimatableSectionModelType {
-    typealias Item = String
+    typealias Item = StudyList
+    typealias Identity = String
     
     var identity: String {
         return header
     }
     
-    init(original: SearchSection, items: [String]) {
+    init(original: SearchSection, items: [Item]) {
         self = original
         self.items = items
     }
