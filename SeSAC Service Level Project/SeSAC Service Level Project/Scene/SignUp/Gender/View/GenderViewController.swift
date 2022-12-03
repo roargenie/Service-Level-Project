@@ -49,6 +49,16 @@ final class GenderViewController: BaseViewController {
         let input = GenderViewModel.Input(celltap: mainView.collectionView.rx.itemSelected, tap: mainView.nextButton.rx.tap)
         let output = viewModel.transform(input: input)
         
+        viewModel.statusRelay
+            .asSignal()
+            .withUnretained(self)
+            .emit { (vc, value) in
+                if value == 200 {
+                    vc.transition(TabbarViewController(), transitionStyle: .changeRootVC)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         output.gender
             .bind(to: mainView.collectionView.rx.items(
                 cellIdentifier: GenderCollectionViewCell.reuseIdentifier,
@@ -83,63 +93,14 @@ final class GenderViewController: BaseViewController {
                     print("남자")
                     UserDefaults.standard.set(1, forKey: Matrix.gender)
                     print(UserDefaults.standard.integer(forKey: Matrix.gender))
-                    vc.requestSignUp()
                 } else {
                     print("여자")
                     UserDefaults.standard.set(0, forKey: Matrix.gender)
                     print(UserDefaults.standard.integer(forKey: Matrix.gender))
-                    vc.requestSignUp()
                 }
+                vc.viewModel.requestSignUp()
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func requestSignUp() {
-        let userDefaults = UserDefaults.standard
-        APIManager.shared.requestData(SignUpStatus.self,
-                                      router: SeSACRouter
-            .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
-                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken) ?? "dzjnejNDh0d0u1aLzfS547:APA91bFvQSjDVFC4-2IA0QQ08KqsEKwIoK2hFBZIfdyNLPd22PvgLD6YM_kyQgv0BIK-1zjltbbKYQTGK50Pn21bctsuEC46qo7RDkcImbzyZBe0-ffMqhFhL4DO5tbP0Ri_Wn-vRVF5",
-                           nick: userDefaults.string(forKey: Matrix.nickname)!,
-                           birth: userDefaults.string(forKey: Matrix.birth)!,
-                           email: userDefaults.string(forKey: Matrix.email)!,
-                           gender: userDefaults.integer(forKey: Matrix.gender)))) { [weak self] response, statusCode in
-            print("================상태코드", statusCode.value)
-            guard let statusCode = statusCode else { return }
-            guard let self = self else { return }
-            switch statusCode {
-            case 200:
-                print("홈 화면 이동")
-                self.pushHomeVC()
-            case 201:
-                print("이미 가입한 유저")
-                self.pushHomeVC()
-            case 202:
-                print("닉네임 변경 후 다시 요청")
-            case 401:
-                self.refreshIdToken()
-            case 500:
-                print("Server Error")
-            case 501:
-                print("Client Error")
-            default:
-                break
-            }
-        }
-//        APIManager.shared.requestData(router: SeSACRouter
-//            .signup(SignUp(phoneNumber: userDefaults.string(forKey: Matrix.phoneNumber)!,
-//                           fcMtoken: userDefaults.string(forKey: Matrix.FCMToken)!,
-//                           nick: userDefaults.string(forKey: Matrix.nickname)!,
-//                           birth: userDefaults.string(forKey: Matrix.birth)!,
-//                           email: userDefaults.string(forKey: Matrix.email)!,
-//                           gender: userDefaults.integer(forKey: Matrix.gender)))) { <#Result<Decodable, APIError>#>, <#Int?#> in
-//            <#code#>
-//        }
-    }
-    
-    private func pushHomeVC() {
-        let vc = TabbarViewController()
-        transition(vc, transitionStyle: .changeRootVC)
     }
     
     @objc private func backButtonTapped() {

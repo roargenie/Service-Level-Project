@@ -10,6 +10,7 @@ import UIKit
 final class MyProfileSettingView: BaseView {
     
     let tableView: UITableView = UITableView(frame: .zero, style: .plain).then {
+        $0.rowHeight = UITableView.automaticDimension
         $0.separatorStyle = .none
         $0.keyboardDismissMode = .onDrag
         $0.register(ProfileNickNameTableViewCell.self, forCellReuseIdentifier: ProfileNickNameTableViewCell.reuseIdentifier)

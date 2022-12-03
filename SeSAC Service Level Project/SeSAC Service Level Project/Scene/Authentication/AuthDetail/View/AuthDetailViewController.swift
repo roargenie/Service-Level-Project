@@ -52,6 +52,18 @@ final class AuthDetailViewController: BaseViewController {
         let input = AuthDetailViewModel.Input(text: mainView.authNumberTextField.rx.text, tap: mainView.startButton.rx.tap)
         let output = viewModel.transform(input: input)
         
+        viewModel.statusRelay
+            .asSignal()
+            .withUnretained(self)
+            .emit { (vc, value) in
+                if value == 200 {
+                    vc.transition(TabbarViewController(), transitionStyle: .changeRootVC)
+                } else if value == 406 {
+                    vc.transition(NicknameViewController(), transitionStyle: .push)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         output.validation
             .withUnretained(self)
             .bind { (vc, value) in
@@ -80,42 +92,6 @@ final class AuthDetailViewController: BaseViewController {
                 value ? vc.verification() : vc.view.makeToast("인증번호가 올바르지 않습니다", duration: 1, position: .center)
             }
             .disposed(by: disposeBag)
-    }
-    
-    private func requestLogin() {
-        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] response, status in
-            
-            switch response {
-            case .success(let value):
-                print(value)
-                self?.pushHomeVC()
-            case .failure(let error):
-                switch error {
-                case .firebaseTokenErr:
-                    self?.refreshIdToken()
-                    self?.pushHomeVC()
-                    print(error.rawValue)
-                case .notSignUp:
-                    print(error.rawValue)
-                    self?.pushNicknameVC()
-                case .serverError:
-                    print(error.rawValue)
-                case .clientError:
-                    print(error.rawValue)
-                }
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func pushNicknameVC() {
-        let vc = NicknameViewController()
-        transition(vc, transitionStyle: .push)
-    }
-    
-    private func pushHomeVC() {
-        let vc = TabbarViewController()
-        transition(vc, transitionStyle: .changeRootVC)
     }
     
     @objc private func backButtonTapped() {
@@ -158,7 +134,7 @@ extension AuthDetailViewController {
             
             print("LogIn Success!!")
             print("\\(authResult!)")
-            self?.requestLogin()
+            self?.viewModel.requestLogin()
         }
     }
     

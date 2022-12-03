@@ -173,9 +173,6 @@ final class HomeViewController: BaseViewController {
             .search(Search(lat: center.latitude,
                            long: center.longitude))) { [weak self] response, statusCode in
             guard let self = self else { return }
-            if statusCode == 401 {
-                self.refreshIdToken()
-            }
             print(statusCode)
             switch response {
             case .success(let value):
@@ -193,7 +190,6 @@ final class HomeViewController: BaseViewController {
         print(#function, "================================")
         APIManager.shared.requestData(MyQueueState.self,
                                       router: SeSACRouter.myQueueState) { response, statusCode in
-            print(response)
             guard let statusCode = statusCode else { return }
             print("=============status", statusCode)
             switch response {
@@ -201,7 +197,6 @@ final class HomeViewController: BaseViewController {
                 guard let value = value else { return }
                 print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
             case .failure(let error):
-                print(error.rawValue)
                 print(error.localizedDescription)
             }
         }
@@ -209,7 +204,7 @@ final class HomeViewController: BaseViewController {
     
     private func pushSearchVC() {
         let vc = SearchViewController()
-        vc.centerCoordinate = centerCoordinate
+//        vc.centerCoordinate = centerCoordinate
         transition(vc, transitionStyle: .push)
     }
     
@@ -303,7 +298,9 @@ extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = mainView.mapView.centerCoordinate
         centerCoordinate = center
-        print(center.latitude, center.longitude)
+        UserDefaults.standard.set(center.longitude, forKey: "long")
+        UserDefaults.standard.set(center.latitude, forKey: "lat")
+//        print(center.latitude, center.longitude)
         // 여기서도 서버통신 해야할듯?
         requestSearch(center: center)
     }

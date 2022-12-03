@@ -11,7 +11,6 @@ import RxCocoa
 import FirebaseAuth
 import RxDataSources
 import Differentiator
-import CoreLocation
 import Toast
 
 final class SearchViewController: BaseViewController {
@@ -23,20 +22,9 @@ final class SearchViewController: BaseViewController {
     
     private var disposeBag = DisposeBag()
     
-    var centerCoordinate: CLLocationCoordinate2D?
-    
-    private var fromRecommend: [String] = []
-    
     private var myStudy: [String] = []
     
     private var rxDataSource: RxCollectionViewSectionedAnimatedDataSource<SearchSection>!
-    
-    private var requestData = [
-        SearchSection(header: "지금 주변에는", items: []),
-        SearchSection(header: "내가 하고 싶은", items: [])
-    ]
-    
-    private var sectionRelay = BehaviorRelay(value: [SearchSection]())
     
     // MARK: - LifeCycle
     
@@ -51,14 +39,12 @@ final class SearchViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: mainView.searchBar)
         configureDatsSource()
         bind()
-        if let coordinate = centerCoordinate {
-            requestStudy(center: coordinate)
-        }
+        viewModel.requestStudy()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        navigationController?.navigationBar.isHidden = false
+//        navigationController?.navigationBar.isHidden = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -72,7 +58,7 @@ final class SearchViewController: BaseViewController {
     // MARK: - OverrideMethod
     
     override func configureUI() {
-        mainView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        
     }
     
     override func setNavigation() {
@@ -89,10 +75,10 @@ final class SearchViewController: BaseViewController {
     
     private func bind() {
         
-        let input = SearchViewModel.Input(celltap: mainView.collectionView.rx.itemSelected)
+        let input = SearchViewModel.Input(searchButtonTap: mainView.searchButton.rx.tap, celltap: mainView.collectionView.rx.itemSelected)
         let output = viewModel.transform(input: input)
         
-        sectionRelay
+        viewModel.sectionRelay
             .asDriver()
             .drive(mainView.collectionView.rx.items(dataSource: rxDataSource))
             .disposed(by: disposeBag)
@@ -102,48 +88,78 @@ final class SearchViewController: BaseViewController {
             .distinctUntilChanged()
             .withUnretained(self)
             .bind { vc, value in
-                let strArr = value.components(separatedBy: " ")
-                strArr.forEach {
+                var strArr: [String] = []
+                strArr.append(contentsOf: value.components(separatedBy: " "))
+                let removedArr = vc.viewModel.removeDuplicate(strArr)
+                removedArr.forEach {
                     if $0.count > 8 {
                         vc.view.makeToast("1~8글자까지 작성 가능 합니다", duration: 1, position: .center)
                     } else {
-                        if vc.requestData[1].items.count < 8 {
-                            vc.requestData[1].items.append(contentsOf: [StudyList(study: "\($0) X")])
-                            print(vc.requestData[1].items)
-                            vc.sectionRelay.accept(vc.requestData)
+                        var currentArr: [String] = []
+                        vc.viewModel.requestData[1].items.forEach { currentArr.append($0.study) }
+                        print(currentArr)
+                        if currentArr.contains($0) {
+                            vc.view.makeToast("이미 추가된 목록이 있어요", duration: 1, position: .center)
                         } else {
-                            vc.view.makeToast("8개 이상 추가할 수 없습니다", duration: 1, position: .center)
+                            if vc.viewModel.requestData[1].items.count < 8 {
+                                vc.viewModel.requestData[1].items.append(contentsOf: [StudyList(study: $0)])
+                                print(vc.viewModel.requestData[1].items)
+                                vc.viewModel.sectionRelay.accept(vc.viewModel.requestData)
+                            } else {
+                                vc.view.makeToast("8개 이상 추가할 수 없습니다", duration: 1, position: .center)
+                            }
                         }
                     }
                 }
             }
             .disposed(by: disposeBag)
         
-        mainView.searchBar.rx.text
-            .orEmpty
-            .map { $0.count < 9 }
+        viewModel.statusRelay
+            .asSignal()
             .withUnretained(self)
-            .bind { vc, value in
-                
+            .emit { (vc, value) in
+                if value == 200 {
+                    vc.transition(SearchResultViewController(), transitionStyle: .push)
+                } else if value == 201 {
+                    vc.view.makeToast("신고가 누적되어 이용하실 수 없습니다", duration: 1, position: .center)
+                } else if value == 203 {
+                    vc.view.makeToast("스터디 취소 패널티로, 1분동안 이용하실 수 없습니다", duration: 1, position: .center)
+                } else if value == 204 {
+                    vc.view.makeToast("스터디 취소 패널티로, 2분동안 이용하실 수 없습니다", duration: 1, position: .center)
+                } else if value == 205 {
+                    vc.view.makeToast("스터디 취소 패널티로, 3분동안 이용하실 수 없습니다", duration: 1, position: .center)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.searchButtonTap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.requestSeSACSearch()
             }
             .disposed(by: disposeBag)
         
         output.celltap
-        //            .distinctUntilChanged()
             .withUnretained(self)
             .bind { (vc, index) in
                 if index.section == 0 {
-                    if vc.requestData[1].items.count < 8 {
-                        vc.requestData[1].items.append(contentsOf: [StudyList(study: "\(vc.requestData[0].items[index.item].study) X")])
-                        print(index.item)
+                    if vc.viewModel.requestData[1].items.count < 8 {
+                        var currentArr: [String] = []
+                        vc.viewModel.requestData[1].items.forEach { currentArr.append($0.study) }
+                        if currentArr.contains(vc.viewModel.requestData[0].items[index.item].study) {
+                            vc.view.makeToast("이미 추가된 목록이 있어요", duration: 1, position: .center)
+                        } else {
+                            vc.viewModel.requestData[1].items.append(contentsOf: [StudyList(study: vc.viewModel.requestData[0].items[index.item].study)])
+                            print(index.item)
+                        }
                     } else {
                         vc.view.makeToast("8개 이상 추가할 수 없습니다", duration: 1, position: .center)
                     }
                 } else {
-                    vc.requestData[1].items.remove(at: index.item)
-                    print(vc.requestData[1].items.count)
+                    vc.viewModel.requestData[1].items.remove(at: index.item)
+                    print(vc.viewModel.requestData[1].items.count)
                 }
-                vc.sectionRelay.accept(vc.requestData)
+                vc.viewModel.sectionRelay.accept(vc.viewModel.requestData)
             }
             .disposed(by: disposeBag)
     }
@@ -151,32 +167,16 @@ final class SearchViewController: BaseViewController {
     private func configureDatsSource() {
         rxDataSource = RxCollectionViewSectionedAnimatedDataSource<SearchSection>(configureCell: { (datasource, collectionView, indexPath, item) in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-//            guard let self = self else { return }
+            cell.setup(data: item.study)
             switch indexPath.section {
             case 0:
-                if indexPath.item > self.fromRecommend.count - 1 {
-                    cell.button.setupButton(title: "\(item.study)",
-                                            titleColor: Color.black,
-                                            font: SeSACFont.title4.font,
-                                            backgroundColor: Color.white,
-                                            borderWidth: 1,
-                                            borderColor: Color.gray4)
-                    
+                if indexPath.item > self.viewModel.fromRecommend.count - 1 {
+                    cell.button.type = .gray
                 } else {
-                    cell.button.setupButton(title: "\(item.study)",
-                                            titleColor: Color.error,
-                                            font: SeSACFont.title4.font,
-                                            backgroundColor: Color.white,
-                                            borderWidth: 1,
-                                            borderColor: Color.error)
+                    cell.button.type = .red
                 }
             case 1:
-                cell.button.setupButton(title: "\(item.study)",
-                                        titleColor: Color.green,
-                                        font: SeSACFont.title4.font,
-                                        backgroundColor: Color.white,
-                                        borderWidth: 1,
-                                        borderColor: Color.green)
+                cell.button.type = .green
             default:
                 break
             }
@@ -196,58 +196,8 @@ final class SearchViewController: BaseViewController {
         })
     }
     
-    private func requestStudy(center: CLLocationCoordinate2D) {
-        APIManager.shared.requestData(SearchResult.self,
-                                      router: SeSACRouter
-            .search(Search(lat: center.latitude,
-                           long: center.longitude))) { [weak self] response, statusCode in
-            guard let self = self else { return }
-            if statusCode == 401 {
-                self.refreshIdToken()
-            }
-            switch response {
-            case .success(let value):
-                guard let value = value else { return }
-                // 각각의 배열이 합쳐졌을때 중복을 제거해야 할 것 같은데.. 서버통신할때 걸러서 받을 순 없을것 같고.. rxDataSource에 넣을때 바로 걸러서 넣는것도 실패
-                var stringArr = [String]()
-                value.fromRecommend.forEach { self.requestData[0].items.append(StudyList(study: $0)) }
-                value.fromQueueDB.forEach { $0.studylist.forEach { stringArr.append($0) } }
-                value.fromQueueDBRequested.forEach { $0.studylist.forEach { stringArr.append($0) } }
-                
-                self.fromRecommend.append(contentsOf: value.fromRecommend)
-                let removedArr = self.removeDuplicate(stringArr)
-                removedArr.forEach { self.requestData[0].items.append(StudyList(study: $0)) }
-//                self.requestData[0].items.append(contentsOf: value)
-//                value.fromQueueDB.forEach { stringArr.append(contentsOf: $0.studylist) }
-//                value.fromQueueDBRequested.forEach { stringArr.append(contentsOf: $0.studylist) }
-                print("=============🟢=============", removedArr)
-                // 이렇게까지 해야하나???????????
-//                self.requestData[0].items.append(contentsOf: self.removeDuplicate(stringArr))
-                print("=============🟢=============", self.requestData[0].items)
-                self.sectionRelay.accept(self.requestData)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func removeDuplicate (_ array: [String]) -> [String] {
-        var removedArray = [String]()
-        for i in array {
-            if removedArray.contains(i) == false {
-                removedArray.append(i)
-            }
-        }
-        return removedArray
-    }
-    
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func searchButtonTapped() {
-        let vc = SearchResultViewController()
-        transition(vc, transitionStyle: .push)
     }
     
     @objc func keyboardWillAppear() {

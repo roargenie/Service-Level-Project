@@ -56,6 +56,8 @@ import UIKit
     static let woman = UIImage(named: "woman")
     static let write = UIImage(named: "write")
     
+    static let xmark = UIImage(named: "Xmark")
+    
     static let searchDefault = UIImage(named: "default")
     static let searchMatching = UIImage(named: "matching")
     static let searchMatched = UIImage(named: "matched")
@@ -63,15 +65,15 @@ import UIKit
     
     static let img = UIImage(named: "img")
     static let profileImg = UIImage(named: "sesac_bg_01")
-    static let sesacface = UIImage(named: "sesac_face")
-    
+        
     //MARK: - SeSACProfile
     
-    static let sesacface0 = UIImage(named: "sesac_face_1")
-    static let sesacface1 = UIImage(named: "sesac_face_2")
-    static let sesacface2 = UIImage(named: "sesac_face_3")
-    static let sesacface3 = UIImage(named: "sesac_face_4")
-    static let sesacface4 = UIImage(named: "sesac_face_5")
+    static let sesacface = UIImage(named: "sesac_face")
+    static let sesacface0 = UIImage(named: "sesac_face_0")
+    static let sesacface1 = UIImage(named: "sesac_face_1")
+    static let sesacface2 = UIImage(named: "sesac_face_2")
+    static let sesacface3 = UIImage(named: "sesac_face_3")
+    static let sesacface4 = UIImage(named: "sesac_face_4")
 
     // MARK: - Splash
     

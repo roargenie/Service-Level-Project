@@ -97,4 +97,10 @@ final class NearSeSACView: BaseView {
             make.centerX.equalTo(emptyImageView.snp.centerX)
         }
     }
+    
+    func setupEmptyStateView(value: [FromQueueDB]) {
+        emptyView.isHidden = value.isEmpty ? false : true
+        studyChangeButton.isHidden = value.isEmpty ? false : true
+        refreshButton.isHidden = value.isEmpty ? false : true
+    }
 }

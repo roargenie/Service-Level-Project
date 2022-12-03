@@ -98,5 +98,14 @@ final class RequestSeSACView: BaseView {
             make.centerX.equalTo(emptyImageView.snp.centerX)
         }
     }
+    
+    //MARK: - empty state view 히든 처리
+    
+    func setupEmptyStateView(value: [FromQueueDB]) {
+        emptyView.isHidden = value.isEmpty ? false : true
+        studyChangeButton.isHidden = value.isEmpty ? false : true
+        refreshButton.isHidden = value.isEmpty ? false : true
+    }
+
 }
 

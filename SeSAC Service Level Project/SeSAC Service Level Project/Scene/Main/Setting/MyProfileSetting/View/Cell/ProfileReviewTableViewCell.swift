@@ -18,11 +18,11 @@ final class ProfileReviewTableViewCell: BaseTableViewCell {
     let maleButton: SeSACButton = SeSACButton().then {
         $0.setupButton(
             title: "남자",
-            titleColor: Color.white,
+            titleColor: Color.black,
             font: SeSACFont.body3.font,
-            backgroundColor: Color.green,
-            borderWidth: 0,
-            borderColor: .clear)
+            backgroundColor: Color.white,
+            borderWidth: 1,
+            borderColor: Color.gray4)
     }
     
     let femaleButton: SeSACButton = SeSACButton().then {
@@ -142,7 +142,7 @@ final class ProfileReviewTableViewCell: BaseTableViewCell {
         ageSlider.snp.makeConstraints { make in
             make.top.equalTo(ageRangeLabel.snp.bottom).offset(24)
             make.directionalHorizontalEdges.equalToSuperview().inset(28)
-            make.height.equalTo(24)
+            make.height.equalTo(28)
             make.bottom.equalToSuperview().inset(18)
         }
     }

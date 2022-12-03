@@ -15,6 +15,8 @@ final class HomeViewModel {
     var maleGenderButton = BehaviorRelay(value: false)
     var femaleGenderButton = BehaviorRelay(value: false)
     
+    var searchButtonState = BehaviorRelay<[MyQueueState]>(value: [])
+    
     struct Input {
         let searchButtonTap: ControlEvent<Void>
         let wholeGenderButtonTap: ControlEvent<Void>
@@ -36,4 +38,26 @@ final class HomeViewModel {
                       maleGenderButtonTap: input.maleGenderButtonTap,
                       femaleGenderButtonTap: input.femaleGenderButtonTap)
     }
+    
+    func requestMyQueueState() {
+        print(#function, "================================")
+        APIManager.shared.requestData(MyQueueState.self,
+                                      router: SeSACRouter.myQueueState) { response, statusCode in
+            print(response)
+            guard let statusCode = statusCode else { return }
+            print("=============status", statusCode)
+            switch response {
+            case .success(let value):
+                guard let value = value else { return }
+                print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
+            case .failure(let error):
+                print(error.rawValue)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    
+    
 }

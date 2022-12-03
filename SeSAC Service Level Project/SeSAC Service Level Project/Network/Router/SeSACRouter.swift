@@ -13,6 +13,10 @@ enum SeSACRouter {
     case signup(_ signup: SignUp)
     case search(_ search: Search)
     case myQueueState
+    case queue(_ queue: MyQueue)
+    case queueStop
+    case myPage(_ mypage: MyPage)
+    case studyRequest(_ studyRequest: StudyRequest)
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -29,6 +33,12 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/queue/search"
         case .myQueueState:
             return "/v1/queue/myQueueState"
+        case .queue, .queueStop:
+            return "/v1/queue"
+        case .myPage:
+            return "/v1/user/mypage"
+        case .studyRequest:
+            return "/v1/queue/studyrequest"
         }
     }
 
@@ -42,8 +52,32 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login, .myQueueState:
             return .get
-        case .signup, .search:
+        case .signup, .search, .queue, .studyRequest:
             return .post
+        case .myPage:
+            return .put
+        case .queueStop:
+            return .delete
+        }
+    }
+    
+    var parameters: Parameters {
+        switch self {
+        case .queue(let queue):
+            return ["long": queue.long,
+                    "lat": queue.lat,
+                    "studylist": queue.studylist]
+        default:
+            return ["":""]
+        }
+    }
+    
+    var encoding: ParameterEncoding {
+        switch self {
+        case .queue:
+            return URLEncoding(arrayEncoding: .noBrackets)
+        default:
+            return URLEncoding.default
         }
     }
     
@@ -59,10 +93,16 @@ extension SeSACRouter: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder().encode(signup, into: request)
         case .search(let search):
             request = try URLEncodedFormParameterEncoder().encode(search, into: request)
+        case .myPage(let mypage):
+            request = try URLEncodedFormParameterEncoder().encode(mypage, into: request)
+        case .queue:
+            request = try URLEncoding(arrayEncoding: .noBrackets).encode(request, with: parameters)
+        case .studyRequest(let studyReqeust):
+            request = try URLEncodedFormParameterEncoder().encode(studyReqeust, into: request)
         default:
             return request
         }
-
+        
         return request
     }
 }

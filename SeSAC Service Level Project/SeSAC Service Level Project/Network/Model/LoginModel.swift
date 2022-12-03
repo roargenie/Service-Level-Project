@@ -9,7 +9,6 @@ import Foundation
 
 //MARK: - Login
 
-
 struct Login: Codable {
     let id: String
     let v: Int

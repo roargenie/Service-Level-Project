@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 extension UIViewController {
     
@@ -16,6 +15,7 @@ extension UIViewController {
         case present
         case push
         case changeRootVC
+        case alert
     }
     
     func transition<T: UIViewController>(_ viewController: T, transitionStyle: TransitionStyle) {
@@ -43,20 +43,13 @@ extension UIViewController {
             let sceneDelegate = windowScene?.delegate as? SceneDelegate
             sceneDelegate?.window?.rootViewController = viewController
             sceneDelegate?.window?.makeKeyAndVisible()
+        case .alert:
+            viewController.modalPresentationStyle = .overCurrentContext
+            self.present(viewController, animated: false)
         }
     }
     
-    func refreshIdToken() {
-        let currentUser = Auth.auth().currentUser
-        currentUser?.getIDTokenForcingRefresh(true, completion: { idToken, error in
-            if let error = error {
-                print(error.localizedDescription)
-                print("LogIn Failed...")
-            }
-            UserDefaults.standard.set(idToken, forKey: Matrix.IdToken)
-            print("Refresh idToken")
-        })
-    }
+    
 }
 
 extension Sequence where Element: Hashable {

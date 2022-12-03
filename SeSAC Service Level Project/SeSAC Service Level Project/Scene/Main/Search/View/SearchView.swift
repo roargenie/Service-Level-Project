@@ -29,6 +29,9 @@ final class SearchView: BaseView {
                        backgroundColor: Color.green,
                        borderWidth: 1,
                        borderColor: .clear)
+        var config = UIButton.Configuration.plain()
+        config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16)
+        $0.configuration = config
 //        $0.isEnabled = false
     }
     
@@ -57,14 +60,14 @@ extension UICollectionViewLayout {
     static func fixedSpacedFlowLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(150),
+            widthDimension: .estimated(100),
             heightDimension: .absolute(32)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(100)
+            heightDimension: .estimated(150)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])

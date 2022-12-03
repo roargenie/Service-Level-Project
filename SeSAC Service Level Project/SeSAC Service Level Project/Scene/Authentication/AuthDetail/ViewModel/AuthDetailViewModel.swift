@@ -12,6 +12,8 @@ import RxCocoa
 
 final class AuthDetailViewModel: CommonViewModel {
     
+    var statusRelay = PublishRelay<Int>()
+    
     struct Input {
         let text: ControlProperty<String?> // - 1
         let tap: ControlEvent<Void>
@@ -36,5 +38,12 @@ final class AuthDetailViewModel: CommonViewModel {
             .withLatestFrom(valid)
         
         return Output(validation: valid, tap: tap, messageText: messageText)
+    }
+    
+    func requestLogin() {
+        APIManager.shared.requestData(Login.self, router: SeSACRouter.login) { [weak self] response, status in
+            guard let statusCode = status else { return }
+            self?.statusRelay.accept(statusCode)
+        }
     }
 }
