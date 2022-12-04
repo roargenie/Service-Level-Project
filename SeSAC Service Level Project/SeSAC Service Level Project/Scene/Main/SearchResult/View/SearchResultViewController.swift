@@ -90,11 +90,9 @@ final class SearchResultViewController: BaseViewController {
             switch statusCode {
             case 200:
                 print(statusCode)
+                self.navigationController?.popToRootViewController(animated: true)
             case 201:
                 self.view.makeToast("스터디를 함께하기로 하신 약속이 있어요!", duration: 1, position: .center)
-            case 401:
-//                self.refreshIdToken()
-                print(statusCode)
             default:
                 break
             }

@@ -20,6 +20,8 @@ final class RequestSeSACViewController: BaseViewController {
     
     private var isSelected: [Bool] = []
     
+    private var uid: String = ""
+    
     //MARK: - LifeCycle
         
     override func loadView() {
@@ -69,7 +71,12 @@ final class RequestSeSACViewController: BaseViewController {
 //                        self.isSelected[row] = !self.isSelected[row]
 //                    }
 //                    .disposed(by: cell.disposeBag)
-                
+                cell.requestButton.rx.tap
+                    .bind { _ in
+                        self?.presentAlert()
+                        self?.uid = item.uid
+                    }
+                    .disposed(by: cell.disposeBag)
                 if self?.isSelected[row] == true {
                     cell.setupExpendedCell(hidden: false, image: Icon.uparrow)
                 } else {
@@ -78,11 +85,37 @@ final class RequestSeSACViewController: BaseViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        
+        viewModel.acceptStatus
+            .withUnretained(self)
+            .bind { vc, value in
+                if value == 200 {
+                    vc.view.makeToast("스터디를 수락했습니다", duration: 1, position: .center)
+                } else if value == 201 {
+                    vc.view.makeToast("상대방이 이미 다른 새싹과 스터디를 함께 하는 중입니다", duration: 1, position: .center)
+                } else if value == 202 {
+                    vc.view.makeToast("상대방이 스터디 찾기를 그만두었습니다", duration: 1, position: .center)
+                } else if value == 203 {
+                    vc.view.makeToast("앗! 누군가가 나의 스터디를 수락하였어요!", duration: 1, position: .center)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func presentAlert() {
+        let vc = CustomAlertViewController()
+        vc.alertType = .studyAccept
+        vc.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        transition(vc, transitionStyle: .alert)
     }
 
     @objc private func moreButtonTapped(_ sender: UIButton) {
         isSelected[sender.tag] = !isSelected[sender.tag]
         mainView.tableView.reloadData()
+    }
+    
+    @objc private func doneButtonTapped() {
+        viewModel.requestAcceptStudy(uid)
     }
     
 }

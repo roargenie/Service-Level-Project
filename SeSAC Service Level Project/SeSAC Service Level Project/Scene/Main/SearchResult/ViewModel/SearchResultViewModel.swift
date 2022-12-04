@@ -15,6 +15,7 @@ final class SearchResultViewModel {
     var requestSeSAC = BehaviorRelay<[FromQueueDB]>(value: [])
     
     var requestStatus = PublishRelay<Int>()
+    var acceptStatus = PublishRelay<Int>()
     
     struct Input {
         
@@ -71,8 +72,18 @@ final class SearchResultViewModel {
                                       router: SeSACRouter.studyRequest(StudyRequest(otheruid: uid))) { [weak self] response, statusCode in
             guard let statusCode = statusCode,
                   let self = self else { return }
-            print("🟢===========", statusCode)
+            print("요청하기🟢===========", statusCode)
             self.requestStatus.accept(statusCode)
+        }
+    }
+    
+    func requestAcceptStudy(_ uid: String) {
+        APIManager.shared.requestData(Int.self,
+                                      router: SeSACRouter.studyAccept(StudyAccept(otheruid: uid))) { [weak self] response, statusCode in
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            print("수락하기🟢===========", statusCode)
+            self.acceptStatus.accept(statusCode)
         }
     }
 }

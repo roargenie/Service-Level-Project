@@ -89,6 +89,13 @@
 		F6B59EC2292BC13700A2470A /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */; };
 		F6B59EC4292BC13E00A2470A /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC3292BC13E00A2470A /* SearchResultView.swift */; };
 		F6B59EC6292BC14800A2470A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B59EC5292BC14800A2470A /* SearchResultViewController.swift */; };
+		F6B67A35293C8D06000D4071 /* StudyAcceptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A34293C8D06000D4071 /* StudyAcceptModel.swift */; };
+		F6B67A39293C9A8F000D4071 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A38293C9A8F000D4071 /* ChatViewModel.swift */; };
+		F6B67A3C293C9A9E000D4071 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A3B293C9A9E000D4071 /* ChatView.swift */; };
+		F6B67A3E293C9AA4000D4071 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A3D293C9AA4000D4071 /* ChatViewController.swift */; };
+		F6B67A41293C9AB0000D4071 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A40293C9AB0000D4071 /* ChatModel.swift */; };
+		F6B67A44293CA242000D4071 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A43293CA242000D4071 /* ChatTableViewCell.swift */; };
+		F6B67A46293CC178000D4071 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A45293CC178000D4071 /* UITextView+.swift */; };
 		F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE72292281FF00DA622D /* TabbarViewController.swift */; };
 		F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE7E292282E000DA622D /* HomeView.swift */; };
 		F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE80292282E600DA622D /* HomeViewController.swift */; };
@@ -212,6 +219,13 @@
 		F6B59EC1292BC13700A2470A /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		F6B59EC3292BC13E00A2470A /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		F6B59EC5292BC14800A2470A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		F6B67A34293C8D06000D4071 /* StudyAcceptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAcceptModel.swift; sourceTree = "<group>"; };
+		F6B67A38293C9A8F000D4071 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F6B67A3B293C9A9E000D4071 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F6B67A3D293C9AA4000D4071 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F6B67A40293C9AB0000D4071 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		F6B67A43293CA242000D4071 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		F6B67A45293CC178000D4071 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		F6C7DE72292281FF00DA622D /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		F6C7DE7E292282E000DA622D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6C7DE80292282E600DA622D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +394,7 @@
 				F6516769291BEFF300E362F0 /* Cell+.swift */,
 				F651676E291D785700E362F0 /* Date+.swift */,
 				F67B20702937B27600847D0E /* UIView+.swift */,
+				F6B67A45293CC178000D4071 /* UITextView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -632,6 +647,7 @@
 				F651670D2918F1CC00E362F0 /* Home */,
 				F65167112918F20900E362F0 /* Search */,
 				F6B59EBE292BC05200A2470A /* SearchResult */,
+				F6B67A36293C9A77000D4071 /* Chat */,
 				F651670E2918F1D700E362F0 /* Shop */,
 				F651670F2918F1D900E362F0 /* Firends */,
 				F6C7DEB62923C5DB00DA622D /* Setting */,
@@ -789,6 +805,50 @@
 				F6623FBA292D029800DDD7D8 /* RequestSeSACViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F6B67A36293C9A77000D4071 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F6B67A3F293C9AAA000D4071 /* Model */,
+				F6B67A3A293C9A92000D4071 /* View */,
+				F6B67A37293C9A83000D4071 /* ViewModel */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F6B67A37293C9A83000D4071 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6B67A38293C9A8F000D4071 /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6B67A3A293C9A92000D4071 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6B67A42293CA233000D4071 /* Cell */,
+				F6B67A3B293C9A9E000D4071 /* ChatView.swift */,
+				F6B67A3D293C9AA4000D4071 /* ChatViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6B67A3F293C9AAA000D4071 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6B67A40293C9AB0000D4071 /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6B67A42293CA233000D4071 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F6B67A43293CA242000D4071 /* ChatTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F6C7DE71292281D800DA622D /* Tabbar */ = {
@@ -994,6 +1054,7 @@
 				F67B202329333C2200847D0E /* MyPageModel.swift */,
 				F67B2025293347DF00847D0E /* MyQueueModel.swift */,
 				F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */,
+				F6B67A34293C8D06000D4071 /* StudyAcceptModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1134,6 +1195,7 @@
 				F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */,
 				F6C7DEA02922893600DA622D /* ProfileNickNameTableViewCell.swift in Sources */,
 				F6EEEDF029200A7000C8969B /* SignUpModel.swift in Sources */,
+				F6B67A41293C9AB0000D4071 /* ChatModel.swift in Sources */,
 				F65167052918EF0400E362F0 /* OnboardViewController.swift in Sources */,
 				F651674D291A74C400E362F0 /* BirthViewController.swift in Sources */,
 				F6EEEDE5291EB35800C8969B /* SeSACRouter.swift in Sources */,
@@ -1148,6 +1210,7 @@
 				F651676D291C228E00E362F0 /* GenderModel.swift in Sources */,
 				F65167172918F24D00E362F0 /* AuthView.swift in Sources */,
 				F651671D2919032800E362F0 /* Icon.swift in Sources */,
+				F6B67A3C293C9A9E000D4071 /* ChatView.swift in Sources */,
 				F6C7DE85292282F700DA622D /* SearchView.swift in Sources */,
 				F6C7DEB52923B70900DA622D /* ProfileUnregisterTableViewCell.swift in Sources */,
 				F6C7DECA2923E1E900DA622D /* MySettingCell.swift in Sources */,
@@ -1161,12 +1224,14 @@
 				F6623FBD292D040200DDD7D8 /* NearSeSACView.swift in Sources */,
 				F651674B291A74B800E362F0 /* BirthView.swift in Sources */,
 				F65166FF2918ECF300E362F0 /* BaseTableViewCell.swift in Sources */,
+				F6B67A3E293C9AA4000D4071 /* ChatViewController.swift in Sources */,
 				F6C7DE932922832800DA622D /* FriendsViewController.swift in Sources */,
 				F65166FD2918ECEB00E362F0 /* BaseCollectionViewCell.swift in Sources */,
 				F6B59EBD2928EBB800A2470A /* MyQueueStateModel.swift in Sources */,
 				F6C7DEB02922BF8C00DA622D /* SeSACReviewReusableView.swift in Sources */,
 				F65167192918F25300E362F0 /* AuthViewController.swift in Sources */,
 				F651675B291A74F300E362F0 /* GenderViewModel.swift in Sources */,
+				F6B67A46293CC178000D4071 /* UITextView+.swift in Sources */,
 				F6623FC9292D383300DDD7D8 /* SectionModel.swift in Sources */,
 				F651673A291A735800E362F0 /* AuthDetailView.swift in Sources */,
 				F607CA3D293B6DAF004B1ECC /* NearSeSACModel.swift in Sources */,
@@ -1174,6 +1239,7 @@
 				F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
 				F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */,
+				F6B67A44293CA242000D4071 /* ChatTableViewCell.swift in Sources */,
 				F651676A291BEFF300E362F0 /* Cell+.swift in Sources */,
 				F6623FBB292D029800DDD7D8 /* RequestSeSACViewController.swift in Sources */,
 				F651673C291A736400E362F0 /* AuthDetailViewController.swift in Sources */,
@@ -1196,6 +1262,7 @@
 				F65166FA2918EBA500E362F0 /* UIImageView+.swift in Sources */,
 				F6C7DECD2924037800DA622D /* BasePopupViewController.swift in Sources */,
 				F6EEEDE9291F713E00C8969B /* NetworkError.swift in Sources */,
+				F6B67A35293C8D06000D4071 /* StudyAcceptModel.swift in Sources */,
 				F68A1B09293B4382001912D9 /* RequestButton.swift in Sources */,
 				F65166E72918E7F100E362F0 /* BaseViewController.swift in Sources */,
 				F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */,
@@ -1203,6 +1270,7 @@
 				F6623FCE292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
+				F6B67A39293C9A8F000D4071 /* ChatViewModel.swift in Sources */,
 				F67B20712937B27600847D0E /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

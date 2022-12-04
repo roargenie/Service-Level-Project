@@ -17,6 +17,7 @@ enum SeSACRouter {
     case queueStop
     case myPage(_ mypage: MyPage)
     case studyRequest(_ studyRequest: StudyRequest)
+    case studyAccept(_ studyAccept: StudyAccept)
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -39,6 +40,8 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/user/mypage"
         case .studyRequest:
             return "/v1/queue/studyrequest"
+        case .studyAccept:
+            return "/v1/queue/studyaccept"
         }
     }
 
@@ -52,7 +55,7 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login, .myQueueState:
             return .get
-        case .signup, .search, .queue, .studyRequest:
+        case .signup, .search, .queue, .studyRequest, .studyAccept:
             return .post
         case .myPage:
             return .put
@@ -99,6 +102,8 @@ extension SeSACRouter: URLRequestConvertible {
             request = try URLEncoding(arrayEncoding: .noBrackets).encode(request, with: parameters)
         case .studyRequest(let studyReqeust):
             request = try URLEncodedFormParameterEncoder().encode(studyReqeust, into: request)
+        case .studyAccept(let studyAccept):
+            request = try URLEncodedFormParameterEncoder().encode(studyAccept, into: request)
         default:
             return request
         }
