@@ -6,11 +6,3 @@
 //
 
 import Foundation
-
-struct NearSeSACDTO {
-    let uid, nick: String
-    let reputation: [Int]
-    let studylist, reviews: [String]
-    let sesac, background: Int
-    var isSelected: Bool
-}

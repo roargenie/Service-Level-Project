@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class ChatViewController: BaseViewController {
     
@@ -13,6 +15,8 @@ final class ChatViewController: BaseViewController {
     
     private var mainView = ChatView()
     private let viewModel = ChatViewModel()
+    
+    private var disposeBag = DisposeBag()
     
     //MARK: - LifeCycle
 
@@ -22,6 +26,7 @@ final class ChatViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +36,7 @@ final class ChatViewController: BaseViewController {
     //MARK: - OverrideMethod
     
     override func configureUI() {
-        mainView.textView.delegate = self
+        
     }
     
     override func setConstraints() {
@@ -39,7 +44,7 @@ final class ChatViewController: BaseViewController {
     }
     
     override func setNavigation() {
-        title = "누구냐"
+        title = "누구야"
         let leftBarButtonItem = UIBarButtonItem(image: Icon.arrow, style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         let rightBarButtonItem = UIBarButtonItem(image: Icon.more, style: .plain, target: self, action: #selector(moreButtonTapped))
@@ -50,35 +55,50 @@ final class ChatViewController: BaseViewController {
     
     private func bind() {
         
+        mainView.textView.rx.didChange
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.mainView.setupTextViewDidChange()
+            }
+            .disposed(by: disposeBag)
         
+        mainView.textView.rx.didBeginEditing
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.mainView.setupTextViewDidBeginEditing()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.textView.rx.didEndEditing
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.mainView.setupTextViewDidEndEditing()
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.textView.rx.text
+            .orEmpty
+            .withUnretained(self)
+            .bind { vc, value in
+                vc.mainView.setupSendButton(text: value)
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.tapBackground.rx.event
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.mainView.setupChatMoreView(false)
+                vc.navigationItem.rightBarButtonItem?.isSelected.toggle()
+            }
+            .disposed(by: disposeBag)
     }
 
     @objc private func backButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc private func moreButtonTapped() {
-        
-    }
-}
-
-extension ChatViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.numberOfLine() > 3 {
-            mainView.textView.snp.remakeConstraints { make in
-                make.directionalHorizontalEdges.equalToSuperview().inset(16)
-                make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-16)
-                make.height.equalTo(90)
-            }
-            textView.isScrollEnabled = true
-        } else {
-            mainView.textView.snp.remakeConstraints { make in
-                make.directionalHorizontalEdges.equalToSuperview().inset(16)
-                make.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top).offset(-16)
-                make.height.lessThanOrEqualTo(90)
-                make.height.greaterThanOrEqualTo(52)
-            }
-            textView.isScrollEnabled = false
-        }
+    @objc private func moreButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        mainView.setupChatMoreView(sender.isSelected)
     }
 }

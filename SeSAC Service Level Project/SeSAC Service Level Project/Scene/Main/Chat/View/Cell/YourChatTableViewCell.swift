@@ -1,13 +1,13 @@
 //
-//  ChatTableViewCell.swift
+//  YourChatTableViewCell.swift
 //  SeSAC Service Level Project
 //
-//  Created by 이명진 on 2022/12/04.
+//  Created by 이명진 on 2022/12/09.
 //
 
 import UIKit
 
-final class ChatTableViewCell: BaseTableViewCell {
+final class YourChatTableViewCell: BaseTableViewCell {
     
     let chatLabel: UILabel = UILabel().then {
         $0.numberOfLines = 0
