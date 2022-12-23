@@ -28,17 +28,17 @@ final class SocketIOManager {
         // 연결
         socket.on(clientEvent: .connect) { data, ack in
             print("SOCKET IS CONNECTED", data, ack)
+            guard let myUID = UserDefaults.standard.string(forKey: Matrix.myUID) else { return }
+            self.socket.emit("changesocketid", myUID)
         }
         
         // 연결해제
         socket.on(clientEvent: .disconnect) { data, ack in
             print("SOCKET IS DISCONNECTED", data, ack)
-            guard let myUID = UserDefaults.standard.string(forKey: Matrix.myUID) else { return }
-            self.socket.emit("changesocketid", myUID)
         }
         
         // 이벤트 수신
-        socket.on("sesac") { dataArray, ack in
+        socket.on("chat") { dataArray, ack in
             print("SESAC RECEIVED", dataArray, ack)
             let data = dataArray[0] as! NSDictionary
             let id = data["_id"] as! String

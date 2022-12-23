@@ -30,7 +30,7 @@ final class ChatViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestMyQueueState()
-        fetchChats(userId: otherUserId, lastChatDate: "2000-01-01T00:00:00.000Z")
+//        fetchChats(userId: otherUserId, lastChatDate: "2000-01-01T00:00:00.000Z")
         bind()
         NotificationCenter.default.addObserver(self, selector: #selector(getMessage(notification:)), name: NSNotification.Name("getMessage"), object: nil)
     }
@@ -57,6 +57,8 @@ final class ChatViewController: BaseViewController {
     
     override func setNavigation() {
 //        title = "누구야"
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         let leftBarButtonItem = UIBarButtonItem(image: Icon.arrow, style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         let rightBarButtonItem = UIBarButtonItem(image: Icon.more, style: .plain, target: self, action: #selector(moreButtonTapped))
@@ -78,6 +80,8 @@ final class ChatViewController: BaseViewController {
             .withUnretained(self)
             .bind { vc, _ in
                 vc.mainView.setupTextViewDidBeginEditing()
+                vc.mainView.tableView.reloadData()
+                vc.mainView.tableView.scrollToRow(at: IndexPath(row: vc.chat.count - 1, section: 0), at: .bottom, animated: false)
             }
             .disposed(by: disposeBag)
         
@@ -108,7 +112,7 @@ final class ChatViewController: BaseViewController {
             .withLatestFrom(mainView.textView.rx.text.orEmpty)
             .withUnretained(self)
             .bind { vc, value in
-                vc.postChat(chat: value, userId: vc.otherUserId)
+                vc.postChat(chat: value)
             }
             .disposed(by: disposeBag)
         
@@ -127,9 +131,10 @@ final class ChatViewController: BaseViewController {
         let id = notification.userInfo!["id"] as! String
         let chat = notification.userInfo!["chat"] as! String
         let createdAt = notification.userInfo!["createdAt"] as! String
-        let userID = notification.userInfo!["from"] as! String
+        let from = notification.userInfo!["from"] as! String
+        let to = notification.userInfo!["to"] as! String
         
-        let value = Payload(id: userID, to: "", from: userID, chat: chat, createdAt: createdAt)
+        let value = Payload(id: id, to: to, from: from, chat: chat, createdAt: createdAt)
         
         self.chat.append(value)
         mainView.tableView.reloadData()
@@ -145,7 +150,7 @@ extension ChatViewController {
                                                                lastChatDate: lastChatDate)) { [weak self] response, statusCode in
             guard let statusCode = statusCode,
                   let self = self else { return }
-            print(statusCode)
+            print("===============fetchChat", statusCode)
             switch response {
             case .success(let value):
                 guard let value = value else { return }
@@ -153,6 +158,7 @@ extension ChatViewController {
                 // 테이블뷰 리로드
                 self.mainView.tableView.reloadData()
                 self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chat.count - 1, section: 0), at: .bottom, animated: false)
+                print(value)
                 SocketIOManager.shared.establishConnection()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -160,15 +166,20 @@ extension ChatViewController {
         }
     }
     
-    private func postChat(chat: String, userId: String) {
+    private func postChat(chat: String) {
         APIManager.shared.requestData(Payload.self,
                                       router: SeSACRouter.postChat(chat: chat,
-                                                                   userId: userId)) { response, statusCode in
-            guard let statusCode = statusCode else { return }
-            print(statusCode)
+                                                                   userId: otherUserId)) { [weak self] response, statusCode in
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            print("=========PostChat", statusCode)
             switch response {
             case .success(let value):
                 guard let value = value else { return }
+                self.chat.append(value)
+                self.mainView.tableView.reloadData()
+                self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chat.count - 1, section: 0), at: .bottom, animated: false)
+                self.mainView.textView.text = ""
                 print(value)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -188,11 +199,12 @@ extension ChatViewController {
                 guard let value = value else { return }
                 self.otherUserId = value.matchedUid
                 self.title = value.matchedNick
-                //                print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
+                print(value)
             case .failure(let error):
                 print(error.rawValue)
                 print(error.localizedDescription)
             }
+            self.fetchChats(userId: self.otherUserId, lastChatDate: "2000-01-01T00:00:00.000Z")
         }
     }
     
@@ -207,7 +219,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = chat[indexPath.row]
         
-        if data.to == otherUserId {
+        if data.from == otherUserId {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier, for: indexPath) as? YourChatTableViewCell else { return UITableViewCell() }
             cell.chatLabel.text = data.chat
             return cell

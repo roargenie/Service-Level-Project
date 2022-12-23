@@ -76,6 +76,8 @@ extension SeSACRouter: URLRequestConvertible {
             return ["long": queue.long,
                     "lat": queue.lat,
                     "studylist": queue.studylist]
+        case .postChat(let chat, _):
+            return ["chat": chat]
         case .chat(_, let date):
             return ["lastchatDate": date]
         default:
@@ -114,8 +116,9 @@ extension SeSACRouter: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder().encode(studyReqeust, into: request)
         case .studyAccept(let studyAccept):
             request = try URLEncodedFormParameterEncoder().encode(studyAccept, into: request)
-        case .postChat(let chat, _):
-            request = try URLEncodedFormParameterEncoder().encode(chat, into: request)
+        case .postChat:
+//            request = try URLEncodedFormParameterEncoder().encode(chat, into: request)
+            request = try URLEncoding().encode(request, with: parameters)
             
             //MARK: - 채팅 받는거 몰게써서 확인필요
         case .chat:

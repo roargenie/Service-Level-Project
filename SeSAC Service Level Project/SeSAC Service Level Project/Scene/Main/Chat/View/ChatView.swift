@@ -18,7 +18,7 @@ final class ChatView: BaseView {
         $0.separatorStyle = .none
         $0.keyboardDismissMode = .onDrag
         $0.rowHeight = UITableView.automaticDimension
-        $0.backgroundColor = Color.green
+//        $0.backgroundColor = Color.green
     }
     
     let chatMoreView: ChatMoreView = ChatMoreView()
