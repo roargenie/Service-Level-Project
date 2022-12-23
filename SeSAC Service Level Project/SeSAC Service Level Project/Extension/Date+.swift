@@ -26,4 +26,19 @@ extension Date {
             return false
         }
     }
+    
+    func todayChat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter.string(from: self)
+    }
+    
+    func notTodayChat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d a hh:mm"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        return dateFormatter.string(from: self)
+    }
 }

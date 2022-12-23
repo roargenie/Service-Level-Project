@@ -221,11 +221,11 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         
         if data.from == otherUserId {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier, for: indexPath) as? YourChatTableViewCell else { return UITableViewCell() }
-            cell.chatLabel.text = data.chat
+            cell.setupCell(data: data)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.reuseIdentifier, for: indexPath) as? MyChatTableViewCell else { return UITableViewCell() }
-            cell.chatLabel.text = data.chat
+            cell.setupCell(data: data)
             return cell
         }
     }

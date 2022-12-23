@@ -14,6 +14,7 @@
 		F607CA46293BC1BD004B1ECC /* StudyReqeustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */; };
 		F64CA9BF2955C31800E73390 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9BE2955C31800E73390 /* Realm */; };
 		F64CA9C12955C31800E73390 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9C02955C31800E73390 /* RealmSwift */; };
+		F64CA9C3295600D000E73390 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C2295600D000E73390 /* String+.swift */; };
 		F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166BF2918E6BD00E362F0 /* AppDelegate.swift */; };
 		F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166C12918E6BD00E362F0 /* SceneDelegate.swift */; };
 		F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F65166C82918E6BE00E362F0 /* Assets.xcassets */; };
@@ -153,6 +154,7 @@
 		F607CA41293BAF7C004B1ECC /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		F607CA43293BB4E8004B1ECC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyReqeustModel.swift; sourceTree = "<group>"; };
+		F64CA9C2295600D000E73390 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SeSAC Service Level Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65166BF2918E6BD00E362F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F65166C12918E6BD00E362F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				F6516762291ABA6F00E362F0 /* UITextField+.swift */,
 				F6516769291BEFF300E362F0 /* Cell+.swift */,
 				F651676E291D785700E362F0 /* Date+.swift */,
+				F64CA9C2295600D000E73390 /* String+.swift */,
 				F67B20702937B27600847D0E /* UIView+.swift */,
 				F6B67A45293CC178000D4071 /* UITextView+.swift */,
 			);
@@ -1259,6 +1262,7 @@
 				F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */,
 				F65167012918EE6C00E362F0 /* SplashViewController.swift in Sources */,
 				F651675F291A7DAF00E362F0 /* UIFont+.swift in Sources */,
+				F64CA9C3295600D000E73390 /* String+.swift in Sources */,
 				F6B67A44293CA242000D4071 /* MyChatTableViewCell.swift in Sources */,
 				F651676A291BEFF300E362F0 /* Cell+.swift in Sources */,
 				F6623FBB292D029800DDD7D8 /* RequestSeSACViewController.swift in Sources */,

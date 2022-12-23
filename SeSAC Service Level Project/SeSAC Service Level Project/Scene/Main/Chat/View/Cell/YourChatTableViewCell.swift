@@ -51,4 +51,23 @@ final class YourChatTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(bubbleView.snp.bottom)
         }
     }
+    
+    func setupCell(data: Payload) {
+        chatLabel.text = data.chat
+        setTimeLabel(time: data.createdAt)
+    }
+    
+    func setTimeLabel(time: String) {
+        let date = time.stringToDate()
+        let calculatedDate = Calendar.current.date(byAdding: .hour, value: 9, to: date) ?? date
+        
+        let chattingDate = Calendar.current.dateComponents([.year, .month, .day], from: calculatedDate)
+        let todayDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        
+        if (chattingDate.year == todayDate.year) && (chattingDate.month == todayDate.month) && (chattingDate.day == todayDate.day) {
+            timeLabel.text = calculatedDate.todayChat()
+        } else {
+            timeLabel.text = calculatedDate.notTodayChat()
+        }
+    }
 }
