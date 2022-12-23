@@ -18,6 +18,8 @@ enum SeSACRouter {
     case myPage(_ mypage: MyPage)
     case studyRequest(_ studyRequest: StudyRequest)
     case studyAccept(_ studyAccept: StudyAccept)
+    case postChat(chat: String, userId: String)
+    case chat(userId: String, lastChatDate: String)
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -42,6 +44,10 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/queue/studyrequest"
         case .studyAccept:
             return "/v1/queue/studyaccept"
+        case .postChat(_ , let userId):
+            return "/v1/chat/\(userId)"
+        case .chat(let userId, _):
+            return "/v1/chat/\(userId)"
         }
     }
 
@@ -53,9 +59,9 @@ extension SeSACRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .login, .myQueueState:
+        case .login, .myQueueState, .chat:
             return .get
-        case .signup, .search, .queue, .studyRequest, .studyAccept:
+        case .signup, .search, .queue, .studyRequest, .studyAccept, .postChat:
             return .post
         case .myPage:
             return .put
@@ -70,6 +76,8 @@ extension SeSACRouter: URLRequestConvertible {
             return ["long": queue.long,
                     "lat": queue.lat,
                     "studylist": queue.studylist]
+        case .chat(_, let date):
+            return ["lastchatDate": date]
         default:
             return ["":""]
         }
@@ -79,6 +87,8 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .queue:
             return URLEncoding(arrayEncoding: .noBrackets)
+        case .chat:
+            return URLEncoding.queryString
         default:
             return URLEncoding.default
         }
@@ -104,6 +114,12 @@ extension SeSACRouter: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder().encode(studyReqeust, into: request)
         case .studyAccept(let studyAccept):
             request = try URLEncodedFormParameterEncoder().encode(studyAccept, into: request)
+        case .postChat(let chat, _):
+            request = try URLEncodedFormParameterEncoder().encode(chat, into: request)
+            
+            //MARK: - 채팅 받는거 몰게써서 확인필요
+        case .chat:
+            request = try URLEncoding().encode(request, with: parameters)
         default:
             return request
         }

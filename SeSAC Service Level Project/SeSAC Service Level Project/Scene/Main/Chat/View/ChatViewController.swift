@@ -18,6 +18,9 @@ final class ChatViewController: BaseViewController {
     
     private var disposeBag = DisposeBag()
     
+    var chat: [Payload] = []
+    var otherUserId: String = ""
+    
     //MARK: - LifeCycle
 
     override func loadView() {
@@ -26,25 +29,34 @@ final class ChatViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestMyQueueState()
+        fetchChats(userId: otherUserId, lastChatDate: "2000-01-01T00:00:00.000Z")
         bind()
+        NotificationCenter.default.addObserver(self, selector: #selector(getMessage(notification:)), name: NSNotification.Name("getMessage"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    //MARK: - OverrideMethod
-    
-    override func configureUI() {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
     }
     
+    //MARK: - OverrideMethod
+    
+    override func configureUI() {
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+    }
+    
     override func setConstraints() {
-       
+        
     }
     
     override func setNavigation() {
-        title = "누구야"
+//        title = "누구야"
         let leftBarButtonItem = UIBarButtonItem(image: Icon.arrow, style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         let rightBarButtonItem = UIBarButtonItem(image: Icon.more, style: .plain, target: self, action: #selector(moreButtonTapped))
@@ -91,6 +103,15 @@ final class ChatViewController: BaseViewController {
                 vc.navigationItem.rightBarButtonItem?.isSelected.toggle()
             }
             .disposed(by: disposeBag)
+        
+        mainView.sendButton.rx.tap
+            .withLatestFrom(mainView.textView.rx.text.orEmpty)
+            .withUnretained(self)
+            .bind { vc, value in
+                vc.postChat(chat: value, userId: vc.otherUserId)
+            }
+            .disposed(by: disposeBag)
+        
     }
 
     @objc private func backButtonTapped() {
@@ -101,4 +122,100 @@ final class ChatViewController: BaseViewController {
         sender.isSelected.toggle()
         mainView.setupChatMoreView(sender.isSelected)
     }
+    
+    @objc private func getMessage(notification: NSNotification) {
+        let id = notification.userInfo!["id"] as! String
+        let chat = notification.userInfo!["chat"] as! String
+        let createdAt = notification.userInfo!["createdAt"] as! String
+        let userID = notification.userInfo!["from"] as! String
+        
+        let value = Payload(id: userID, to: "", from: userID, chat: chat, createdAt: createdAt)
+        
+        self.chat.append(value)
+        mainView.tableView.reloadData()
+        mainView.tableView.scrollToRow(at: IndexPath(row: self.chat.count - 1, section: 0), at: .bottom, animated: false)
+    }
+}
+
+extension ChatViewController {
+    
+    private func fetchChats(userId: String, lastChatDate: String) {
+        APIManager.shared.requestData(Chat.self,
+                                      router: SeSACRouter.chat(userId: userId,
+                                                               lastChatDate: lastChatDate)) { [weak self] response, statusCode in
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            print(statusCode)
+            switch response {
+            case .success(let value):
+                guard let value = value else { return }
+                self.chat = value.payload
+                // 테이블뷰 리로드
+                self.mainView.tableView.reloadData()
+                self.mainView.tableView.scrollToRow(at: IndexPath(row: self.chat.count - 1, section: 0), at: .bottom, animated: false)
+                SocketIOManager.shared.establishConnection()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func postChat(chat: String, userId: String) {
+        APIManager.shared.requestData(Payload.self,
+                                      router: SeSACRouter.postChat(chat: chat,
+                                                                   userId: userId)) { response, statusCode in
+            guard let statusCode = statusCode else { return }
+            print(statusCode)
+            switch response {
+            case .success(let value):
+                guard let value = value else { return }
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func requestMyQueueState() {
+        APIManager.shared.requestData(MyQueueState.self,
+                                      router: SeSACRouter.myQueueState) { [weak self] response, statusCode in
+            print(response)
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            print("=============status", statusCode)
+            switch response {
+            case .success(let value):
+                guard let value = value else { return }
+                self.otherUserId = value.matchedUid
+                self.title = value.matchedNick
+                //                print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
+            case .failure(let error):
+                print(error.rawValue)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+}
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chat.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let data = chat[indexPath.row]
+        
+        if data.to == otherUserId {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: YourChatTableViewCell.reuseIdentifier, for: indexPath) as? YourChatTableViewCell else { return UITableViewCell() }
+            cell.chatLabel.text = data.chat
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyChatTableViewCell.reuseIdentifier, for: indexPath) as? MyChatTableViewCell else { return UITableViewCell() }
+            cell.chatLabel.text = data.chat
+            return cell
+        }
+    }
+    
 }

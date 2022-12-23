@@ -36,7 +36,6 @@ final class SearchViewModel {
     }
     
     func requestSeSACSearch() {
-        
         APIManager.shared.requestData(MyQueueStatus.self,
                                       router: SeSACRouter.queue(MyQueue(long: UserDefaults.standard.double(forKey: "long"),
                                                                         lat: UserDefaults.standard.double(forKey: "lat"),

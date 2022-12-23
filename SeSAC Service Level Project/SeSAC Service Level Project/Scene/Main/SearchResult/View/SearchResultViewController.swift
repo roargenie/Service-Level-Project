@@ -60,6 +60,8 @@ final class SearchResultViewController: BaseViewController {
     }
     
     override func configureUI() {
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         mainView.segmentControl.addTarget(self, action: #selector(changePage), for: .valueChanged)
         addChild(mainView.pageViewController)
         changePage(mainView.segmentControl)

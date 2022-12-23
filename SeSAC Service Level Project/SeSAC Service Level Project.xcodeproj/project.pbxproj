@@ -12,6 +12,8 @@
 		F607CA42293BAF7C004B1ECC /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA41293BAF7C004B1ECC /* CustomAlertViewController.swift */; };
 		F607CA44293BB4E8004B1ECC /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA43293BB4E8004B1ECC /* Alert.swift */; };
 		F607CA46293BC1BD004B1ECC /* StudyReqeustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */; };
+		F64CA9BF2955C31800E73390 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9BE2955C31800E73390 /* Realm */; };
+		F64CA9C12955C31800E73390 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9C02955C31800E73390 /* RealmSwift */; };
 		F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166BF2918E6BD00E362F0 /* AppDelegate.swift */; };
 		F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166C12918E6BD00E362F0 /* SceneDelegate.swift */; };
 		F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F65166C82918E6BE00E362F0 /* Assets.xcassets */; };
@@ -74,7 +76,7 @@
 		F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */; };
 		F6623FC9292D383300DDD7D8 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FC8292D383300DDD7D8 /* SectionModel.swift */; };
 		F6623FCC292D394800DDD7D8 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */; };
-		F6623FCE292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */; };
+		F6623FCE292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6623FCD292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift */; };
 		F6623FD1292D3D8F00DDD7D8 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = F6623FD0292D3D8F00DDD7D8 /* Differentiator */; };
 		F6623FD3292D3D8F00DDD7D8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F6623FD2292D3D8F00DDD7D8 /* RxDataSources */; };
 		F67B202429333C2200847D0E /* MyPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67B202329333C2200847D0E /* MyPageModel.swift */; };
@@ -98,6 +100,8 @@
 		F6B67A46293CC178000D4071 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A45293CC178000D4071 /* UITextView+.swift */; };
 		F6B67A4C29430AAB000D4071 /* ChatMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A4B29430AAB000D4071 /* ChatMoreView.swift */; };
 		F6B67A4E29430B74000D4071 /* YourChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A4D29430B74000D4071 /* YourChatTableViewCell.swift */; };
+		F6B67A51294B64FF000D4071 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = F6B67A50294B64FF000D4071 /* SocketIO */; };
+		F6B67A53294B705F000D4071 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B67A52294B705F000D4071 /* SocketIOManager.swift */; };
 		F6C7DE73292281FF00DA622D /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE72292281FF00DA622D /* TabbarViewController.swift */; };
 		F6C7DE7F292282E000DA622D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE7E292282E000DA622D /* HomeView.swift */; };
 		F6C7DE81292282E600DA622D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE80292282E600DA622D /* HomeViewController.swift */; };
@@ -208,7 +212,7 @@
 		F6623FBE292D040D00DDD7D8 /* RequestSeSACView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSeSACView.swift; sourceTree = "<group>"; };
 		F6623FC8292D383300DDD7D8 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
-		F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterHobbyCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
+		F6623FCD292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		F67B202329333C2200847D0E /* MyPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageModel.swift; sourceTree = "<group>"; };
 		F67B2025293347DF00847D0E /* MyQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueueModel.swift; sourceTree = "<group>"; };
 		F67B206C2937715C00847D0E /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 		F6B67A45293CC178000D4071 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		F6B67A4B29430AAB000D4071 /* ChatMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMoreView.swift; sourceTree = "<group>"; };
 		F6B67A4D29430B74000D4071 /* YourChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourChatTableViewCell.swift; sourceTree = "<group>"; };
+		F6B67A52294B705F000D4071 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		F6C7DE72292281FF00DA622D /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		F6C7DE7E292282E000DA622D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F6C7DE80292282E600DA622D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -276,9 +281,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64CA9BF2955C31800E73390 /* Realm in Frameworks */,
 				F651672729190DD800E362F0 /* Then in Frameworks */,
 				F6C7DEC62923CA1C00DA622D /* MultiSlider in Frameworks */,
+				F64CA9C12955C31800E73390 /* RealmSwift in Frameworks */,
 				F6623FD1292D3D8F00DDD7D8 /* Differentiator in Frameworks */,
+				F6B67A51294B64FF000D4071 /* SocketIO in Frameworks */,
 				F6EEEDDE291EA08400C8969B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				F6C7DEB32923B22400DA622D /* DoubleSlider in Frameworks */,
 				F65166F32918EA6000E362F0 /* RxSwift in Frameworks */,
@@ -371,6 +379,7 @@
 				F6EEEDE3291EB34500C8969B /* Router */,
 				F6EEEDE6291EB39400C8969B /* APIManager.swift */,
 				F67B206C2937715C00847D0E /* TokenManager.swift */,
+				F6B67A52294B705F000D4071 /* SocketIOManager.swift */,
 				F6EEEDE8291F713E00C8969B /* NetworkError.swift */,
 				F6EEEDE1291EB2E700C8969B /* EndPoint.swift */,
 			);
@@ -767,7 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				F6623FCB292D394800DDD7D8 /* SearchCollectionViewCell.swift */,
-				F6623FCD292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift */,
+				F6623FCD292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1094,6 +1103,9 @@
 				F6C7DED02926C8C100DA622D /* Toast */,
 				F6623FD0292D3D8F00DDD7D8 /* Differentiator */,
 				F6623FD2292D3D8F00DDD7D8 /* RxDataSources */,
+				F6B67A50294B64FF000D4071 /* SocketIO */,
+				F64CA9BE2955C31800E73390 /* Realm */,
+				F64CA9C02955C31800E73390 /* RealmSwift */,
 			);
 			productName = "SeSAC Service Level Project";
 			productReference = F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */;
@@ -1133,6 +1145,8 @@
 				F6C7DEC42923CA1C00DA622D /* XCRemoteSwiftPackageReference "MultiSlider" */,
 				F6C7DECF2926C8C100DA622D /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				F6B67A4F294B64FF000D4071 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				F64CA9BD2955C31700E73390 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = F65166BD2918E6BD00E362F0 /* Products */;
 			projectDirPath = "";
@@ -1259,6 +1273,7 @@
 				F65166F82918EB8200E362F0 /* UIViewController+.swift in Sources */,
 				F6516755291A74E000E362F0 /* EmailViewModel.swift in Sources */,
 				F67B20732937BA7F00847D0E /* PlainButton.swift in Sources */,
+				F6B67A53294B705F000D4071 /* SocketIOManager.swift in Sources */,
 				F6B59EC2292BC13700A2470A /* SearchResultViewModel.swift in Sources */,
 				F6C7DEA729228F2200DA622D /* MyProfileSettingModel.swift in Sources */,
 				F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */,
@@ -1275,7 +1290,7 @@
 				F6B67A4E29430B74000D4071 /* YourChatTableViewCell.swift in Sources */,
 				F6C7DEC12923C6FA00DA622D /* MySettingViewController.swift in Sources */,
 				F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */,
-				F6623FCE292D398F00DDD7D8 /* EnterHobbyCollectionViewSectionHeader.swift in Sources */,
+				F6623FCE292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
 				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
 				F6B67A39293C9A8F000D4071 /* ChatViewModel.swift in Sources */,
@@ -1501,6 +1516,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F64CA9BD2955C31700E73390 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.30.0;
+			};
+		};
 		F65166EC2918EA2400E362F0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1541,6 +1564,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F6B67A4F294B64FF000D4071 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
 		F6C7DEB12923B22300DA622D /* XCRemoteSwiftPackageReference "DoubleSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yhkaplan/DoubleSlider.git";
@@ -1576,6 +1607,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F64CA9BE2955C31800E73390 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F64CA9BD2955C31700E73390 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		F64CA9C02955C31800E73390 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F64CA9BD2955C31700E73390 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		F65166ED2918EA2400E362F0 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F65166EC2918EA2400E362F0 /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -1610,6 +1651,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6623FCF292D3D8E00DDD7D8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		F6B67A50294B64FF000D4071 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6B67A4F294B64FF000D4071 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 		F6C7DEB22923B22400DA622D /* DoubleSlider */ = {
 			isa = XCSwiftPackageProductDependency;

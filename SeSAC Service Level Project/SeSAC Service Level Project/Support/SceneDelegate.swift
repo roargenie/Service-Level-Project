@@ -18,12 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if #available(iOS 15.0, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
+            let barbuttonItemAppearance = UIBarButtonItemAppearance()
             navigationBarAppearance.backgroundColor = Color.white
             navigationBarAppearance.shadowColor = Color.gray2
             navigationBarAppearance.titleTextAttributes = [
                 NSAttributedString.Key.font: SeSACFont.title3.font
             ]
-            
+            barbuttonItemAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+            navigationBarAppearance.buttonAppearance = barbuttonItemAppearance
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         }

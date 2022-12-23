@@ -25,4 +25,5 @@ import Foundation
     static let birth = "birth"
     static let email = "email"
     static let gender = "gender"
+    static let myUID = "myUID"
 }

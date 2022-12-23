@@ -48,6 +48,7 @@ final class SplashViewController: BaseViewController {
             switch response {
             case .success(let value):
                 print(value)
+                UserDefaults.standard.set(value?.uid, forKey: Matrix.myUID)
                 self?.pushHomeVC()
             case .failure(let error):
                 switch error {

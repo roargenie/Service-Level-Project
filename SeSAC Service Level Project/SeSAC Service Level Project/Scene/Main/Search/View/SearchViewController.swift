@@ -135,8 +135,8 @@ final class SearchViewController: BaseViewController {
         output.searchButtonTap
             .withUnretained(self)
             .bind { (vc, _) in
-//                vc.viewModel.requestSeSACSearch()
-                vc.transition(ChatViewController(), transitionStyle: .push)
+                vc.viewModel.requestSeSACSearch()
+//                vc.transition(ChatViewController(), transitionStyle: .push)
             }
             .disposed(by: disposeBag)
         

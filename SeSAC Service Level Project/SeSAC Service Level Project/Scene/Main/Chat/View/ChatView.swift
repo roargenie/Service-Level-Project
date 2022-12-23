@@ -17,12 +17,11 @@ final class ChatView: BaseView {
         $0.allowsSelection = false
         $0.separatorStyle = .none
         $0.keyboardDismissMode = .onDrag
+        $0.rowHeight = UITableView.automaticDimension
         $0.backgroundColor = Color.green
     }
     
-    let chatMoreView: ChatMoreView = ChatMoreView().then {
-        $0.alpha = 0
-    }
+    let chatMoreView: ChatMoreView = ChatMoreView()
     
     private lazy var disableTouchView: UIView = UIView().then {
         $0.backgroundColor = Color.black.withAlphaComponent(0.5)

@@ -38,14 +38,14 @@ final class HomeViewController: BaseViewController {
         navigationController?.navigationBar.isHidden = true
         bind()
         setAnnotation()
-        requestMyQueueState()
+        viewModel.requestMyQueueState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
-        requestMyQueueState()
+        viewModel.requestMyQueueState()
     }
     
     // MARK: - OverrideMethod
@@ -138,9 +138,29 @@ final class HomeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.searchButtonTap
+            .withLatestFrom(viewModel.searchButtonState)
             .withUnretained(self)
-            .bind { (vc, tap) in
-                vc.pushSearchVC()
+            .bind { (vc, value) in
+                if value == 0 {
+                    vc.transition(SearchResultViewController(), transitionStyle: .push)
+                } else if value == 1 {
+                    vc.transition(ChatViewController(), transitionStyle: .push)
+                } else if value == 201 {
+                    vc.transition(SearchViewController(), transitionStyle: .push)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.searchButtonState
+            .withUnretained(self)
+            .bind { vc, value in
+                if value == 0 {
+                    vc.mainView.searchButton.setImage(Icon.searchMatching, for: .normal)
+                } else if value == 1 {
+                    vc.mainView.searchButton.setImage(Icon.searchMatched, for: .normal)
+                } else if value == 201 {
+                    vc.mainView.searchButton.setImage(Icon.searchDefault, for: .normal)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -184,28 +204,6 @@ final class HomeViewController: BaseViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func requestMyQueueState() {
-        print(#function, "================================")
-        APIManager.shared.requestData(MyQueueState.self,
-                                      router: SeSACRouter.myQueueState) { response, statusCode in
-            guard let statusCode = statusCode else { return }
-            print("=============status", statusCode)
-            switch response {
-            case .success(let value):
-                guard let value = value else { return }
-                print("내 상태다!!!!!!!!!!!!!!!!!!!!!!!!!!!", value, statusCode)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func pushSearchVC() {
-        let vc = SearchViewController()
-//        vc.centerCoordinate = centerCoordinate
-        transition(vc, transitionStyle: .push)
     }
     
     @objc private func findMyLocation() {
