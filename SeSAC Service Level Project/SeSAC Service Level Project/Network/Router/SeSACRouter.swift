@@ -20,6 +20,7 @@ enum SeSACRouter {
     case studyAccept(_ studyAccept: StudyAccept)
     case postChat(chat: String, userId: String)
     case chat(userId: String, lastChatDate: String)
+    case dodge(_ studyDodge: StudyDodge)
 }
 
 extension SeSACRouter: URLRequestConvertible {
@@ -48,6 +49,8 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/chat/\(userId)"
         case .chat(let userId, _):
             return "/v1/chat/\(userId)"
+        case .dodge:
+            return "/v1/queue/dodge"
         }
     }
 
@@ -61,7 +64,7 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login, .myQueueState, .chat:
             return .get
-        case .signup, .search, .queue, .studyRequest, .studyAccept, .postChat:
+        case .signup, .search, .queue, .studyRequest, .studyAccept, .postChat, .dodge:
             return .post
         case .myPage:
             return .put
@@ -123,6 +126,8 @@ extension SeSACRouter: URLRequestConvertible {
             //MARK: - 채팅 받는거 몰게써서 확인필요
         case .chat:
             request = try URLEncoding().encode(request, with: parameters)
+        case .dodge(let studyDodge):
+            request = try URLEncodedFormParameterEncoder().encode(studyDodge, into: request)
         default:
             return request
         }

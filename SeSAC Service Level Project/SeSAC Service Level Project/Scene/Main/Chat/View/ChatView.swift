@@ -125,6 +125,7 @@ final class ChatView: BaseView {
         if textView.textColor == Color.gray7 {
             textView.text = nil
             textView.textColor = Color.black
+            sendButton.isEnabled = true
         }
         textView.snp.remakeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
@@ -138,6 +139,7 @@ final class ChatView: BaseView {
         if textView.text == "" {
             textView.text = "메세지를 입력해주세요"
             textView.textColor = Color.gray7
+            sendButton.isEnabled = false
         }
         textView.snp.remakeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview().inset(16)

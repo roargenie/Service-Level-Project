@@ -201,7 +201,7 @@ final class SearchViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func keyboardWillAppear() {
+    @objc private func keyboardWillAppear() {
         mainView.searchButton.snp.remakeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview()
             make.height.equalTo(48)
@@ -210,7 +210,7 @@ final class SearchViewController: BaseViewController {
         mainView.searchButton.layer.cornerRadius = 0
     }
     
-    @objc func keyboardWillDisappear() {
+    @objc private func keyboardWillDisappear() {
         mainView.searchButton.snp.remakeConstraints { make in
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(48)

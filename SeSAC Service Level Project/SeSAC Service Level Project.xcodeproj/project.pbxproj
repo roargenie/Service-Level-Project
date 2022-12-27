@@ -15,6 +15,9 @@
 		F64CA9BF2955C31800E73390 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9BE2955C31800E73390 /* Realm */; };
 		F64CA9C12955C31800E73390 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9C02955C31800E73390 /* RealmSwift */; };
 		F64CA9C3295600D000E73390 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C2295600D000E73390 /* String+.swift */; };
+		F64CA9C529560B0500E73390 /* ChatDatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C429560B0500E73390 /* ChatDatabaseModel.swift */; };
+		F64CA9C72957049200E73390 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C62957049200E73390 /* ChatRepository.swift */; };
+		F64CA9C9295B336700E73390 /* StudyDodgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C8295B336700E73390 /* StudyDodgeModel.swift */; };
 		F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166BF2918E6BD00E362F0 /* AppDelegate.swift */; };
 		F65166C22918E6BD00E362F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65166C12918E6BD00E362F0 /* SceneDelegate.swift */; };
 		F65166C92918E6BE00E362F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F65166C82918E6BE00E362F0 /* Assets.xcassets */; };
@@ -155,6 +158,9 @@
 		F607CA43293BB4E8004B1ECC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyReqeustModel.swift; sourceTree = "<group>"; };
 		F64CA9C2295600D000E73390 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		F64CA9C429560B0500E73390 /* ChatDatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDatabaseModel.swift; sourceTree = "<group>"; };
+		F64CA9C62957049200E73390 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		F64CA9C8295B336700E73390 /* StudyDodgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDodgeModel.swift; sourceTree = "<group>"; };
 		F65166BC2918E6BD00E362F0 /* SeSAC Service Level Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SeSAC Service Level Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65166BF2918E6BD00E362F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F65166C12918E6BD00E362F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -856,6 +862,8 @@
 			isa = PBXGroup;
 			children = (
 				F6B67A40293C9AB0000D4071 /* ChatModel.swift */,
+				F64CA9C429560B0500E73390 /* ChatDatabaseModel.swift */,
+				F64CA9C62957049200E73390 /* ChatRepository.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1073,6 +1081,7 @@
 				F67B2025293347DF00847D0E /* MyQueueModel.swift */,
 				F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */,
 				F6B67A34293C8D06000D4071 /* StudyAcceptModel.swift */,
+				F64CA9C8295B336700E73390 /* StudyDodgeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1199,6 +1208,7 @@
 				F651673E291A737000E362F0 /* AuthDetailViewModel.swift in Sources */,
 				F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */,
 				F6B59EC4292BC13E00A2470A /* SearchResultView.swift in Sources */,
+				F64CA9C72957049200E73390 /* ChatRepository.swift in Sources */,
 				F651676F291D785700E362F0 /* Date+.swift in Sources */,
 				F6EEEDE7291EB39400C8969B /* APIManager.swift in Sources */,
 				F6C7DE87292282FD00DA622D /* SearchViewController.swift in Sources */,
@@ -1228,6 +1238,7 @@
 				F6C7DE8B2922830800DA622D /* ShopView.swift in Sources */,
 				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
 				F6516757291A74E700E362F0 /* GenderView.swift in Sources */,
+				F64CA9C529560B0500E73390 /* ChatDatabaseModel.swift in Sources */,
 				F607CA3F293B6DB9004B1ECC /* RequestSeSACModel.swift in Sources */,
 				F651672E2919270300E362F0 /* SecondPageViewController.swift in Sources */,
 				F651676D291C228E00E362F0 /* GenderModel.swift in Sources */,
@@ -1269,6 +1280,7 @@
 				F651673C291A736400E362F0 /* AuthDetailViewController.swift in Sources */,
 				F67B202429333C2200847D0E /* MyPageModel.swift in Sources */,
 				F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */,
+				F64CA9C9295B336700E73390 /* StudyDodgeModel.swift in Sources */,
 				F6C7DE8D2922830E00DA622D /* ShopViewController.swift in Sources */,
 				F6B59EC6292BC14800A2470A /* SearchResultViewController.swift in Sources */,
 				F6C7DEAC2922BDC500DA622D /* NicknameReusableView.swift in Sources */,

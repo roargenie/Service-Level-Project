@@ -11,6 +11,8 @@ import RxSwift
 
 final class ChatViewModel {
     
+    var studyDodgeStatus = PublishRelay<Int>()
+    
     struct Input {
         
     }
@@ -24,4 +26,15 @@ final class ChatViewModel {
         
         return Output()
     }
+    
+    func requestStudyDodge(uid: String) {
+        APIManager.shared.requestData(Int.self,
+                                      router: SeSACRouter.dodge(StudyDodge(otheruid: uid))) { [weak self] response, statusCode in
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            self.studyDodgeStatus.accept(statusCode)
+            print(statusCode)
+        }
+    }
+    
 }

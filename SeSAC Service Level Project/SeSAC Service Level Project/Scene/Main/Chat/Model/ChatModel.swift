@@ -24,12 +24,3 @@ struct Payload: Codable {
     }
 }
 
-struct NewChat: Codable {
-    let id, to, from, chat: String
-    let createdAt: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case to, from, chat, createdAt
-    }
-}
