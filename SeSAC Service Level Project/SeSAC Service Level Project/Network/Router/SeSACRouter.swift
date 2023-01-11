@@ -120,10 +120,7 @@ extension SeSACRouter: URLRequestConvertible {
         case .studyAccept(let studyAccept):
             request = try URLEncodedFormParameterEncoder().encode(studyAccept, into: request)
         case .postChat:
-//            request = try URLEncodedFormParameterEncoder().encode(chat, into: request)
             request = try URLEncoding().encode(request, with: parameters)
-            
-            //MARK: - 채팅 받는거 몰게써서 확인필요
         case .chat:
             request = try URLEncoding().encode(request, with: parameters)
         case .dodge(let studyDodge):

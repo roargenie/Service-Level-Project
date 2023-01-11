@@ -10,6 +10,7 @@ import RealmSwift
 
 protocol ChatRepositoryType {
     func fetch(uid: String) -> [Payload]
+    func fetchLastDateFilter() -> Date?
     func addChat(item: ChatDataModel)
 }
 
@@ -22,7 +23,6 @@ final class ChatRepository: ChatRepositoryType {
     private init() { }
     
     func fetch(uid: String) -> [Payload] {
-        
         let chatData: [Payload] = ChatRepository.shared.localRealm.objects(ChatDataModel.self).sorted(byKeyPath: "createdAt", ascending: true).map { data in
             
             let id = data.id

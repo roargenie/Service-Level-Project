@@ -113,12 +113,6 @@
 		F6C7DE85292282F700DA622D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE84292282F700DA622D /* SearchView.swift */; };
 		F6C7DE87292282FD00DA622D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE86292282FD00DA622D /* SearchViewController.swift */; };
 		F6C7DE892922830300DA622D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE882922830300DA622D /* SearchViewModel.swift */; };
-		F6C7DE8B2922830800DA622D /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE8A2922830800DA622D /* ShopView.swift */; };
-		F6C7DE8D2922830E00DA622D /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE8C2922830E00DA622D /* ShopViewController.swift */; };
-		F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE8E2922831500DA622D /* ShopViewModel.swift */; };
-		F6C7DE912922831E00DA622D /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE902922831E00DA622D /* FriendsView.swift */; };
-		F6C7DE932922832800DA622D /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE922922832800DA622D /* FriendsViewController.swift */; };
-		F6C7DE952922833000DA622D /* FriensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE942922833000DA622D /* FriensViewModel.swift */; };
 		F6C7DE972922833500DA622D /* MyProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE962922833500DA622D /* MyProfileSettingView.swift */; };
 		F6C7DE992922833C00DA622D /* MyProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */; };
 		F6C7DE9B2922834300DA622D /* MyProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */; };
@@ -250,12 +244,6 @@
 		F6C7DE84292282F700DA622D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F6C7DE86292282FD00DA622D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F6C7DE882922830300DA622D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		F6C7DE8A2922830800DA622D /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
-		F6C7DE8C2922830E00DA622D /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
-		F6C7DE8E2922831500DA622D /* ShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewModel.swift; sourceTree = "<group>"; };
-		F6C7DE902922831E00DA622D /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		F6C7DE922922832800DA622D /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		F6C7DE942922833000DA622D /* FriensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriensViewModel.swift; sourceTree = "<group>"; };
 		F6C7DE962922833500DA622D /* MyProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingView.swift; sourceTree = "<group>"; };
 		F6C7DE982922833C00DA622D /* MyProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewController.swift; sourceTree = "<group>"; };
 		F6C7DE9A2922834300DA622D /* MyProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileSettingViewModel.swift; sourceTree = "<group>"; };
@@ -554,24 +542,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		F651670E2918F1D700E362F0 /* Shop */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE79292282C100DA622D /* View */,
-				F6C7DE78292282BE00DA622D /* ViewModel */,
-			);
-			path = Shop;
-			sourceTree = "<group>";
-		};
-		F651670F2918F1D900E362F0 /* Firends */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE7B292282C800DA622D /* View */,
-				F6C7DE7A292282C500DA622D /* ViewModel */,
-			);
-			path = Firends;
-			sourceTree = "<group>";
-		};
 		F65167102918F1DD00E362F0 /* MyProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,8 +640,6 @@
 				F65167112918F20900E362F0 /* Search */,
 				F6B59EBE292BC05200A2470A /* SearchResult */,
 				F6B67A36293C9A77000D4071 /* Chat */,
-				F651670E2918F1D700E362F0 /* Shop */,
-				F651670F2918F1D900E362F0 /* Firends */,
 				F6C7DEB62923C5DB00DA622D /* Setting */,
 			);
 			path = Main;
@@ -920,40 +888,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F6C7DE78292282BE00DA622D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE8E2922831500DA622D /* ShopViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6C7DE79292282C100DA622D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE8A2922830800DA622D /* ShopView.swift */,
-				F6C7DE8C2922830E00DA622D /* ShopViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F6C7DE7A292282C500DA622D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE942922833000DA622D /* FriensViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F6C7DE7B292282C800DA622D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F6C7DE902922831E00DA622D /* FriendsView.swift */,
-				F6C7DE922922832800DA622D /* FriendsViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		F6C7DE7C292282CA00DA622D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,7 +1128,6 @@
 				F6516751291A74D300E362F0 /* EmailView.swift in Sources */,
 				F65166E02918E7A700E362F0 /* NicknameView.swift in Sources */,
 				F65167092918EF4400E362F0 /* SplashView.swift in Sources */,
-				F6C7DE952922833000DA622D /* FriensViewModel.swift in Sources */,
 				F6EEEDE2291EB2E700C8969B /* EndPoint.swift in Sources */,
 				F6C7DE892922830300DA622D /* SearchViewModel.swift in Sources */,
 				F651675D291A771A00E362F0 /* SeSACButton.swift in Sources */,
@@ -1214,7 +1147,6 @@
 				F6C7DE87292282FD00DA622D /* SearchViewController.swift in Sources */,
 				F65167032918EE9800E362F0 /* NicknameModel.swift in Sources */,
 				F65166C02918E6BD00E362F0 /* AppDelegate.swift in Sources */,
-				F6C7DE912922831E00DA622D /* FriendsView.swift in Sources */,
 				F6C7DEC82923E1DA00DA622D /* MyProfileCell.swift in Sources */,
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
@@ -1235,7 +1167,6 @@
 				F607CA46293BC1BD004B1ECC /* StudyReqeustModel.swift in Sources */,
 				F6EEEDEE29200A1900C8969B /* LoginModel.swift in Sources */,
 				F6C7DEA42922895600DA622D /* ProfileReviewTableViewCell.swift in Sources */,
-				F6C7DE8B2922830800DA622D /* ShopView.swift in Sources */,
 				F65167302919270A00E362F0 /* ThirdPageViewController.swift in Sources */,
 				F6516757291A74E700E362F0 /* GenderView.swift in Sources */,
 				F64CA9C529560B0500E73390 /* ChatDatabaseModel.swift in Sources */,
@@ -1259,7 +1190,6 @@
 				F651674B291A74B800E362F0 /* BirthView.swift in Sources */,
 				F65166FF2918ECF300E362F0 /* BaseTableViewCell.swift in Sources */,
 				F6B67A3E293C9AA4000D4071 /* ChatViewController.swift in Sources */,
-				F6C7DE932922832800DA622D /* FriendsViewController.swift in Sources */,
 				F65166FD2918ECEB00E362F0 /* BaseCollectionViewCell.swift in Sources */,
 				F6B59EBD2928EBB800A2470A /* MyQueueStateModel.swift in Sources */,
 				F6C7DEB02922BF8C00DA622D /* SeSACReviewReusableView.swift in Sources */,
@@ -1281,7 +1211,6 @@
 				F67B202429333C2200847D0E /* MyPageModel.swift in Sources */,
 				F651672C291926F800E362F0 /* FirstPageViewController.swift in Sources */,
 				F64CA9C9295B336700E73390 /* StudyDodgeModel.swift in Sources */,
-				F6C7DE8D2922830E00DA622D /* ShopViewController.swift in Sources */,
 				F6B59EC6292BC14800A2470A /* SearchResultViewController.swift in Sources */,
 				F6C7DEAC2922BDC500DA622D /* NicknameReusableView.swift in Sources */,
 				F6B67A4C29430AAB000D4071 /* ChatMoreView.swift in Sources */,
@@ -1308,7 +1237,6 @@
 				F6623FBF292D040D00DDD7D8 /* RequestSeSACView.swift in Sources */,
 				F6623FCE292D398F00DDD7D8 /* SearchCollectionViewSectionHeader.swift in Sources */,
 				F6516759291A74ED00E362F0 /* GenderViewController.swift in Sources */,
-				F6C7DE8F2922831500DA622D /* ShopViewModel.swift in Sources */,
 				F6B67A39293C9A8F000D4071 /* ChatViewModel.swift in Sources */,
 				F67B20712937B27600847D0E /* UIView+.swift in Sources */,
 			);

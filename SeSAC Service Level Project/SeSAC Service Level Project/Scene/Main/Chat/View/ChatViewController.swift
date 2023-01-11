@@ -22,8 +22,6 @@ final class ChatViewController: BaseViewController {
     var chatArr: [Payload] = []
     var otherUserId: String = ""
     
-    var chatTasks: Results<ChatDataModel>!
-    
     private var lastChatDate = ChatRepository.shared.fetchLastDateFilter()
     
     //MARK: - LifeCycle
@@ -42,7 +40,6 @@ final class ChatViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        fetchRealm()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
@@ -62,12 +59,7 @@ final class ChatViewController: BaseViewController {
         mainView.tableView.dataSource = self
     }
     
-    override func setConstraints() {
-        
-    }
-    
     override func setNavigation() {
-//        title = "누구야"
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = true
         let leftBarButtonItem = UIBarButtonItem(image: Icon.arrow, style: .plain, target: self, action: #selector(backButtonTapped))
@@ -147,10 +139,6 @@ final class ChatViewController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
-    
-    private func fetchRealm() {
-//        chatTasks = ChatRepository.shared.localRealm.objects(ChatDataModel.self).sorted(byKeyPath: "createdAt", ascending: false)
-    }
 
     @objc private func backButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
@@ -179,7 +167,7 @@ final class ChatViewController: BaseViewController {
     }
     
     @objc private func keyboardWillAppear() {
-        // 텍스트뷰 터치시에 테이블뷰 scrollToRow가 키보드 노티로밖에 안먹히는데 다른 방법이 있는지 모르겠다. 여러가지 해봤는데 다 안됨..
+        // 텍스트뷰 터치시에 테이블뷰 scrollToRow가 키보드 노티로밖에 안먹히는데 다른 방법이 있는지 모르겠다. 여러가지 해봤는데 다 안된다.
         if !chatArr.isEmpty {
             mainView.tableView.scrollToRow(at: IndexPath(row: self.chatArr.count - 1, section: 0), at: .bottom, animated: false)
         }
