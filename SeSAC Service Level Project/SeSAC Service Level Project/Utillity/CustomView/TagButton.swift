@@ -1,14 +1,14 @@
 //
-//  StudyTagButton.swift
+//  TagButton.swift
 //  SeSAC Service Level Project
 //
-//  Created by 이명진 on 2022/12/01.
+//  Created by 이명진 on 2023/01/11.
 //
 
 import UIKit
 
 
-final class StudyTagButton: UIButton {
+final class TagButton: UIButton {
     
     enum TagButtonType {
         case red
@@ -49,15 +49,9 @@ final class StudyTagButton: UIButton {
         didSet {
             setTitle(title, for: .normal)
             setTitleColor(type.textColor, for: .normal)
-
-//            let attributedText = NSAttributedString(string: title ?? "",
-//                                                    attributes: [NSAttributedString.Key.font: SeSACFont.title4.font,
-//                                                                 NSAttributedString.Key.foregroundColor: type.textColor
-//                                                                ])
-//            setAttributedTitle(attributedText, for: .normal)
         }
     }
-        
+    
     init(_ type: TagButtonType) {
         super.init(frame: .zero)
         configureUI(type: type)
@@ -70,8 +64,7 @@ final class StudyTagButton: UIButton {
     
     private func configureUI(type: TagButtonType) {
         titleLabel?.font = SeSACFont.title4.font
-        setTitleColor(.systemPink, for: .normal)
-//        setTitleColor(Color.gray4, for: .highlighted)
+        setTitleColor(type.textColor, for: .normal)
         backgroundColor = .white
         
         makeCornerStyle(width: 1, color: type.borderColor.cgColor, radius: 8)
@@ -81,20 +74,5 @@ final class StudyTagButton: UIButton {
         snp.makeConstraints { make in
             make.height.equalTo(32)
         }
-        
-//        var configuration = UIButton.Configuration.plain()
-//        configuration.baseForegroundColor = type.textColor
-////        configuration.bas
-//        configuration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16)
-//        self.configuration = configuration
-//
-//        if type == .green {
-//            var configuration = UIButton.Configuration.plain()
-//            configuration.image = Icon.xmark
-//            configuration.imagePlacement = .trailing
-//            configuration.imagePadding = 4
-//            configuration.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16)
-//            self.configuration = configuration
-//        }
     }
 }

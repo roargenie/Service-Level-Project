@@ -12,6 +12,7 @@
 		F607CA42293BAF7C004B1ECC /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA41293BAF7C004B1ECC /* CustomAlertViewController.swift */; };
 		F607CA44293BB4E8004B1ECC /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA43293BB4E8004B1ECC /* Alert.swift */; };
 		F607CA46293BC1BD004B1ECC /* StudyReqeustModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */; };
+		F637A710296ED3F20004CF51 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F637A70F296ED3F20004CF51 /* TagButton.swift */; };
 		F64CA9BF2955C31800E73390 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9BE2955C31800E73390 /* Realm */; };
 		F64CA9C12955C31800E73390 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F64CA9C02955C31800E73390 /* RealmSwift */; };
 		F64CA9C3295600D000E73390 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CA9C2295600D000E73390 /* String+.swift */; };
@@ -151,6 +152,7 @@
 		F607CA41293BAF7C004B1ECC /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		F607CA43293BB4E8004B1ECC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F607CA45293BC1BD004B1ECC /* StudyReqeustModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyReqeustModel.swift; sourceTree = "<group>"; };
+		F637A70F296ED3F20004CF51 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		F64CA9C2295600D000E73390 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		F64CA9C429560B0500E73390 /* ChatDatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDatabaseModel.swift; sourceTree = "<group>"; };
 		F64CA9C62957049200E73390 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				F67B20722937BA7F00847D0E /* PlainButton.swift */,
 				F651675C291A771A00E362F0 /* SeSACButton.swift */,
 				F6516760291A908800E362F0 /* SeSACTextFIeld.swift */,
+				F637A70F296ED3F20004CF51 /* TagButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1150,6 +1153,7 @@
 				F6C7DEC82923E1DA00DA622D /* MyProfileCell.swift in Sources */,
 				F651674F291A74CC00E362F0 /* BirthViewModel.swift in Sources */,
 				F65166DE2918E79D00E362F0 /* NicknameViewModel.swift in Sources */,
+				F637A710296ED3F20004CF51 /* TagButton.swift in Sources */,
 				F6516732291968A100E362F0 /* Matrix.swift in Sources */,
 				F6623FB9292D028C00DDD7D8 /* NearSeSACViewController.swift in Sources */,
 				F6B59EBB2928D75A00A2470A /* CustomAnnotationView.swift in Sources */,

@@ -52,7 +52,7 @@ final class RequestButton: UIButton {
         setTitle(type.title, for: .normal)
         titleLabel?.font = SeSACFont.title3.font
         setTitleColor(.white, for: .normal)
-        setTitleColor(Color.gray4, for: .highlighted)
+//        setTitleColor(Color.gray4, for: .highlighted)
         backgroundColor = type.backgroundColor
         makeCornerStyle(width: 0, radius: 8)
     }
