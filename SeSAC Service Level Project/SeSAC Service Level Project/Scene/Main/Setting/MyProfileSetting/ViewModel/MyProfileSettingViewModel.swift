@@ -12,6 +12,7 @@ import RxCocoa
 final class MyProfileSettingViewModel {
     
     var myProfileSetting = BehaviorSubject<[Login]>(value: [])
+    var withdrawResponse = PublishRelay<Int>()
     
     struct Input {
         
@@ -39,6 +40,15 @@ final class MyProfileSettingViewModel {
             case .failure(let error):
                 self.myProfileSetting.onError(error)
             }
+        }
+    }
+    
+    func requestWithdraw() {
+        APIManager.shared.requestData(Int.self,
+                                      router: SeSACRouter.withdraw) { [weak self] response, statusCode in
+            guard let statusCode = statusCode,
+                  let self = self else { return }
+            self.withdrawResponse.accept(statusCode)
         }
     }
 }

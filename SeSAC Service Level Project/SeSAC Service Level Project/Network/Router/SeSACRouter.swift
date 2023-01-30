@@ -16,6 +16,7 @@ enum SeSACRouter {
     case queue(_ queue: MyQueue)
     case queueStop
     case myPage(_ mypage: MyPage)
+    case withdraw
     case studyRequest(_ studyRequest: StudyRequest)
     case studyAccept(_ studyAccept: StudyAccept)
     case postChat(chat: String, userId: String)
@@ -41,6 +42,8 @@ extension SeSACRouter: URLRequestConvertible {
             return "/v1/queue"
         case .myPage:
             return "/v1/user/mypage"
+        case .withdraw:
+            return "/v1/user/withdraw"
         case .studyRequest:
             return "/v1/queue/studyrequest"
         case .studyAccept:
@@ -64,7 +67,7 @@ extension SeSACRouter: URLRequestConvertible {
         switch self {
         case .login, .myQueueState, .chat:
             return .get
-        case .signup, .search, .queue, .studyRequest, .studyAccept, .postChat, .dodge:
+        case .signup, .search, .queue, .studyRequest, .studyAccept, .postChat, .dodge, .withdraw:
             return .post
         case .myPage:
             return .put

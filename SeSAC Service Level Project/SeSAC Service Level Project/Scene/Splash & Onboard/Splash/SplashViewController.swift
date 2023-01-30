@@ -53,8 +53,6 @@ final class SplashViewController: BaseViewController {
             case .failure(let error):
                 switch error {
                 case .firebaseTokenErr:
-//                    self?.refreshIdToken()
-//                    self?.pushHomeVC()
                     print(error.rawValue)
                 case .notSignUp:
                     print(error.rawValue)

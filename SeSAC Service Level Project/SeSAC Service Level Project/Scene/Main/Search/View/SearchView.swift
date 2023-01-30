@@ -15,12 +15,11 @@ final class SearchView: BaseView {
         $0.register(SearchCollectionViewSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SearchCollectionViewSectionHeader.identifier)
     }
     
-    let searchBar: UISearchBar = UISearchBar(
-        frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 70, height: 0)).then {
-            $0.placeholder = "띄어쓰기로 복수 입력이 가능해요"
-//            $0.setScopeBarButtonTitleTextAttributes([NSAttributedString.Key.foregroundColor: Color.gray6,
-//                                                     NSAttributedString.Key.font: SeSACFont.title4.font], for: .normal)
-        }
+    let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0,
+                                                           width: UIScreen.main.bounds.width - 70,
+                                                           height: 0)).then {
+        $0.placeholder = "띄어쓰기로 복수 입력이 가능해요"
+    }
     
     let searchButton: SeSACButton = SeSACButton().then {
         $0.setupButton(title: "새싹 찾기",
@@ -32,7 +31,6 @@ final class SearchView: BaseView {
         var config = UIButton.Configuration.plain()
         config.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16)
         $0.configuration = config
-//        $0.isEnabled = false
     }
     
     override init(frame: CGRect) {
@@ -53,7 +51,6 @@ final class SearchView: BaseView {
             make.height.equalTo(48)
         }
     }
-    
 }
 
 extension UICollectionViewLayout {

@@ -69,15 +69,15 @@ final class MyProfileSettingViewController: BaseViewController {
         
         viewModel.myProfileSetting
             .observe(on: MainScheduler.instance)
-            .bind(to: mainView.tableView.rx.items) { (tv, row, item) -> UITableViewCell in
+            .bind(to: mainView.tableView.rx.items) { [weak self] (tv, row, item) -> UITableViewCell in
                 if row == 0 {
                     guard let cell = tv.dequeueReusableCell(withIdentifier: ProfileNickNameTableViewCell.reuseIdentifier, for: IndexPath.init(row: row, section: 0)) as? ProfileNickNameTableViewCell else { return UITableViewCell() }
                     
                     cell.profileImageView.image = UIImage(named: "sesac_face_\(item.sesac)")
                     cell.firstLineView.nicknameLabel.text = item.nick
-                    cell.firstLineView.moreButton.addTarget(self, action: #selector(self.moreButtonTapped), for: .touchUpInside)
+                    cell.firstLineView.moreButton.addTarget(self, action: #selector(self?.moreButtonTapped), for: .touchUpInside)
                     cell.thirdLineView.sesacReviewLabel.text = item.comment.isEmpty ? "첫 리뷰를 기다리는 중이에요!" : item.comment.joined(separator: "\n")
-                    if self.isSelected == true {
+                    if self?.isSelected == true {
                         cell.secondLineView.isHidden = false
                         cell.thirdLineView.isHidden = false
                         cell.firstLineView.moreButton.setImage(Icon.uparrow, for: .normal)
@@ -110,14 +110,36 @@ final class MyProfileSettingViewController: BaseViewController {
                     return cell
                 } else {
                     guard let cell = tv.dequeueReusableCell(withIdentifier: ProfileUnregisterTableViewCell.reuseIdentifier, for: IndexPath.init(row: row, section: 0)) as? ProfileUnregisterTableViewCell else { return UITableViewCell() }
-                    
+                    cell.unregisterButton.rx.tap
+                        .bind { _ in
+                            self?.presentAlert()
+                        }
+                        .disposed(by: cell.disposeBag)
                     return cell
                 }
             }
             .disposed(by: disposeBag)
-            
+          
+        viewModel.withdrawResponse
+            .withUnretained(self)
+            .bind { vc, value in
+                if value == 200 {
+                    vc.transition(OnboardViewController(), transitionStyle: .changeRootVC)
+                }
+            }
+            .disposed(by: disposeBag)
         
-        
+    }
+    
+    private func presentAlert() {
+        let vc = CustomAlertViewController()
+        vc.alertType = .withdraw
+        vc.doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
+        transition(vc, transitionStyle: .alert)
+    }
+    
+    @objc private func doneButtonTapped() {
+        viewModel.requestWithdraw()
     }
     
     @objc private func moreButtonTapped() {

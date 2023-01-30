@@ -148,3 +148,4 @@ final class ChatView: BaseView {
         }
     }
 }
+

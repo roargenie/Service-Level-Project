@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ProfileUnregisterTableViewCell: BaseTableViewCell {
     
-    let unregisterLabel: UILabel = UILabel().then {
-        $0.text = "회원탈퇴"
-        $0.font = SeSACFont.title4.font
+//    let unregisterLabel: UILabel = UILabel().then {
+//        $0.text = "회원탈퇴"
+//        $0.font = SeSACFont.title4.font
+//    }
+    var disposeBag = DisposeBag()
+    
+    let unregisterButton: UIButton = UIButton().then {
+        $0.setTitleColor(.black, for: .normal)
+        $0.setTitle("회원탈퇴", for: .normal)
+        $0.titleLabel?.font = SeSACFont.title4.font
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -19,13 +27,18 @@ final class ProfileUnregisterTableViewCell: BaseTableViewCell {
         selectionStyle = .none
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     override func configureUI() {
-        self.contentView.addSubview(unregisterLabel)
+        self.contentView.addSubview(unregisterButton)
     }
     
     override func setConstraints() {
-        unregisterLabel.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview().inset(16)
+        unregisterButton.snp.makeConstraints { make in
+            make.top.leading.bottom.trailing.equalToSuperview().inset(16)
         }
     }
 }

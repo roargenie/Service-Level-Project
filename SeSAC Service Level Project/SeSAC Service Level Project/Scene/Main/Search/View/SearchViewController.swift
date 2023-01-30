@@ -44,7 +44,6 @@ final class SearchViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
@@ -56,10 +55,6 @@ final class SearchViewController: BaseViewController {
     
     
     // MARK: - OverrideMethod
-    
-    override func configureUI() {
-        
-    }
     
     override func setNavigation() {
         let leftBarButtonItem = UIBarButtonItem(image: Icon.arrow, style: .plain, target: self, action: #selector(backButtonTapped))
@@ -136,7 +131,6 @@ final class SearchViewController: BaseViewController {
             .withUnretained(self)
             .bind { (vc, _) in
                 vc.viewModel.requestSeSACSearch()
-//                vc.transition(ChatViewController(), transitionStyle: .push)
             }
             .disposed(by: disposeBag)
         

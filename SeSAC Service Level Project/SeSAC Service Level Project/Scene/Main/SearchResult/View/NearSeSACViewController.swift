@@ -37,13 +37,6 @@ final class NearSeSACViewController: BaseViewController {
     
     //MARK: - OverrideMethod
     
-    override func configureUI() {
-        
-    }
-    
-    override func setConstraints() {
-        
-    }
     
     //MARK: - CustomMethod
     
@@ -64,13 +57,6 @@ final class NearSeSACViewController: BaseViewController {
                 cell.firstLineView.moreButton.addTarget(self, action: #selector(self?.moreButtonTapped), for: .touchUpInside)
                 cell.firstLineView.moreButton.tag = row
                 cell.setupCellData(data: item, buttonType: .request)
-//                cell.firstLineView.moreButton.rx.tap
-//                    .bind { _ in
-//                        guard let self = self else { return }
-//                        self.isSelected[row] = !self.isSelected[row]
-//
-//                    }
-//                    .disposed(by: cell.disposeBag)
                 cell.requestButton.rx.tap
                     .bind { _ in
                         self?.presentAlert()
@@ -118,3 +104,4 @@ final class NearSeSACViewController: BaseViewController {
         viewModel.requestStudyRequest(uid)
     }
 }
+
